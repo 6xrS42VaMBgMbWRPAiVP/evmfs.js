@@ -46,7 +46,7 @@ const
   _msg_error =
     _libcrash._msg_error;
 const
-  _evm_contracts_tools_call =
+  _evm_contracts_tools_module =
     require(
       "evm-contracts-tools");
 /* global
