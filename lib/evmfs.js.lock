@@ -26,6 +26,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet:
+       writable */
+
 const
   _libcrash =
     require(
@@ -78,6 +84,10 @@ function
        app_name */
   app_name =
     "evmfs.js.lock";
+  /* global
+       app_opts */
+  app_opts =
+    [];
   /* global
        retries_max:
          writable */
@@ -162,11 +172,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Locking chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Locking chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -176,11 +185,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Locked chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Locked chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -190,11 +198,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Chunk '${_index}' already locked ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Chunk '${_index}' already locked ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -205,14 +212,19 @@ function
   let
     _message;
   if ( "error" in error &&
-       error["error"] != undefined &&
-       "message" in error["error"] ) {
+       error[
+         "error"] != undefined &&
+       "message" in error[
+                      "error"] ) {
     _message =
-      error["error"]["message"];
+      error[
+        "error"][
+          "message"];
   }
   else if ( "shortMessage" in error ) {
     _message =
-      error["shortMessage"];
+      error[
+        "shortMessage"];
   }
   _msg_error(
     _message,
@@ -257,8 +269,9 @@ async function
       console.log(
         _error);
     }
-    _msg =
-      "Error locking chunk.";
+    const
+      _msg =
+        "Error locking chunk.";
     _msg_error(
       _msg,
       0);
@@ -321,9 +334,9 @@ async function
     _locked_call_opts,
     _locked_method_object,
     _method_args,
+    _msg,
     _progress,
-    _tx,
-    _wallet_password;
+    _tx;
   if ( typeof(
          _retries_max) === "undefined" ||
        _retries_max == "" ) {
@@ -355,8 +368,9 @@ async function
   _index_end =
     Number(
       _index_end);
-  _wallet_password =
-    "";
+  const
+    _wallet_password =
+      "";
   _locked_method_object =
     "";
   _lock_call_base_opts = [
@@ -389,10 +403,11 @@ async function
     _contract_address,
     "lock"
   ];
-  _method_base_args = [
-    _publication_namespace,
-    _file_hash
-  ];
+  const
+    _method_base_args = [
+      _publication_namespace,
+      _file_hash
+    ];
   _chunks_total =
     _index_end - index_start + 1;
   _input_data_check(
@@ -666,7 +681,7 @@ function
 }
 
 if ( _cmdline_check(
-       "evmfs.js.lock") == true ) {
+       "evmfs.js.lock") ) {
   _global_variables();
   _cmdline_parse();
   _overrides_set();

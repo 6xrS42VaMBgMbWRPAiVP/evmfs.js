@@ -61,8 +61,16 @@ const
 
 function
   _global_variables() {
+  /* global
+       app_name:
+         writable */
   app_name =
     "evmfs.js.get";
+  /* global
+       app_opts:
+         writable */
+  app_opts =
+    [];
   /* global
        retries_max:
          writable */
@@ -181,8 +189,9 @@ async function
       _error) {
     _error_display(
       _error);
-    _msg =
-      "Error retrieving chunk.";
+    const
+      _msg =
+        "Error retrieving chunk.";
     _msg_error(
       _msg,
       0);
@@ -199,6 +208,7 @@ function
     _index_end,
     _total_files) {
   let
+    _msg,
     _total_indexes;
   _total_indexes =
     _index_end - _index_start + 1;
@@ -225,8 +235,10 @@ function
       _msg,
       1);
   }
+  _msg =
+    "Input data checked.";
   _msg_info(
-    "Input data checked.");
+    _msg);
 }
 
 function
@@ -487,6 +499,8 @@ function
 
 function 
   _cmdline_parse() {
+  let
+    _msg;
   quiet = 
     "y";
   process.argv.forEach(

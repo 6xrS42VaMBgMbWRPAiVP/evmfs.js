@@ -65,10 +65,7 @@ const
     require(
       '../evm-contracts-tools/evm-contract-call-dynamic');
 /* global
-     _contract_run,
-     a */
-/* eslint no-undef:
-     "error" */
+     _contract_run */
 const
   _contract_run =
     _evm_contract_call_dynamic_module._contract_run;
@@ -77,24 +74,19 @@ const
     require(
       "./evmfs.js.check");
 /* global
-     _chunk_check,
-     a */
-/* eslint
-     no-undef:
-       "error" */
+     _chunk_check */
 const
   _chunk_check =
     _check_module._chunk_check;
-const
-  _verify_module =
-    require(
-      './evmfs.js.verify');
+// const
+//   _verify_module =
+//     require(
+//       './evmfs.js.verify');
 /* global
-     _verify,
-     a */
-const
-  _verify =
-    _verify_module._verify;
+     _verify */
+// const
+//   _verify =
+//     _verify_module._verify;
 
 function
   _global_variables() {
@@ -103,6 +95,11 @@ function
          writable */
   app_name =
     "evmfs.js.publish";
+  /* global
+       app_opts:
+         writable */
+  app_opts =
+    [];
   /* global
        retries_max:
          writable */
@@ -376,18 +373,15 @@ async function
     _chunk_check_args,
     _chunk_file_path,
     _chunk_publish_args,
-    _chunks_total,
     _chunks_files_paths_prefix,
-    _method_base_args,
+    _cursor,
     _method_object,
     _msg,
     _progress,
     _publish_call_base_opts,
     _publish_call_opts,
     _published,
-    _tx,
-    _value,
-    _wallet_password;
+    _tx;
   const
     _chunks_unverified =
       [];
@@ -409,8 +403,9 @@ async function
       _index_end);
   _method_object =
     "";
-  _wallet_password =
-    "";
+  const
+    _wallet_password =
+      "";
   _check_call_base_opts = [
     "", // _wallet_seed_path,
     _retries_max,
@@ -439,12 +434,14 @@ async function
     _contract_compiler_output_path,
     "publishChunk",
   ];
-  _method_base_args = [
-    _publication_namespace,
-    _file_hash
-  ];
-  _chunks_total =
-    _chunks_files_paths.length;
+  const
+    _method_base_args = [
+      _publication_namespace,
+      _file_hash
+    ];
+  const
+    _chunks_total =
+      _chunks_files_paths.length;
   if ( _chunks_total == 0 ) {
     _msg =
       "File chunks list empty.";
@@ -846,21 +843,19 @@ function
 async function
   _publish_cmdline(
     _app_opts) {
-  let
-    _chunk,
-    _chunks_unverified,
-    _index,
-    _msg;
   try {
-    await _publish.apply(
-      null,
-      _app_opts);
+    const
+      _chunks_unverified =
+        await _publish.apply(
+          null,
+          _app_opts);
   } catch (
       _error) {
     console.error(
       _error);
-    _msg =
-      "Publication error.";
+    const
+      _msg =
+        "Publication error.";
     _msg_error(
       _msg,
       1);

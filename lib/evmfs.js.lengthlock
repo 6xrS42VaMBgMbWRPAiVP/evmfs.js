@@ -197,7 +197,6 @@ async function
   let
     _method_object,
     _passed,
-    _retry,
     _value;
   try {
     [ _value,
@@ -228,7 +227,6 @@ async function
   let
     _method_object,
     _passed,
-    _retry,
     _value;
   try {
     [ _value,
