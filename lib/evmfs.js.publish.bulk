@@ -367,8 +367,7 @@ async function
     _index_end,
     _buffer_length,
     _checkpoint_file_path,
-    _chunks_files_paths
-  ) {
+    _chunks_files_paths) {
   let
     _buffer_cursor,
     _buffer_index,
@@ -385,6 +384,7 @@ async function
     _chunks_total,
     _chunks_files_paths_prefix,
     _chunks_unverified = [],
+    _cursor,
     _index,
     _indexes_unverified = [],
     _method_base_args,
@@ -909,14 +909,12 @@ function
 async function
   _publish_bulk_cmdline(
     _app_opts) {
-  let
-    _chunk,
-    _chunks_unverified,
-    _index;
   try {
-    await _publish_bulk.apply(
-      null,
-      _app_opts);
+    const
+      _chunks_unverified =
+        await _publish_bulk.apply(
+          null,
+          _app_opts);
   } catch (
       _error) {
     console.error(
