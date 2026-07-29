@@ -259,7 +259,6 @@ function
     _files_hashes_total,
     _files_locks_paths_total) {
   let
-    _sha256sum_length,
     _hash,
     _msg;
   if ( _files_hashes_total == 0 ) {
@@ -269,8 +268,9 @@ function
       _msg,
       1);
   }
-  _sha256sum_length =
-    64;
+  const
+    _sha256sum_length =
+      64;
   for ( _hash of _file_hashes ) {
     if ( _hash.length != sha256sum_length ) {
       _msg =
@@ -487,7 +487,6 @@ async function
     _length_call_base_opts,
     _length_call_opts,
     _length_locked_opts,
-    _lock_method_object,
     _lock,
     _method_args,
     _msg,
@@ -551,11 +550,12 @@ async function
     _files_hashes,
     _chunks_locks_paths,
   ];
-  [ _locks,
+  const [
+    _locks,
     _lock_method_object ] =
-    await _length_locked.apply(
-      null,
-      _length_locked_opts);
+      await _length_locked.apply(
+        null,
+        _length_locked_opts);
   for ( _hash of _file_hashes ) {
     _msg_info_length_get(
       _hash,

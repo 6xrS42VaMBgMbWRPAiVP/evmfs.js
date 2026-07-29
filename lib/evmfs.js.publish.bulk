@@ -386,14 +386,12 @@ async function
     _chunks_files_paths_prefix,
     _cursor,
     _index,
-    _method_object,
     _msg,
     _progress,
     _publish_bulk_call_opts,
     _published,
     _tx,
-    _value,
-    _wallet_password;
+    _value;
   if ( _buffer_length == "" ||
        typeof(
          _buffer_length) === 'undefined' ) {
@@ -424,10 +422,12 @@ async function
   const
     _indexes_unverified =
       [];
-  _method_object =
-    "";
-  _wallet_password =
-    "";
+  const
+    _method_object =
+      "";
+  const
+    _wallet_password =
+      "";
   _check_call_base_opts = [
     "", // _wallet_seed_path,
     _retries_max,
@@ -521,8 +521,8 @@ async function
       _check_call_base_opts.concat(
         [_chunk_check_args]);
     try {
-      [_published,
-       _method_object] =
+      [ _published,
+        _method_object ] =
         await _chunk_check(
           _chunk,
           _check_call_opts);
