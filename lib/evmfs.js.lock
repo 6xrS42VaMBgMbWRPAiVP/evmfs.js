@@ -37,9 +37,6 @@ const
     require(
       "crash-js");
 const
-  _dirname =
-    _libcrash._dirname;
-const
   _error_display =
     _libcrash._error_display;
 const
@@ -52,15 +49,15 @@ const
   _msg_error =
     _libcrash._msg_error;
 const
+  _process_exit =
+    _libcrash._process_exit;
+
+const
   _evm_contract_call_dynamic_module =
     require(
       '../evm-contracts-tools/evm-contract-call-dynamic');
 /* global
-     _contract_run,
-     a */
-/* eslint
-     no-undef:
-       "error" */
+     _contract_run */
 const
   _contract_run =
     _evm_contract_call_dynamic_module._contract_run;
@@ -69,11 +66,7 @@ const
     require(
       "../evm-contracts-tools/evm-contract-call-static");
 /* global
-     _contract_call_static,
-     a */
-/* eslint
-     no-undef:
-       "error" */
+     _contract_call_static */
 const
   _contract_call_static =
     _evm_contract_call_static_module._contract_call_static;
@@ -253,7 +246,14 @@ function
 
 async function
   _chunk_lock(
-    _contract_run_opts) {
+    _contract_run_opts,
+    _verbose) {
+  if ( typeof(
+         _verbose) === "undefined" ||
+       _verbose == "" ) {
+    _verbose =
+      false;
+  }
   let
     _tx;
   try {
@@ -285,8 +285,6 @@ async function
     _locked_call_opts) {
   let
     _method_object,
-    _passed,
-    _retry,
     _value;
   try {
     [_value,
@@ -471,31 +469,31 @@ async function
 function
   _config_show() {
   let
-    _line,
-    _text;
-  _text = [
-    " Lock configuration:",
-    `                File hash: ${file_hash}`,
-    `    Publication namespace: ${publication_namespace}`,
-    `              Index start: ${index_start}`,
-    `                Index end: ${index_end}`,
-    `     Checkpoint file path: ${checkpoint_file_path}`,
-    `    Credentials options:`,
-    `              Wallet seed: ${wallet_seed_path}`,
-    `        Network options:`,
-    `           Target network: ${target_network}`,
-    `                  API Key: ${api_key_path}`,
-    `             Call timeout: ${call_timeout}`,
-    `          Maximum retries: ${retries_max}`,
-    `       Contract options:`,
-    `         Contract address: ${contract_address}`,
-    `             Contract ABI: ${contract_abi_path}`,
-    `        Contract bytecode: ${contract_bytecode_path}`,
-    ` Contract compiler output: ${contract_compiler_output_path}`,
-  ];
-  for ( _line in _text ) {
+    _line;
+  const
+    _text = [
+      " Lock configuration:",
+      `                File hash: ${file_hash}`,
+      `    Publication namespace: ${publication_namespace}`,
+      `              Index start: ${index_start}`,
+      `                Index end: ${index_end}`,
+      `     Checkpoint file path: ${checkpoint_file_path}`,
+      `    Credentials options:`,
+      `              Wallet seed: ${wallet_seed_path}`,
+      `        Network options:`,
+      `           Target network: ${target_network}`,
+      `                  API Key: ${api_key_path}`,
+      `             Call timeout: ${call_timeout}`,
+      `          Maximum retries: ${retries_max}`,
+      `       Contract options:`,
+      `         Contract address: ${contract_address}`,
+      `             Contract ABI: ${contract_abi_path}`,
+      `        Contract bytecode: ${contract_bytecode_path}`,
+      ` Contract compiler output: ${contract_compiler_output_path}`,
+    ];
+  for ( _line of _text ) {
     _msg_info(
-      _text[_line]);
+      _line);
   }
 }
 
@@ -503,62 +501,62 @@ function
   _usage(
     _exit) {
   let
-    _line,
-    _text;
-  _text = [
-    "Lock chunks of an EVMFS file.",
-    "",
-    "Usage:",
-    "  lock",
-    "    <quiet>",
-    "    <retries-max>",
-    "    <call-timeout>",
-    "    <api-key-path>",
-    "    <target-network>",
-    "    <contract-address>",
-    "    <contract-abi-path>",
-    "    <contract-bytecode-path>",
-    "    <contract-compiler-output-path>",
-    "    <publication-namespace>",
-    "    <index-start>",
-    "    <file-hash>",
-    "    <index-start>",
-    "    <index-end>",
-    "    <checkpoint-file-path>",
-    "",
-    "Args:",
-    "  <quiet>                          Can be 'y' or 'n'",
-    "                                   Default: y",
-    "  <retries-max>                    Maximum number of retries before",
-    "                                   failing.",
-    `                                   Default: ${retries_max}`,
-    "  <call-timeout>                   How many milliseconds to wait for",
-    "                                   a return",
-    "                                   before declaring the call failed.",
-    `                                   Default: ${call_timeout}`,
-    "  <api-key-path>                   Path of the API key for the",
-    "                                   contract ABI provider service.",
-    "  <target-network>                 Network on which the contract",
-    "                                   resides.",
-    "  <contract-address>               Address of the contract.",
-    "  <contract-abi_path>              Contract ABI path.",
-    "  <contract-bytecode-path>         Path for the contract bytecode.",
-    "  <contract-compiler-output-path>  Path for the contract compiler",
-    "                                   output path (the hardhat artifact).",
-    "  <publication-namespace>          Namespace in which the file is being",
-    "                                   published.",
-    "  <file-hash>                      Hash of the file to publish.",
-    "  <index-start>                    Chunk index from where to start.",
-    "  <index-end>                      Final chunk index to lock.",
-    "  <checkpoint-file-path>           Checkpoint file on which latest",
-    "                                   downloaded chunk index is saved",
-    "                                   in case node was to crash.",
-  ];
+    _line;
+  const
+    _text = [
+      "Lock chunks of an EVMFS file.",
+      "",
+      "Usage:",
+      "  lock",
+      "    <quiet>",
+      "    <retries-max>",
+      "    <call-timeout>",
+      "    <api-key-path>",
+      "    <target-network>",
+      "    <contract-address>",
+      "    <contract-abi-path>",
+      "    <contract-bytecode-path>",
+      "    <contract-compiler-output-path>",
+      "    <publication-namespace>",
+      "    <index-start>",
+      "    <file-hash>",
+      "    <index-start>",
+      "    <index-end>",
+      "    <checkpoint-file-path>",
+      "",
+      "Args:",
+      "  <quiet>                          Can be 'y' or 'n'",
+      "                                   Default: y",
+      "  <retries-max>                    Maximum number of retries before",
+      "                                   failing.",
+      `                                   Default: ${retries_max}`,
+      "  <call-timeout>                   How many milliseconds to wait for",
+      "                                   a return",
+      "                                   before declaring the call failed.",
+      `                                   Default: ${call_timeout}`,
+      "  <api-key-path>                   Path of the API key for the",
+      "                                   contract ABI provider service.",
+      "  <target-network>                 Network on which the contract",
+      "                                   resides.",
+      "  <contract-address>               Address of the contract.",
+      "  <contract-abi_path>              Contract ABI path.",
+      "  <contract-bytecode-path>         Path for the contract bytecode.",
+      "  <contract-compiler-output-path>  Path for the contract compiler",
+      "                                   output path (the hardhat artifact).",
+      "  <publication-namespace>          Namespace in which the file is being",
+      "                                   published.",
+      "  <file-hash>                      Hash of the file to publish.",
+      "  <index-start>                    Chunk index from where to start.",
+      "  <index-end>                      Final chunk index to lock.",
+      "  <checkpoint-file-path>           Checkpoint file on which latest",
+      "                                   downloaded chunk index is saved",
+      "                                   in case node was to crash.",
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
   }
-  process.exit(
+  _process_exit(
     _exit);
 }
 
