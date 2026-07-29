@@ -426,9 +426,8 @@ async function
   const
     _indexes_unverified =
       [];
-  const
-    _method_object =
-      "";
+  _method_object =
+    "";
   const
     _wallet_password =
       "";

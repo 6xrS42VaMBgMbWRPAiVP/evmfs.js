@@ -26,6 +26,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet:
+       writable */
+
 const
   _libcrash =
     require(
@@ -272,7 +278,7 @@ function
     _sha256sum_length =
       64;
   for ( _hash of _files_hashes ) {
-    if ( _hash.length != sha256sum_length ) {
+    if ( _hash.length != _sha256sum_length ) {
       _msg =
         "Malformed SHA256 sum.";
       _msg_error(
@@ -299,7 +305,6 @@ function
     _files_locks_paths_total,
     _files_lengths_paths_total) {
   let
-    _sha256sum_length,
     _hash;
   _lock_input_data_check(
     _files_hashes,
@@ -331,13 +336,11 @@ async function
     _publication_namespace,
     _checkpoint_file_path,
     _files_hashes,
-    _files_locks_paths
-  ) {
+    _files_locks_paths) {
   let
     _cursor,
     _file_lock_path,
     _files_hashes_total,
-    _files_locks_paths_total,
     _hash,
     _lock_call_base_opts,
     _lock_call_opts,
@@ -376,8 +379,9 @@ async function
     ];
   _files_hashes_total =
     _files_hashes.length;
-  _files_locks_paths_total =
-    _files_locks_paths.length;
+  const
+    _files_locks_paths_total =
+      _files_locks_paths.length;
   _lock_input_data_check(
     _files_hashes,
     _files_hashes_total,
@@ -400,7 +404,7 @@ async function
     _lock_call_opts =
       _lock_call_base_opts.concat(
         [ _method_args ]);
-    if ( _files_locks_path_total > 0 ) {
+    if ( _files_locks_paths_total > 0 ) {
       _file_lock_path =
         _files_locks_paths[
           _cursor];
@@ -523,8 +527,9 @@ async function
   const
     _files_hashes_total =
       _files_hashes.length;
-  _files_locks_paths_total =
-    _files_locks_paths.length;
+  const
+    _files_locks_paths_total =
+      _files_locks_paths.length;
   const
     _files_lengths_paths_total =
       _files_lengths_paths.length;
@@ -689,56 +694,56 @@ function
   _usage(
     _exit) {
   let
-    _line,
-    _text;
-  _text = [
-    "",
-    "Check if a file length is locked.",
-    "",
-    "Usage:",
-    "  exists",
-    "    <quiet>",
-    "    <retries-max>",
-    "    <api-key-path>",
-    "    <target-network>",
-    "    <contract-address>",
-    "    <contract-abi-path>",
-    "    <contract-bytecode-path>",
-    "    <contract-compiler-output-path>",
-    "    <publication-namespace>",
-    "    <checkpoint-file-path>",
-    "    <disk-write>",
-    "    [file-hash]",
-    "  ( [files-length-path] )",
-    "",
-    "Args:",
-    "  <quiet>                          Can be 'y' or 'n'",
-    "                                   Default: y",
-    "  <retries-max>                    Maximum number of retries before",
-    "                                   failing (not implemented).",
-    "  <api-key-path>                   Path of the API key for the",
-    "                                   contract ABI provider service.",
-    "  <target-network>                 Network on which the contract",
-    "                                   resides.",
-    "  <contract-address>               Address of the contract.",
-    "  <contract-abi-path>              Contract ABI path.",
-    "  <contract-bytecode-path>         Path for the contract bytecode.",
-    "  <contract-compiler-output-path>  Path for the contract compiler",
-    "                                   output path (the hardhat artifact).",
-    "  <publication-namespace>          Namespace in which the file will be",
-    "                                   published.",
-    "  <checkpoint-file-path>           Checkpoint file on which latest",
-    "                                   downloaded chunk index is saved",
-    "                                   in case node was to crash.",
-    "  <disk-write>                     Whether to write the query results",
-    "                                   to a file.",
-    "                                   Default: y",
-    "  [files-hashes]                   Hashes of the files to get the",
-    "                                   length and lock status of.",
-    "  [files-lengths-path]             Files in which to write the lengths.",
-    "  [files-locks-path]               Files in which to write the lock.",
-    "                                   statuses.",
-  ];
+    _line;
+  const
+    _text = [
+      "",
+      "Check if a file length is locked.",
+      "",
+      "Usage:",
+      "  exists",
+      "    <quiet>",
+      "    <retries-max>",
+      "    <api-key-path>",
+      "    <target-network>",
+      "    <contract-address>",
+      "    <contract-abi-path>",
+      "    <contract-bytecode-path>",
+      "    <contract-compiler-output-path>",
+      "    <publication-namespace>",
+      "    <checkpoint-file-path>",
+      "    <disk-write>",
+      "    [file-hash]",
+      "  ( [files-length-path] )",
+      "",
+      "Args:",
+      "  <quiet>                          Can be 'y' or 'n'",
+      "                                   Default: y",
+      "  <retries-max>                    Maximum number of retries before",
+      "                                   failing (not implemented).",
+      "  <api-key-path>                   Path of the API key for the",
+      "                                   contract ABI provider service.",
+      "  <target-network>                 Network on which the contract",
+      "                                   resides.",
+      "  <contract-address>               Address of the contract.",
+      "  <contract-abi-path>              Contract ABI path.",
+      "  <contract-bytecode-path>         Path for the contract bytecode.",
+      "  <contract-compiler-output-path>  Path for the contract compiler",
+      "                                   output path (the hardhat artifact).",
+      "  <publication-namespace>          Namespace in which the file will be",
+      "                                   published.",
+      "  <checkpoint-file-path>           Checkpoint file on which latest",
+      "                                   downloaded chunk index is saved",
+      "                                   in case node was to crash.",
+      "  <disk-write>                     Whether to write the query results",
+      "                                   to a file.",
+      "                                   Default: y",
+      "  [files-hashes]                   Hashes of the files to get the",
+      "                                   length and lock status of.",
+      "  [files-lengths-path]             Files in which to write the lengths.",
+      "  [files-locks-path]               Files in which to write the lock.",
+      "                                   statuses.",
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);

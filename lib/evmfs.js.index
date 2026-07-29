@@ -422,7 +422,7 @@ function
     _line;
   const
     _text = [
-      " Index configuration:"
+      " Index configuration:",
       `          Maximum retries: ${retries_max}`,
       `             Call timeout: ${call_timeout}`,
       `              Wallet seed: ${wallet_seed_path}`,
@@ -515,6 +515,8 @@ function
 
 function
   _cmdline_parse() {
+  let
+    _msg;
   quiet =
     "y";
   process.argv.forEach(

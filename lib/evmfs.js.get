@@ -142,7 +142,7 @@ function
   checkpoint_file_path =
     "";
   /* global
-       chunks_files_path:
+       chunks_files_paths:
          writable */
   chunks_files_paths =
     [];
@@ -253,7 +253,7 @@ function
     _cursor) {
   if ( _path == undefined ) {
     const
-      _text =
+      _msg =
         "Chunk file for index " +
         _index +
         " and cursor " +
