@@ -25,6 +25,11 @@
  *     If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript */
+
+/* global
+     _msg_info */
+
 const
   _check_module =
     require(

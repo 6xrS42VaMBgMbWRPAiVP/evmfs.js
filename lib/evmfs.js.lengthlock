@@ -46,6 +46,9 @@ const
   _msg_error =
     _libcrash._msg_error;
 const
+  _process_exit =
+    _libcrash._process_exit;
+const
   _evm_contracts_tools_module =
     require(
       "evm-contracts-tools");
@@ -63,32 +66,74 @@ function
   _global_variables() {
   app_name =
     "evmfs.js.lengthlock";
+  /* global
+       retries_max:
+         writable */
   retries_max =
     "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
+  /* global
+       method_object:
+         writable */
   method_object =
     "";
+  /* global
+       publication_namespace:
+         writable */
   publication_namespace =
     "";
+  /* global
+       disk_write:
+         writable */
   disk_write =
     "";
+  /* global
+       checkpoint_file_path:
+         writable */
   checkpoint_file_path =
     "";
+  /* global
+       files_hashes:
+         writable */
   files_hashes =
     [];
+  /* global
+       files_locks_paths:
+         writable */
   files_locks_paths =
     [];
+  /* global
+       files_lengths_paths:
+         writable */
   files_lengths_paths =
     [];
   quiet =
@@ -100,24 +145,10 @@ function
     _hash,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
-  _template =
-    "Getting length for hash '{_hash}' " +
-    "('{_progress}'of '{_total}').";
-  _msg =
-    _template.replaceAll(
-      "{_hash}",
-      _hash);
-  _msg =
-    _msg.replaceAll(
-      "{_progress}",
-      _progress);
-  _msg =
-    _msg.replaceAll(
-      "{_total}",
-      _total);
+  const
+    _msg =
+      `Getting length for hash '${_hash}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -127,24 +158,10 @@ function
     _hash,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
-  _template =
-    "Got length for hash '{_hash}' " +
-    "('{_progress}'of '{_total}').";
-  _msg =
-    _template.replaceAll(
-      "{_hash}",
-      _hash);
-  _msg =
-    _msg.replaceAll(
-      "{_progress}",
-      _progress);
-  _msg =
-    _msg.replaceAll(
-      "{_total}",
-      _total);
+  const
+    _msg =
+      `Got length for hash '${_hash}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -154,24 +171,10 @@ function
     _hash,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
-  _template =
-    "Getting lock status for hash '{_hash}' " +
-    "('{_progress}'of '{_total}').";
-  _msg =
-    _template.replaceAll(
-      "{_hash}",
-      _hash);
-  _msg =
-    _msg.replaceAll(
-      "{_progress}",
-      _progress);
-  _msg =
-    _msg.replaceAll(
-      "{_total}",
-      _total);
+  const
+    _msg =
+      `Getting lock status for hash '${_hash}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -181,24 +184,9 @@ function
     _hash,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
   _template =
-    "Got lock status for hash '{_hash}' " +
-    "('{_progress}'of '{_total}').";
-  _msg =
-    _template.replaceAll(
-      "{_hash}",
-      _hash);
-  _msg =
-    _msg.replaceAll(
-      "{_progress}",
-      _progress);
-  _msg =
-    _msg.replaceAll(
-      "{_total}",
-      _total);
+    `Got lock status for hash '${_hash}' ` +
+    `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -221,8 +209,11 @@ async function
       _error) {
     _error_display(
       _error);
+    const
+      _msg =
+        "Error retrieving lock status.";
     _msg_error(
-      "Error retrieving lock status.",
+      _msg,
       0);
     throw _error;
   }
@@ -249,8 +240,11 @@ async function
       _error) {
     _error_display(
       _error);
+    const
+      _msg =
+        "Error retrieving length.";
     _msg_error(
-      "Error retrieving length.",
+      _msg,
       0);
     throw _error;
   }
@@ -266,10 +260,13 @@ function
     _files_locks_paths_total) {
   let
     _sha256sum_length,
-    _hash;
+    _hash,
+    _msg;
   if ( _files_hashes_total == 0 ) {
+    _msg =
+      "File hashes list empty.";
     _msg_error(
-      "File hashes list empty.",
+      _msg,
       1);
   }
   _sha256sum_length =
@@ -277,7 +274,7 @@ function
   for ( _hash of _file_hashes ) {
     if ( _hash.length != sha256sum_length ) {
       _msg =
-        "Malformed SHA256 sum."
+        "Malformed SHA256 sum.";
       _msg_error(
         _msg,
         1);
@@ -288,7 +285,7 @@ function
          _files_hashes_total ) {
       _msg =
         "Amount of input files hashes different " +
-        "from amount of input lock files paths."
+        "from amount of input lock files paths.";
       _msg_error(
         _msg);
     }
@@ -313,7 +310,7 @@ function
          _files_hashes_total ) {
       _msg =
         "Amount of input files hashes different " +
-        "from amount of input length files paths."
+        "from amount of input length files paths.";
       _msg_error(
         _msg);
     }
@@ -412,8 +409,10 @@ async function
         await _lock_get(
           _lock_call_opts);
       if ( _lock_call_base_opts[7] == "" ) {
+        _msg =
+          "Reusing contract method object.";
         _msg_info(
-          "Reusing contract method object.");
+          _msg);
         _lock_call_base_opts = [
           _wallet_seed_path,
           _retries_max,
@@ -443,8 +442,10 @@ async function
         _error) {
       _error_display(
         _error);
+      _msg =
+        "Error getting lock status.";
       _msg_error(
-        "Error getting lock status.",
+        _msg,
         0);
       throw _error;
     }
@@ -575,8 +576,10 @@ async function
           await _length_get(
             _length_call_opts);
         if ( _length_call_base_opts[7] == "" ) {
+          _msg =
+            "Reusing contract method object.";
           _msg_info(
-            "Reusing contract method object.");
+            _msg);
           _length_call_base_opts = [
             _wallet_seed_path,
             _retries_max,
@@ -610,7 +613,7 @@ async function
           _error);
         _msg =
           "Error retrieving file " +
-          "length."
+          "length.";
         _msg_error(
           _msg,
           0);
@@ -644,72 +647,34 @@ function
   _config_show() {
   let
     _chunks_files_paths,
-    _line,
-    _text;
-  _text = 
-    [];
-  _text.push(
-    "  Length Lock configuration:"
-  );
-  _text.push(
-    "          Maximum retries: {retries_max}".replace(
-      "{retries_max}",
-      retries_max));
-  _text.push(
-    "                  API Key: {api_key_path}".replace(
-      "{api_key_path}",
-      api_key_path));
-  _text.push(
-    "           Target network: {target_network}".replace(
-      "{target_network}",
-      target_network));
-  _text.push(
-    "         Contract address: {contract_address}".replace(
-      "{contract_address}",
-      contract_address));
-  _text.push(
-    "             Contract ABI: {contract_abi_path}".replace(
-      "{contract_abi_path}",
-      contract_abi_path));
-  _text.push(
-    "        Contract bytecode: {contract_bytecode_path}".replace(
-      "{contract_bytecode_path}",
-      contract_bytecode_path));
-  _text.push(
-    " Contract compiler output: {contract_compiler_output_path}".replace(
-      "{contract_compiler_output_path}",
-      contract_compiler_output_path));
-  _text.push(
-    "    Publication namespace: {publication_namespace}".replace(
-      "{publication_namespace}",
-      publication_namespace));
-  _text.push(
-    "            Write to disk: {disk_write}".replace(
-      "{disk_write}",
-      disk_write));
-  _text.push(
-    "          Checkpoint file: {checkpoint_file_path}".replace(
-      "{checkpoint_file_path}",
-      checkpoint_file_path));
-  _text.push(
-    "              File hashes:");
-  for ( _file_hash of _files_hashes ) {
+    _line;
+  const
+    _text = [
+      "  Length Lock configuration:",
+      `          Maximum retries: ${retries_max}`,
+      `                  API Key: ${api_key_path}`,
+      `           Target network: ${target_network}`,
+      `         Contract address: ${contract_address}`,
+      `             Contract ABI: ${contract_abi_path}`,
+      `        Contract bytecode: ${contract_bytecode_path}`,
+      ` Contract compiler output: ${contract_compiler_output_path}`,
+      `    Publication namespace: ${publication_namespace}`,
+      `            Write to disk: ${disk_write}`,
+      `          Checkpoint file: ${checkpoint_file_path}`,
+      `              File hashes:`,
+    ];
+  for ( _file_hash of files_hashes ) {
     _text.push(
-      "                           {file_hash}".replace(
-        "{file_hash}",
-        file_hash));
+      `                           ${file_hash}`);
   }
   _files_lengths_paths =
-    _files_lengths_paths.join(
+    files_lengths_paths.join(
     " ");
   _text.push(
-    "              File chunks: {_chunks_files_paths}".replace(
-      "{_chunks_files_paths}",
-      _chunks_files_paths));
-  for ( _line in _text ) {
+    `              File chunks: ${_chunks_files_paths}`);
+  for ( _line of _text ) {
     _msg_info(
-      _text[
-        _line]);
+        _line);
   }
 }
 
@@ -726,52 +691,52 @@ function
     "Usage:",
     "  exists",
     "    <quiet>",
-    "    <retries_max>",
-    "    <api_key_path>",
-    "    <target_network>",
-    "    <contract_address>",
-    "    <contract_abi_path>",
-    "    <contract_bytecode_path>",
-    "    <contract_compiler_output_path>",
-    "    <publication_namespace>",
-    "    <checkpoint_file_path>",
-    "    <disk_write>",
-    "    [file_hash]",
-    "    ([files_length_path])",
+    "    <retries-max>",
+    "    <api-key-path>",
+    "    <target-network>",
+    "    <contract-address>",
+    "    <contract-abi-path>",
+    "    <contract-bytecode-path>",
+    "    <contract-compiler-output-path>",
+    "    <publication-namespace>",
+    "    <checkpoint-file-path>",
+    "    <disk-write>",
+    "    [file-hash]",
+    "  ( [files-length-path] )",
     "",
     "Args:",
     "  <quiet>                          Can be 'y' or 'n'",
     "                                   Default: y",
-    "  <retries_max>                    Maximum number of retries before",
+    "  <retries-max>                    Maximum number of retries before",
     "                                   failing (not implemented).",
-    "  <api_key_path>                   Path of the API key for the",
+    "  <api-key-path>                   Path of the API key for the",
     "                                   contract ABI provider service.",
-    "  <target_network>                 Network on which the contract",
+    "  <target-network>                 Network on which the contract",
     "                                   resides.",
-    "  <contract_address>               Address of the contract.",
-    "  <contract_abi_path>              Contract ABI path.",
-    "  <contract_bytecode_path>         Path for the contract bytecode.",
-    "  <contract_compiler_output_path>  Path for the contract compiler",
+    "  <contract-address>               Address of the contract.",
+    "  <contract-abi-path>              Contract ABI path.",
+    "  <contract-bytecode-path>         Path for the contract bytecode.",
+    "  <contract-compiler-output-path>  Path for the contract compiler",
     "                                   output path (the hardhat artifact).",
-    "  <publication_namespace>          Namespace in which the file will be",
+    "  <publication-namespace>          Namespace in which the file will be",
     "                                   published.",
-    "  <checkpoint_file_path>           Checkpoint file on which latest",
+    "  <checkpoint-file-path>           Checkpoint file on which latest",
     "                                   downloaded chunk index is saved",
     "                                   in case node was to crash.",
-    "  <disk_write>                     Whether to write the query results",
+    "  <disk-write>                     Whether to write the query results",
     "                                   to a file.",
     "                                   Default: y",
-    "  [files_hashes]                   Hashes of the files to get the",
+    "  [files-hashes]                   Hashes of the files to get the",
     "                                   length and lock status of.",
-    "  [files_lengths_path]             Files in which to write the lengths.",
-    "  [files_locks_path]               Files in which to write the lock.",
+    "  [files-lengths-path]             Files in which to write the lengths.",
+    "  [files-locks-path]               Files in which to write the lock.",
     "                                   statuses.",
   ];
   for ( _line of _text ) {
     _msg_info(
       _line);
   }
-  process.exit(
+  _process_exit(
     _exit);
 }
 

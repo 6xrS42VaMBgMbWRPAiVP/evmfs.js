@@ -26,6 +26,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet:
+       writable */
+
 const
   _libcrash =
     require(
@@ -49,8 +55,12 @@ const
   _evm_contracts_tools_module =
     require(
       "evm-contracts-tools");
-/*global _contract_run, a*/
-/*eslint no-undef: "error"*/
+/* global
+     _contract_run,
+     a */
+/* eslint
+     no-undef:
+       "error" */
 const
   _contract_run =
     _evm_contracts_tools_module._contract_run;
@@ -58,46 +68,100 @@ const
   _ccget_module =
     require(
       "./evmfs.js.ccget");
-/*global _references_read, a*/
-/*eslint no-undef: "error"*/
+/* global
+     _references_read,
+     a */
+/* eslint
+     no-undef:
+       "error" */
 const
   _references_read =
     _ccget_module._references_read;
 
 function
   _global_variables() {
+  /* global
+       app_name */
   app_name =
     "evmfs.js.index";
+  /* global
+       retries_max:
+         writable */
   retries_max =
     "";
+  /* global
+       call_timeout:
+         writable */
   call_timeout =
     "";
+  /* global
+       wallet_seed_path:
+         writable */
   wallet_seed_path =
     "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
+  /* global
+       publication_namespace:
+         writable */
   publication_namespace =
     "";
+  /* global
+       file_hash:
+         writable */
   file_hash =
     "";
+  /* global
+       index_start:
+         writable */
   index_start =
     "";
+  /* global
+       index_end:
+         writable */
   index_end =
     "";
+  /* global
+       chunk_chain_id:
+         writable */
   chunk_chain_id =
     "";
+  /* global
+       chunk_fs_address:
+         writable */
   chunk_fs_address =
     "";
+  /* global
+       checkpoint_file_path:
+         writable */
   checkpoint_file_path =
     "";
   quiet =
@@ -358,27 +422,27 @@ async function
 function
   _config_show() {
   let
-    _line,
-    _text;
-  _text = [
-    " Index configuration:"
-    `          Maximum retries: ${retries_max}`,
-    `             Call timeout: ${call_timeout}`,
-    `              Wallet seed: ${wallet_seed_path}`,
-    `                  API Key: ${api_key_path}`,
-    `           Target network: ${target_network}`,
-    `         Contract address: ${contract_address}`,
-    `             Contract ABI: ${contract_abi_path}`,
-    `        Contract bytecode: ${contract_bytecode_path}`,
-    ` Contract compiler output: ${contract_compiler_output_path}`,
-    `    Publication namespace: ${publication_namespace}`,
-    `                File hash: ${file_hash}`,
-    `              Index start: ${index_start}`,
-    `                Index end: ${index_end}`,
-    `           Chunk chain ID: ${chunk_chain_id}`,
-    `         Chunk FS address: ${chunk_fs_address}`,
-    `     Checkpoint file path: ${checkpoint_file_path}`,
-  ];
+    _line;
+  const
+    _text = [
+      " Index configuration:"
+      `          Maximum retries: ${retries_max}`,
+      `             Call timeout: ${call_timeout}`,
+      `              Wallet seed: ${wallet_seed_path}`,
+      `                  API Key: ${api_key_path}`,
+      `           Target network: ${target_network}`,
+      `         Contract address: ${contract_address}`,
+      `             Contract ABI: ${contract_abi_path}`,
+      `        Contract bytecode: ${contract_bytecode_path}`,
+      ` Contract compiler output: ${contract_compiler_output_path}`,
+      `    Publication namespace: ${publication_namespace}`,
+      `                File hash: ${file_hash}`,
+      `              Index start: ${index_start}`,
+      `                Index end: ${index_end}`,
+      `           Chunk chain ID: ${chunk_chain_id}`,
+      `         Chunk FS address: ${chunk_fs_address}`,
+      `     Checkpoint file path: ${checkpoint_file_path}`,
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);

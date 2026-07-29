@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 /**    ----------------------------------------------------------------------
- *     publish
+ *     evmfs.js.verify
  *     ----------------------------------------------------------------------
  *     Copyright ©
  *       Pellegrino Prevete
@@ -26,61 +26,120 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript */
+
+/* global
+     quiet:
+       writable */
+
 const
   _libcrash =
     require(
       "crash-js");
-_cmdline_check =
-  _libcrash._cmdline_check;
-_echo =
-  _libcrash._echo;
-_error_display =
-  _libcrash._error_display;
-_file_write =
-  _libcrash._file_write;
-_file_exists =
-  _libcrash._file_exists;
-_msg_info =
-  _libcrash._msg_info;
-_msg_error =
-  _libcrash._msg_error;
+const
+  _cmdline_check =
+    _libcrash._cmdline_check;
+const
+  _echo =
+    _libcrash._echo;
+const
+  _error_display =
+    _libcrash._error_display;
+const
+  _file_write =
+    _libcrash._file_write;
+const
+  _file_exists =
+    _libcrash._file_exists;
+const
+  _msg_info =
+    _libcrash._msg_info;
+const
+  _msg_error =
+    _libcrash._msg_error;
+const
+  _process_exit =
+    _process_exit;
 const
   _check_module =
     require(
       "./evmfs.js.check");
-_check =
-  _check_module._check;
-_chunk_file_path_check =
-  _file_exists;
+const
+  _check =
+    _check_module._check;
+const
+  _chunk_file_path_check =
+    _file_exists;
 
 function
   _global_variables() {
+  /* global
+       app_name */
   app_name =
-    "verify";
+    "evmfs.js.verify";
+  /* global
+       retries_max:
+         writable */
   retries_max =
-    '';
+    "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
+  /* global
+       method_object:
+         writable */
   method_object =
     "";
+  /* global
+       publication_namespace:
+         writable */
   publication_namespace =
     "";
+  /* global
+       file_hash:
+         writable */
   file_hash =
     "";
+  /* global
+       checkpoint_file_path:
+         writable */
   checkpoint_file_path =
     "";
+  /* global
+       chunks_file_path_prefix:
+         writable */
   chunks_file_paths_prefix =
     ""
+  /* global
+       chunks_indexes:
+         writable */
   chunks_indexes =
     [];
   quiet =
@@ -92,23 +151,11 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
-  _template =
-    "Verifying chunk '{_index}' ('{_progress}' of '{_total}').";
-  _msg =
-    _template.replaceAll(
-      "{_index}",
-      _index);
-  _msg =
-    _msg.replaceAll(
-      "{_progress}",
-      _progress);
-  _msg =
-    _msg.replaceAll(
-      "{_total}",
-      _total);
+  const
+    _msg =
+      "Verifying chunk " +
+      `'${_index}' ('${_progress}' ` +
+      `of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -118,23 +165,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
-  _template =
-    "Verified chunk '{_index}' ('{_progress}'of '{_total}').";
-  _msg =
-    _template.replaceAll(
-      "{_index}",
-      _index);
-  _msg =
-    _msg.replaceAll(
-      "{_progress}",
-      _progress);
-  _msg =
-    _msg.replaceAll(
-      "{_total}",
-      _total);
+  const
+    _msg =
+      `Verified chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -145,28 +179,12 @@ function
     _chunk_file_path,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
-  _template =
-    "Chunk '{_index}' at location '{_chunk_file_path}' " +
-    "corrupted ('{_progress}'of '{_total}').";
-  _msg =
-    _template.replaceAll(
-      "{_index}",
-      _index);
-  _msg =
-    _msg.replaceAll(
-      "{_chunk_file_path}",
-      _chunk_file_path);
-  _msg =
-    _msg.replaceAll(
-      "{_progress}",
-      _progress);
-  _msg =
-    _msg.replaceAll(
-      "{_total}",
-      _total);
+  const
+    _msg =
+      `Chunk '${_index}' at ` +
+      `location '${_chunk_file_path}' ` +
+      `corrupted ('${_progress}' ` +
+      `of '${_total}').`;
   _msg_error(
     _msg,
     1)
@@ -176,16 +194,13 @@ function
   _chunk_file_path_get(
     _prefix,
     _index) {
-  let
-    _chunk_no,
-    _path;
-  _chunk_no =
-    _index + 1;
-  _path =
-    _prefix.concat(
-      ".{_chunk_no}".replaceAll(
-        "{_chunk_no}",
-        _chunk_no));
+  const
+    _chunk_no =
+      _index + 1;
+  const
+    _path =
+      _prefix.concat(
+        `.${_chunk_no}`);
   return _path;
 }
 
@@ -215,6 +230,7 @@ async function
     _chunks_total,
     _correct,
     _index,
+    _msg,
     _progress;
   if ( _method_object == undefined ) {
     _method_object =
@@ -265,7 +281,7 @@ async function
       _file_hash,
       _index,
       _index,
-      [_chunk_file_path]
+      [ _chunk_file_path ]
     ];
     try {
       [_chunks_checked,
@@ -315,8 +331,10 @@ async function
         _error) {
       _error_display(
         _error);
+      _msg =
+        "Error running check routine.";
       _msg_error(
-        "Error running check routine.",
+        _msg,
         0);
       throw _error;
     }
@@ -329,7 +347,10 @@ async function
           _index.toString());
       }
       else if ( _chunks_checked[0] == false ) {
-        throw `Chunk with index ${_index.toString()} has not been published.`
+        _msg =
+          `Chunk with index ${_index.toString()} ` +
+	  `has not been published.`;
+        throw _msg
       }
     }
     else if ( _chunks_checked_total == 0 ) {
@@ -353,66 +374,29 @@ async function
 function
   _config_show() {
   let
-    _chunks_indexes,
-    _line,
-    _text;
-  _text = 
-    [];
-  _text.push(
-    "          Maximum retries: {retries_max}".replace(
-      "{retries_max}",
-      retries_max));
-  _text.push(
-    "                  API Key: {api_key_path}".replace(
-      "{api_key_path}",
-      api_key_path));
-  _text.push(
-    "           Target network: {target_network}".replace(
-      "{target_network}",
-      target_network));
-  _text.push(
-    "         Contract address: {contract_address}".replace(
-      "{contract_address}",
-      contract_address));
-  _text.push(
-    "             Contract ABI: {contract_abi_path}".replace(
-      "{contract_abi_path}",
-      contract_abi_path));
-  _text.push(
-    "        Contract bytecode: {contract_bytecode_path}".replace(
-      "{contract_bytecode_path}",
-      contract_bytecode_path));
-  _text.push(
-    " Contract compiler output: {contract_compiler_output_path}".replace(
-      "{contract_compiler_output_path}",
-      contract_compiler_output_path));
-  _text.push(
-    "    Publication namespace: {publication_namespace}".replace(
-      "{publication_namespace}",
-      publication_namespace));
-  _text.push(
-    "                File hash: {file_hash}".replace(
-      "{file_hash}",
-      file_hash));
-  _text.push(
-    "     Checkpoint file path: {checkpoint_file_path}".replace(
-      "{checkpoint_file_path}",
-      checkpoint_file_path));
-  _text.push(
-    "Chunks files paths prefix: {chunks_files_paths_prefix}".replace(
-      "{chunks_files_paths_prefix}",
-      chunks_files_paths_prefix));
-  _chunks_indexes =
-    chunks_indexes.join(
-    " ");
-  _text.push(
-    "           Chunks indexes: {_chunks_files_paths}".replace(
-      "{_chunks_files_paths}",
-      _chunks_indexes));
-  for ( _line in _text ) {
+    _line;
+  const
+    _chunks_indexes =
+      chunks_indexes.join(
+      " ");
+  const
+    _text = [
+      `          Maximum retries: ${retries_max}`,
+      `                  API Key: ${api_key_path}`,
+      `           Target network: ${target_network}`,
+      `         Contract address: ${contract_address}`,
+      `             Contract ABI: ${contract_abi_path}`,
+      `        Contract bytecode: ${contract_bytecode_path}`,
+      ` Contract compiler output: ${contract_compiler_output_path}`,
+      `    Publication namespace: ${publication_namespace}`,
+      `                File hash: ${file_hash}`,
+      `     Checkpoint file path: ${checkpoint_file_path}`,
+      `Chunks files paths prefix: ${chunks_files_paths_prefix}`,
+      `           Chunks indexes: ${_chunks_indexes}`,
+    ];
+  for ( _line of _text ) {
     _msg_info(
-      _text[
-        _line]);
+      _line);
   }
 }
 
@@ -426,49 +410,49 @@ function
     "Verify published chunks of an EVMFS file.",
     "",
     "Usage:",
-    "  verify",
+    "  evmfs.js.verify",
     "    <quiet>",
-    "    <retries_max>",
-    "    <api_key_path>",
-    "    <target_network>",
-    "    <contract_address>",
-    "    <contract_abi_path>",
-    "    <contract_bytecode_path>",
-    "    <contract_compiler_output_path>",
-    "    <publication_namespace>",
-    "    <file_hash>",
-    "    <checkpoint_file_path>",
-    "    <chunks_files_paths_prefix>",
-    "    [chunks_indexes]",
+    "    <retries-max>",
+    "    <api-key-path>",
+    "    <target-network>",
+    "    <contract-address>",
+    "    <contract-abi-path>",
+    "    <contract-bytecode-path>",
+    "    <contract-compiler-output-path>",
+    "    <publication-namespace>",
+    "    <file-hash>",
+    "    <checkpoint-file-path>",
+    "    <chunks-files-paths-prefix>",
+    "    [chunks-indexes]",
     "",
     "Args:",
     "  <quiet>                          Can be 'y' or 'n'",
     "                                   Default: y",
-    "  <retries_max>                    Maximum number of retries before",
+    "  <retries-max>                    Maximum number of retries before",
     "                                   failing (not implemented).",
-    "  <api_key_path>                   Path of the API key for the",
+    "  <api-key-path>                   Path of the API key for the",
     "                                   contract ABI provider service.",
-    "  <target_network>                 Network on which the contract",
+    "  <target-network>                 Network on which the contract",
     "                                   resides.",
-    "  <contract_address>               Address of the contract.",
-    "  <contract_abi_path>              Contract ABI path.",
-    "  <contract_bytecode_path>         Path for the contract bytecode.",
-    "  <contract_compiler_output_path>  Path for the contract compiler",
+    "  <contract-address>               Address of the contract.",
+    "  <contract-abi-path>              Contract ABI path.",
+    "  <contract-bytecode-path>         Path for the contract bytecode.",
+    "  <contract-compiler-output-path>  Path for the contract compiler",
     "                                   output path (the hardhat artifact).",
-    "  <publication_namespace>          Namespace in which the file will be",
+    "  <publication-namespace>          Namespace in which the file will be",
     "                                   published.",
-    "  <file_hash>                      Hash of the file to publish.",
-    "  <checkpoint_file_path>           Checkpoint file on which latest",
+    "  <file-hash>                      Hash of the file to publish.",
+    "  <checkpoint-file-path>           Checkpoint file on which latest",
     "                                   downloaded chunk index is saved",
     "                                   in case node was to crash.",
-    "  <chunks_files_paths_prefix>      Chunks files paths prefix.",
-    "  [chunks_indexes]                 Indexes of the chunks to verify.",
+    "  <chunks-files-paths-prefix>      Chunks files paths prefix.",
+    "  [chunks-indexes]                 Indexes of the chunks to verify.",
   ];
   for ( _line of _text ) {
     _msg_info(
       _line);
   }
-  process.exit(
+  _process_exit(
     _exit);
 }
 
@@ -536,7 +520,7 @@ function
       if ( _value == "-h" ||
            _value == "--help" ) {
         _usage(
-	  0);
+          0);
       }
   });
   if ( file_hash == "" ||
@@ -553,8 +537,8 @@ async function
     _chunks_corrupted,
     _index,
     _method_object;
-  [_chunks_corrupted,
-   _method_object] = 
+  [ _chunks_corrupted,
+    _method_object ] = 
     await _verify.apply(
       null,
       _app_opts);

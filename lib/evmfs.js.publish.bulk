@@ -269,7 +269,7 @@ function
               1]);
     }
   }
-  else if ( _chunks_unverified.length == 0 ) {
+  if else ( _chunks_unverified.length == 0 ) {
     _msg =
       "File already published.";
     _msg_info(
@@ -424,6 +424,7 @@ async function
     if ( _buffer_cursor < 3 ) {
       _chunks_buffer.push(
         _chunk);
+    }
     else if ( _buffer_cursor == 3 ) {
       _chunks_buffer.push(
         _chunk);

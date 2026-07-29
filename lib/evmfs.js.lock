@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 /**    ----------------------------------------------------------------------
- *     evmfs.js.get
+ *     evmfs.js.lock
  *     ----------------------------------------------------------------------
  *     Copyright ©
  *       Pellegrino Prevete
@@ -30,53 +30,97 @@ const
   _libcrash =
     require(
       "crash-js");
-_dirname =
-  _libcrash._dirname;
-_error_display =
-  _libcrash._error_display;
-_file_write =
-  _libcrash._file_write;
-_msg_info =
-  _libcrash._msg_info;
-_msg_error =
-  _libcrash._msg_error;
+const
+  _dirname =
+    _libcrash._dirname;
+const
+  _error_display =
+    _libcrash._error_display;
+const
+  _file_write =
+    _libcrash._file_write;
+const
+  _msg_info =
+    _libcrash._msg_info;
+const
+  _msg_error =
+    _libcrash._msg_error;
 const
   _evm_contract_call_dynamic_module =
     require(
       '../evm-contracts-tools/evm-contract-call-dynamic');
-/*global _contract_run, a*/
-/*eslint no-undef: "error"*/
-_contract_run =
-  _evm_contract_call_dynamic_module._contract_run;
+/* global
+     _contract_run,
+     a */
+/* eslint
+     no-undef:
+       "error" */
+const
+  _contract_run =
+    _evm_contract_call_dynamic_module._contract_run;
 const
   _evm_contract_call_static_module =
     require(
       "../evm-contracts-tools/evm-contract-call-static");
-/*global _contract_call_static, a*/
-/*eslint no-undef: "error"*/
-_contract_call_static =
-  _evm_contract_call_static_module._contract_call_static;
+/* global
+     _contract_call_static,
+     a */
+/* eslint
+     no-undef:
+       "error" */
+const
+  _contract_call_static =
+    _evm_contract_call_static_module._contract_call_static;
 
 function
   _global_variables() {
+  /* global
+       app_name */
   app_name =
     "evmfs.js.lock";
+  /* global
+       retries_max:
+         writable */
   retries_max =
     "";
+  /* global
+       call_timeout:
+         writable */
   call_timeout =
     "";
+  /* global
+       wallet_seed_path:
+         writable */
   wallet_seed_path =
     "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
   // After the method re-use will
@@ -84,14 +128,29 @@ function
   // caller as well
   // method_object =
   //   "";
+  /* global
+       publication_namespace:
+         writable */
   publication_namespace =
     "";
+  /* global
+       file_hash:
+         writable */
   file_hash =
     "";
+  /* global
+       index_start:
+         writable */
   index_start =
     "";
+  /* global
+       index_end:
+         writable */
   index_end =
     "";
+  /* global
+       checkpoint_file_path:
+         writable */
   checkpoint_file_path =
     "";
   quiet =

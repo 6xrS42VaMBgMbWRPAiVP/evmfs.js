@@ -63,32 +63,74 @@ function
   _global_variables() {
   app_name =
     "evmfs.js.get";
+  /* global
+       retries_max:
+         writable */
   retries_max =
     "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
+  /* global
+       method_object:
+         writable */
   method_object =
     "";
+  /* global
+       publication_namespace:
+         writable */
   publication_namespace =
     "";
+  /* global
+       file_hash:
+         writable */
   file_hash =
     "";
+  /* global
+       index_start:
+         writable */
   index_start =
     "";
+  /* global
+       index_end:
+         writable */
   index_end =
     "";
+  /* global
+       checkpoint_file_path:
+         writable */
   checkpoint_file_path =
     "";
+  /* global
+       chunks_files__path:
+         writable */
   chunks_files_paths =
     [];
   quiet =
@@ -100,12 +142,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg,
-    _template;
-  _msg =
-    `Downloading chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Downloading chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -115,11 +155,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Downloaded chunk '{_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Downloaded chunk '{_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -418,13 +457,13 @@ function
     "                                   Default: y",
     "  <retries-max>                    Maximum number of retries before",
     "                                   failing (not implemented).",
-    "  <api_key-path>                   Path of the API key for the",
+    "  <api-key-path>                   Path of the API key for the",
     "                                   contract ABI provider service.",
     "  <target-network>                 Network on which the contract",
     "                                   resides.",
     "  <contract-address>               Address of the contract.",
     "  <contract-abi_path>              Contract ABI path.",
-    "  <contract-bytecode_path>         Path for the contract bytecode.",
+    "  <contract-bytecode-path>         Path for the contract bytecode.",
     "  <contract-compiler-output-path>  Path for the contract compiler",
     "                                   output path (the hardhat artifact).",
     "  <publication-namespace>          Namespace in which the file will be",
