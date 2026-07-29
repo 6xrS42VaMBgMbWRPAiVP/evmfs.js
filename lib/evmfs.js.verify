@@ -230,7 +230,6 @@ async function
     _chunk_file_path,
     _chunks_checked,
     _chunks_checked_total,
-    _chunks_corrupted,
     _index,
     _msg,
     _progress;

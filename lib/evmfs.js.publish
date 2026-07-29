@@ -192,11 +192,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Publishing chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Publishing chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -206,12 +205,11 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Chunk '${_index}' unpublished, ` +
-    `publishing now ('${_progress}' of ` +
-    `'${_total}').`;
+  const
+    _msg =
+      `Chunk '${_index}' unpublished, ` +
+      `publishing now ('${_progress}' of ` +
+      `'${_total}').`;
   _msg_info(
     _msg);
 }
@@ -221,12 +219,11 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Chunk '${_index}' published ` +
-    `already ('${_progress}' of ` +
-    `'${_total}').`;
+  const
+    _msg =
+      `Chunk '${_index}' published ` +
+      `already ('${_progress}' of ` +
+      `'${_total}').`;
   _msg_info(
     _msg);
 }
@@ -237,11 +234,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Published chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Published chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -250,7 +246,6 @@ async function
   _chunk_publish(
     _contract_run_opts) {
   let
-    _msg,
     _tx;
   try {
     _tx = await
@@ -261,8 +256,9 @@ async function
       _error) {
     _error_display(
       _error);
-    _msg  =
-      "Error publishing the chunk.";
+    const
+      _msg  =
+        "Error publishing the chunk.";
     _msg_error(
       _msg,
       0);
@@ -277,10 +273,10 @@ function
     _index_end,
     _total_files) {
   let
-    _msg,
-    _total_indexes;
-  _total_indexes =
-    _index_end - _index_start + 1;
+    _msg;
+  const
+    _total_indexes =
+      _index_end - _index_start + 1;
   if ( _total_files > _total_indexes ) {
     _msg =
       `More files to upload ` +
@@ -382,8 +378,6 @@ async function
     _chunk_publish_args,
     _chunks_total,
     _chunks_files_paths_prefix,
-    _chunks_unverified = [],
-    _indexes_unverified = [],
     _method_base_args,
     _method_object,
     _msg,
@@ -394,6 +388,12 @@ async function
     _tx,
     _value,
     _wallet_password;
+  const
+    _chunks_unverified =
+      [];
+  const
+    _indexes_unverified =
+      [];
   if ( _call_timeout == "" ) {
     _call_timeout =
       300000;
@@ -572,12 +572,16 @@ async function
       _msg_error(
         "_published",
         0);
-      _console.error(
+      console.error(
         _published);
-      throw {
-        "error": {
-          "message":
-            "Unexpected chunk publication status value." } };
+      _msg =
+        "Unexpected chunk publication status value.";
+      const
+        _error = {
+          "error": {
+            "message":
+              _msg } };
+      throw _error;
     }
     _checkpoint_index =
       _index.toString();
