@@ -29,7 +29,8 @@
 /* Crash Javascript global variables */
 
 /* global
-     quiet */
+     quiet:
+       writable */
 
 const
   _libcrash =
@@ -383,10 +384,8 @@ async function
     _chunks_buffers_length,
     _chunks_total,
     _chunks_files_paths_prefix,
-    _chunks_unverified = [],
     _cursor,
     _index,
-    _indexes_unverified = [],
     _method_base_args,
     _method_object,
     _msg,
@@ -420,6 +419,12 @@ async function
   _index_end =
     Number(
       _index_end);
+  const
+    _chunks_unverified =
+      [];
+  const
+    _indexes_unverified =
+      [];
   _method_object =
     "";
   _wallet_password =
@@ -919,8 +924,9 @@ async function
       _error) {
     console.error(
       _error);
-    _msg =
-      "Publication error.";
+    const
+      _msg =
+        "Publication error.";
     _msg_error(
       _msg,
       1);
