@@ -26,85 +26,156 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet */
+
 const
   _libcrash =
   require(
     "crash-js");
-_cmdline_check =
-  _libcrash._cmdline_check;
-_error_display =
-  _libcrash._error_display;
-_ext_rm =
-  _libcrash._ext_rm;
-_file_read =
-  _libcrash._file_read;
-_file_write =
-  _libcrash._file_write;
-_json_read =
-  _libcrash._json_read;
-_msg_info =
-  _libcrash._msg_info;
-_msg_error =
-  _libcrash._msg_error;
+const
+  _cmdline_check =
+    _libcrash._cmdline_check;
+const
+  _error_display =
+    _libcrash._error_display;
+const
+  _ext_rm =
+    _libcrash._ext_rm;
+const
+  _file_read =
+    _libcrash._file_read;
+const
+  _file_write =
+    _libcrash._file_write;
+const
+  _json_read =
+    _libcrash._json_read;
+const
+  _msg_info =
+    _libcrash._msg_info;
+const
+  _msg_error =
+    _libcrash._msg_error;
 const
   _evm_contract_call_dynamic_module =
     require(
       '../evm-contracts-tools/evm-contract-call-dynamic');
-/*global _contract_run, a*/
-/*eslint no-undef: "error"*/
-_contract_run =
-  _evm_contract_call_dynamic_module._contract_run;
+const
+  _contract_run =
+    _evm_contract_call_dynamic_module._contract_run;
 const
   _check_module =
     require(
       "./evmfs.js.check");
-_chunk_check =
-  _check_module._chunk_check;
+const
+  _chunk_check =
+    _check_module._chunk_check;
 const
   _verify_module =
     require(
       './evmfs.js.verify');
-_verify =
-  _verify_module._verify;
+const
+  _verify =
+    _verify_module._verify;
 
 function
   _global_variables() {
+  /* global
+       app_name:
+         writable */
   app_name =
     "publish-bulk";
+  /* global
+       retries_max:
+         writable */
   retries_max =
     "";
+  /* global
+       call_timeout:
+         writable */
   call_timeout =
     "";
+  /* global
+       wallet_seed_path:
+         writable */
   wallet_seed_path =
     "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
+  /* global
+       fs_address:
+         writable */
   fs_address =
     "";
+  /* global
+       publication_namespace:
+         writable */
   publication_namespace =
     "";
+  /* global
+       file_hash:
+         writable */
   file_hash =
     "";
+  /* global
+       index_start:
+         writable */
   index_start =
     "";
+  /* global
+       index_end:
+         writable */
   index_end =
     "";
+  /* global
+       buffer_length:
+         writable */
   buffer_length =
     "";
+  /* global
+       checkpoint_file_path:
+         writable */
   checkpoint_file_path =
     "";
+  /* global
+       chunks_files_type:
+         writable */
   chunks_files_type =
     "";
+  /* global
+       chunks_files_paths:
+         writable */
   chunks_files_paths =
     [];
   quiet =
@@ -506,7 +577,7 @@ async function
         _msg =
           "Unexpected chunk publication status value.";
       const
-        _error =
+        _error = {
           "error": {
             "message":
               _msg } };

@@ -53,11 +53,7 @@ const
     require(
       "evm-contracts-tools");
 /* global
-     _contract_run,
-     a */
-/* eslint
-     no-undef:
-       "error" */
+     _contract_run */
 const
   _contract_run =
     _evm_contracts_tools_module._contract_run;
@@ -66,11 +62,7 @@ const
     require(
       "./evmfs.js.ccget");
 /* global
-     _references_read,
-     a */
-/* eslint
-     no-undef:
-       "error" */
+     _references_read */
 const
   _references_read =
     _ccget_module._references_read;
@@ -170,11 +162,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Indexing chunk '${_index}'` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Indexing chunk '${_index}'` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -184,11 +175,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Indexed chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Indexed chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -290,6 +280,7 @@ async function
     _index_call_base_opts,
     _index_call_opts,
     _method_args,
+    _msg,
     _progress,
     _reference,
     _tx,

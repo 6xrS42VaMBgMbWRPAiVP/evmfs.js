@@ -56,8 +56,7 @@ const
      _contract_call_static */
 const
   _contract_call_static =
-    _evm_contracts_tools_module._contract_call_static
-
+    _evm_contracts_tools_module._contract_call_static;
 function
   _global_variables() {
   app_name =
@@ -335,14 +334,14 @@ async function
     _hash,
     _lock_call_base_opts,
     _lock_call_opts,
-    _locks,
     _method_args,
     _msg,
     _progress,
     _value,
     _wallet_seed_path;
-  _locks =
-    [];
+  const
+    _locks =
+      [];
   if ( _method_object == undefined ) {
     _method_object =
       '';
@@ -477,6 +476,7 @@ async function
     _files_lengths,
     _files_lengths_total,
     _file_length_path,
+    _hash,
     _length_call_base_opts,
     _length_call_opts,
     _length_locked_opts,
@@ -642,6 +642,7 @@ function
 function
   _config_show() {
   let
+    _file_hash,
     _chunks_files_paths,
     _line;
   const
@@ -861,8 +862,6 @@ if ( _cmdline_check(
     method_object,
     publication_namespace,
     file_hash,
-    index_start,
-    index_end,
     checkpoint_file_path,
     chunks_files_paths,
   ];
