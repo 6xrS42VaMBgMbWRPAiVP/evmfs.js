@@ -489,7 +489,6 @@ async function
     _hash,
     _length_call_base_opts,
     _length_call_opts,
-    _length_locked_opts,
     _lock,
     _method_args,
     _msg,
@@ -542,20 +541,21 @@ async function
     1;
   _cursor =
     0;
-  _length_locked_opts = [
-    _retries_max,
-    _api_key_path,
-    _target_network,
-    _contract_address,
-    _contract_abi_path,
-    _contract_bytecode_path,
-    _contract_compiler_output_path,
-    _method_object,
-    _publication_namespace,
-    _checkpoint_file_path,
-    _files_hashes,
-    _chunks_locks_paths,
-  ];
+  const
+    _length_locked_opts = [
+      _retries_max,
+      _api_key_path,
+      _target_network,
+      _contract_address,
+      _contract_abi_path,
+      _contract_bytecode_path,
+      _contract_compiler_output_path,
+      _method_object,
+      _publication_namespace,
+      _checkpoint_file_path,
+      _files_hashes,
+      _chunks_locks_paths,
+    ];
   const [
     _locks,
     _lock_method_object ] =

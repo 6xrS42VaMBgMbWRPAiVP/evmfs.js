@@ -620,14 +620,13 @@ async function
   _check_cmdline(
     _app_opts) {
   let
-    _chunk,
-    _chunks_checked,
-    _method_object;
-  [_chunks_checked,
-   _method_object] = 
-    await _check.apply(
-      null,
-      _app_opts);
+    _chunk;
+  const
+    [ _chunks_checked,
+      _method_object ] = 
+      await _check.apply(
+        null,
+        _app_opts);
   for ( _chunk in _chunks_published ) {
     _echo(
       _chunks_checked[
