@@ -126,7 +126,7 @@ function
   file_hash =
     "";
   /* global
-       file_start:
+       index_start:
          writable */
   index_start =
     "";
@@ -638,8 +638,9 @@ async function
 if ( _cmdline_check(
        "evmfs.js.check") ) {
   _global_variables();
-  _msg =
-    "Running check from command-line.";
+  const
+    _msg =
+      "Running check from command-line.";
   _msg_info(
     _msg);
   _cmdline_parse();

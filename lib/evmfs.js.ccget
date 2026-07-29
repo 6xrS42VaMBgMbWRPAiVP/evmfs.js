@@ -1260,8 +1260,6 @@ function
 function
   _usage(
     _exit) {
-  let
-    _text;
   const
     _text = [
       "Downloads chunks of an EVMFS file.",
