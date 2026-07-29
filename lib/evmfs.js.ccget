@@ -673,7 +673,7 @@ async function
   }
   _method_objects_empty =
     Object.keys(
-      _method_objects).length === 0
+      _method_objects).length === 0;
   if ( _method_objects_empty ) {
     _method_objects = {
       "ccfs": {

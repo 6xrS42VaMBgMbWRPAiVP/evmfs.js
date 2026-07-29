@@ -291,7 +291,6 @@ async function
   ) {
   let
     _chunks_total,
-    _chunks_checked,
     _check_call_base_opts,
     _check_call_opts,
     _cursor,
@@ -313,8 +312,9 @@ async function
   _index_end =
     Number(
       _index_end);
-  _chunks_checked =
-    [];
+  const
+    _chunks_checked =
+      [];
   _wallet_seed_path =
     '';
   _check_call_base_opts = [
@@ -440,32 +440,32 @@ async function
   }
   return [
     _chunks_checked,
-    _method_object];
+    _method_object ];
 }
 
 function
   _config_show() {
   let
-    _chunks_files_paths,
-    _line,
-    _text;
-  _chunks_files_paths =
-    chunks_files_paths.join(
-    " ");
-  _text = [
-    `          Maximum retries: ${retries_max}`,
-    `                  API Key: ${api_key_path}`,
-    `           Target network: ${target_network}`,
-    `         Contract address: ${contract_address}`,
-    `             Contract ABI: ${contract_abi_path}`,
-    `        Contract bytecode: ${contract_bytecode_path}`,
-    ` Contract compiler output: ${contract_compiler_output_path}`,
-    `    Publication namespace: ${publication_namespace}`,
-    `                File hash: ${file_hash}`,
-    `              Index start: ${index_start}`,
-    `                Index end: ${index_end}`,
-    `              File chunks: ${_chunks_files_paths}`
-  ];
+    _line;
+  const
+    _chunks_files_paths =
+      chunks_files_paths.join(
+      " ");
+  const
+    _text = [
+      `          Maximum retries: ${retries_max}`,
+      `                  API Key: ${api_key_path}`,
+      `           Target network: ${target_network}`,
+      `         Contract address: ${contract_address}`,
+      `             Contract ABI: ${contract_abi_path}`,
+      `        Contract bytecode: ${contract_bytecode_path}`,
+      ` Contract compiler output: ${contract_compiler_output_path}`,
+      `    Publication namespace: ${publication_namespace}`,
+      `                File hash: ${file_hash}`,
+      `              Index start: ${index_start}`,
+      `                Index end: ${index_end}`,
+      `              File chunks: ${_chunks_files_paths}`
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
@@ -627,7 +627,7 @@ async function
       await _check.apply(
         null,
         _app_opts);
-  for ( _chunk in _chunks_published ) {
+  for ( _chunk in _chunks_checked ) {
     _echo(
       _chunks_checked[
         _chunk].toString());
