@@ -482,8 +482,9 @@ async function
     _read_chain_id_base_args,
     _read_chain_id_call_base_opts,
     _read_chain_id_call_opts;
-  _wallet_seed_path =
-    "";
+  const
+    _wallet_seed_path =
+      "";
   _msg =
     "Reading chain ID.";
   _msg_info(
@@ -652,8 +653,9 @@ async function
     _read_references_no_base_args,
     _read_references_no_call_base_opts,
     _read_references_no_call_opts;
-  _wallet_seed_path =
-    "";
+  const
+    _wallet_seed_path =
+      "";
   _msg =
     "Reading File Systems pointers.";
   _msg_info(
@@ -855,14 +857,12 @@ async function
     _msg,
     _progress,
     _read_fs_args,
-    _read_fs_base_args,
-    _read_fs_call_base_opts,
-    _read_fs_call_opts,
-    _wallet_seed_path;
+    _read_fs_call_opts;
   // Force unauthenticated call
   // for now.
-  _wallet_seed_path =
-    "";
+  const
+    _wallet_seed_path =
+      "";
   _msg =
     "Reading File Systems addresses.";
   _msg_info(
@@ -876,13 +876,14 @@ async function
   _chunks_chain_ids =
     [];
   if ( _rpc_selection == "" ||
-       _rpc_selection == undefined ) {
+       typeof(
+         _rpc_selection) === "undefined" ) {
     _rpc_selection =
-      "kirsh"
+      "kirsh";
   }
   _method_objects_empty =
     Object.keys(
-      _method_objects).length === 0
+      _method_objects).length === 0;
   if ( _method_objects_empty ) {
     _method_objects = {
       "ccfs": {
@@ -900,26 +901,29 @@ async function
   _reference =
     Number(
       _reference);
-  _wallet_seed_path =
-    "";
-  _read_fs_call_base_opts = [
-    _wallet_seed_path,
-    _retries_max,
-    _api_key_path,
-    _target_network,
-    _contract_abi_path,
-    _contract_bytecode_path,
-    _contract_compiler_output_path,
-    _method_objects[
-      "ccfs"][
-        "chunksFs"],
-    _contract_address,
-    "chunksFs",
-  ];
-  _read_fs_base_args = [
-    _publication_namespace,
-    _file_hash
-  ];
+  const
+    _wallet_seed_path =
+      "";
+  const
+    _read_fs_call_base_opts = [
+      _wallet_seed_path,
+      _retries_max,
+      _api_key_path,
+      _target_network,
+      _contract_abi_path,
+      _contract_bytecode_path,
+      _contract_compiler_output_path,
+      _method_objects[
+        "ccfs"][
+          "chunksFs"],
+      _contract_address,
+      "chunksFs",
+    ];
+  const
+    _read_fs_base_args = [
+      _publication_namespace,
+      _file_hash
+    ];
   _progress =
     1;
   _cursor =
