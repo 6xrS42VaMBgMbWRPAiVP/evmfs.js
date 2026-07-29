@@ -43,12 +43,6 @@ const
  _error_display =
    _libcrash._error_display;
 const
-  _file_write =
-    _libcrash._file_write;
-const
-  _path_join =
-    _libcrash._path_join;
-const
   _msg_info =
     _libcrash._msg_info;
 const
