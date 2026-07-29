@@ -26,6 +26,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet:
+       writable */
+
 const
   _libcrash =
     require(
@@ -133,7 +139,7 @@ function
   checkpoint_file_path =
     "";
   /* global
-       chunks_files__path:
+       chunks_files_path:
          writable */
   chunks_files_paths =
     [];

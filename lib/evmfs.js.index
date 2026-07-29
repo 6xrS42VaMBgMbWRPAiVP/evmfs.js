@@ -37,8 +37,8 @@ const
     require(
       "crash-js");
 const
-  _cmdline_parse =
-    _libcrash._cmdline_parse;
+  _cmdline_check =
+    _libcrash._cmdline_check;
 const
   _file_write =
     _libcrash._file_write;
