@@ -308,9 +308,10 @@ function
   if ( _files_lengths_paths_total > 0 ) {
     if ( _files_lengths_paths_total != 
          _files_hashes_total ) {
-      _msg =
-        "Amount of input files hashes different " +
-        "from amount of input length files paths.";
+      const
+        _msg =
+          "Amount of input files hashes different " +
+          "from amount of input length files paths.";
       _msg_error(
         _msg);
     }

@@ -50,11 +50,7 @@ const
     require(
       "evm-contracts-tools");
 /* global
-     _contract_call_static,
-     a */
-/*eslint
-    no-undef:
-    "error" */
+     _contract_call_static */
 const
   _contract_call_static =
     _evm_contracts_tools._contract_call_static;
