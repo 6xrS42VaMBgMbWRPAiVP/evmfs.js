@@ -37,9 +37,6 @@ const
     require(
       "crash-js");
 const
-  _dirname =
-    _libcrash._dirname;
-const
   _file_write =
     _libcrash._file_write;
 const
