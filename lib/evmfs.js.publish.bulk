@@ -193,11 +193,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Publishing chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Publishing chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }
@@ -384,7 +383,6 @@ async function
     _chunk_publish_args,
     _chunks_buffer,
     _chunks_buffers,
-    _chunks_buffers_length,
     _chunks_files_paths_prefix,
     _cursor,
     _index,
@@ -597,8 +595,9 @@ async function
     _buffer_cursor =
       _buffer_cursor + 1;
   }
-  _chunks_buffers_length =
-    _chunks_buffers.length;
+  const
+    _chunks_buffers_length =
+      _chunks_buffers.length;
   for ( _buffer_index = 0;
         _buffer_index <= _chunks_buffers_length;
         _buffer_index++ ) {

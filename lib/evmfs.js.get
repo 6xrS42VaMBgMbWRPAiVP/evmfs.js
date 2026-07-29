@@ -219,7 +219,7 @@ function
     _index_end - _index_start + 1;
   if ( _total_files == 0 ) {
     _msg =
-      "File chunks list empty."
+      "File chunks list empty.";
     _msg_error(
       _msg,
       1);
