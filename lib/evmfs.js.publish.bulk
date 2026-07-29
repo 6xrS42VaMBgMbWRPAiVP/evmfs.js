@@ -90,6 +90,11 @@ function
   app_name =
     "publish-bulk";
   /* global
+       app_opts:
+         writable */
+  app_opts =
+    [];
+  /* global
        retries_max:
          writable */
   retries_max =
@@ -202,12 +207,11 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Chunk '${_index}' unpublished, ` +
-    `publishing now ('${_progress}' of ` +
-    `'${_total}').`;
+  const
+    _msg =
+      `Chunk '${_index}' unpublished, ` +
+      `publishing now ('${_progress}' of ` +
+      `'${_total}').`;
   _msg_info(
     _msg);
 }
@@ -386,6 +390,7 @@ async function
     _chunks_files_paths_prefix,
     _cursor,
     _index,
+    _method_object,
     _msg,
     _progress,
     _publish_bulk_call_opts,
@@ -576,7 +581,7 @@ async function
       _msg_error(
         _published,
         0);
-      _console.error(
+      console.error(
         _published);
       const
         _msg =

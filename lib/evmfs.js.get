@@ -52,6 +52,9 @@ const
   _msg_error =
     _libcrash._msg_error;
 const
+  _process_exit =
+    _libcrash._process_exit;
+const
   _evm_contracts_tools =
     require(
       "evm-contracts-tools");
@@ -410,31 +413,30 @@ async function
 function
   _config_show() {
   let
-    _chunks_files_paths,
-    _line,
-    _text;
-  _chunks_files_paths =
-    chunks_files_paths.join(
-    " ");
-  _text = [
-    `          Maximum retries: ${retries_max}`,
-    `                  API Key: ${api_key_path}`,
-    `           Target network: ${target_network}`,
-    `         Contract address: ${contract_address}`,
-    `             Contract ABI: ${contract_abi_path}`,
-    `        Contract bytecode: ${contract_bytecode_path}`,
-    ` Contract compiler output: ${contract_compiler_output_path}`,
-    `    Publication namespace: ${publication_namespace}`,
-    `                File hash: ${file_hash}`,
-    `              Index start: ${index_start}`,
-    `                Index end: ${index_end}`,
-    `          Checkpoint file: ${checkpoint_file_path}`,
-    `              File chunks: ${_chunks_files_paths}`,
-  ];
-  for ( _line in _text ) {
+    _line;
+  const
+    _chunks_files_paths =
+      chunks_files_paths.join(
+      " ");
+  const
+    _text = [
+      `          Maximum retries: ${retries_max}`,
+      `                  API Key: ${api_key_path}`,
+      `           Target network: ${target_network}`,
+      `         Contract address: ${contract_address}`,
+      `             Contract ABI: ${contract_abi_path}`,
+      `        Contract bytecode: ${contract_bytecode_path}`,
+      ` Contract compiler output: ${contract_compiler_output_path}`,
+      `    Publication namespace: ${publication_namespace}`,
+      `                File hash: ${file_hash}`,
+      `              Index start: ${index_start}`,
+      `                Index end: ${index_end}`,
+      `          Checkpoint file: ${checkpoint_file_path}`,
+      `              File chunks: ${_chunks_files_paths}`,
+    ];
+  for ( _line of _text ) {
     _msg_info(
-      _text[
-       _line]);
+      _line);
   }
 }
 
@@ -442,58 +444,58 @@ function
   _usage(
     _exit) {
   let
-    _line,
-    _text;
-  _text = [
-    "Downloads chunks of an EVMFS file.",
-    "",
-    "Usage:",
-    "  get",
-    "    <quiet>",
-    "    <retries-max>",
-    "    <api-key-path>",
-    "    <target-network>",
-    "    <contract-address>",
-    "    <contract-abi-path>",
-    "    <contract-bytecode-path>",
-    "    <contract-compiler-output-path>",
-    "    <publication-namespace>",
-    "    <index-start>",
-    "    <file-hash>",
-    "    <index-start>",
-    "    <index-end>",
-    "    <checkpoint-file-path>",
-    "    [chunk-file-path]",
-    "",
-    "Args:",
-    "  <quiet>                          Can be 'y' or 'n'",
-    "                                   Default: y",
-    "  <retries-max>                    Maximum number of retries before",
-    "                                   failing (not implemented).",
-    "  <api-key-path>                   Path of the API key for the",
-    "                                   contract ABI provider service.",
-    "  <target-network>                 Network on which the contract",
-    "                                   resides.",
-    "  <contract-address>               Address of the contract.",
-    "  <contract-abi_path>              Contract ABI path.",
-    "  <contract-bytecode-path>         Path for the contract bytecode.",
-    "  <contract-compiler-output-path>  Path for the contract compiler",
-    "                                   output path (the hardhat artifact).",
-    "  <publication-namespace>          Namespace in which the file will be",
-    "                                   published.",
-    "  <file-hash>                      Hash of the file to publish.",
-    "  <index-start>                    Chunk index from where to start.",
-    "  <index-end>                      Final chunk index to download.",
-    "  <checkpoint-file-path>           Checkpoint file on which latest",
-    "                                   downloaded chunk index is saved",
-    "                                   in case node was to crash.",
-    "  [chunk-file-path]                Files in which to write the chunks.",
-  ];
+    _line;
+  const
+    _text = [
+      "Downloads chunks of an EVMFS file.",
+      "",
+      "Usage:",
+      "  get",
+      "    <quiet>",
+      "    <retries-max>",
+      "    <api-key-path>",
+      "    <target-network>",
+      "    <contract-address>",
+      "    <contract-abi-path>",
+      "    <contract-bytecode-path>",
+      "    <contract-compiler-output-path>",
+      "    <publication-namespace>",
+      "    <index-start>",
+      "    <file-hash>",
+      "    <index-start>",
+      "    <index-end>",
+      "    <checkpoint-file-path>",
+      "    [chunk-file-path]",
+      "",
+      "Args:",
+      "  <quiet>                          Can be 'y' or 'n'",
+      "                                   Default: y",
+      "  <retries-max>                    Maximum number of retries before",
+      "                                   failing (not implemented).",
+      "  <api-key-path>                   Path of the API key for the",
+      "                                   contract ABI provider service.",
+      "  <target-network>                 Network on which the contract",
+      "                                   resides.",
+      "  <contract-address>               Address of the contract.",
+      "  <contract-abi_path>              Contract ABI path.",
+      "  <contract-bytecode-path>         Path for the contract bytecode.",
+      "  <contract-compiler-output-path>  Path for the contract compiler",
+      "                                   output path (the hardhat artifact).",
+      "  <publication-namespace>          Namespace in which the file will be",
+      "                                   published.",
+      "  <file-hash>                      Hash of the file to publish.",
+      "  <index-start>                    Chunk index from where to start.",
+      "  <index-end>                      Final chunk index to download.",
+      "  <checkpoint-file-path>           Checkpoint file on which latest",
+      "                                   downloaded chunk index is saved",
+      "                                   in case node was to crash.",
+      "  [chunk-file-path]                Files in which to write the chunks.",
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
   }
-  process.exit(
+  _process_exit(
     _exit);
 }
 

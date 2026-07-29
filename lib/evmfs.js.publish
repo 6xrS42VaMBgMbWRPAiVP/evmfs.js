@@ -843,19 +843,27 @@ function
 async function
   _publish_cmdline(
     _app_opts) {
+  let
+    _msg;
   try {
     const
       _chunks_unverified =
         await _publish.apply(
           null,
           _app_opts);
+    if ( 0 < _chunks_unverified.length ) {
+      _msg =
+        `Left '${_chunks_unverified.length}' ` +
+        `chunks to verify.`;
+      _msg_info(
+        _msg);
+    }
   } catch (
       _error) {
     console.error(
       _error);
-    const
-      _msg =
-        "Publication error.";
+    _msg =
+      "Publication error.";
     _msg_error(
       _msg,
       1);
