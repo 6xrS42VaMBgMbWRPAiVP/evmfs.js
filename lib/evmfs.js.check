@@ -24,61 +24,115 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet:
+       writable */
+
 const
   _libcrash =
     require(
       "crash-js");
-_cmdline_check =
-  _libcrash._cmdline_check;
-_echo =
-  _libcrash._echo;
-_error_display =
-  _libcrash._error_display;
-_file_read =
-  _libcrash._file_read;
-_msg_info =
-  _libcrash._msg_info;
-_msg_error =
-  _libcrash._msg_error;
-_process_exit =
-  _libcrash._process_exit;
+const
+  _cmdline_check =
+    _libcrash._cmdline_check;
+const
+  _echo =
+    _libcrash._echo;
+const
+  _error_display =
+    _libcrash._error_display;
+const
+  _file_read =
+    _libcrash._file_read;
+const
+  _msg_info =
+    _libcrash._msg_info;
+const
+  _msg_error =
+    _libcrash._msg_error;
+const
+  _process_exit =
+    _libcrash._process_exit;
 const
   _get_module =
     require(
       "./evmfs.js.get");
-/*global _chunk_get, a*/
-/*eslint no-undef: "error"*/
-_chunk_get =
-  _get_module._chunk_get;
+const
+  _chunk_get =
+    _get_module._chunk_get;
 
 function
   _global_variables() {
+  /* global
+       app_name:
+         writable */
   app_name =
     "evmfs.js.check";
+  /* global
+       retries_max:
+         writable */
   retries_max =
-    '';
+    "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
+  /* global
+       method_object:
+         writable */
   method_object =
     "";
+  /* global
+       publication_namespace:
+         writable */
   publication_namespace =
     "";
+  /* global
+       file_hash:
+         writable */
   file_hash =
     "";
+  /* global
+       file_start:
+         writable */
   index_start =
     "";
+  /* global
+       index_end:
+         writable */
   index_end =
     "";
+  /* global
+       chunks_files_paths:
+         writable */
   chunks_files_paths =
     [];
   quiet =
@@ -90,12 +144,11 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Checking chunk ` +
-    `'${_index}' ('${_progress}' of ` +
-    `'${_total}').`;
+  const
+    _msg =
+      `Checking chunk ` +
+      `'${_index}' ('${_progress}' of ` +
+      `'${_total}').`;
   _msg_info(
     _msg);
 }
@@ -105,12 +158,11 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Checked chunk ` +
-    `'${_index}' ('${_progress}' of ` +
-    `'${_total}').`;
+  const
+    _msg =
+      `Checked chunk ` +
+      `'${_index}' ('${_progress}' of ` +
+      `'${_total}').`;
   _msg_info(
     _msg);
 }
@@ -121,6 +173,7 @@ async function
     _get_call_opts) {
   let
     _method_object,
+    _msg,
     _passed,
     _retry,
     _value;
@@ -173,9 +226,10 @@ function
     _index_end,
     _total_files) {
   let
-    _total_indexes;
-  _total_indexes =
-    _index_end - _index_start + 1;
+    _msg;
+  const
+    _total_indexes =
+      _index_end - _index_start + 1;
   if ( _total_files > _total_indexes ) {
     _msg =
       "More indexes to check than files to read.";
@@ -201,13 +255,12 @@ function
     _path,
     _index,
     _cursor) {
-  let
-    _msg;
   if ( _path == undefined ) {
-    _msg =
-      "Chunk file for index " +
-      `${_index} and cursor ` +
-      `${_cursor} undefined.`;
+    const
+      _msg =
+        "Chunk file for index " +
+        `${_index} and cursor ` +
+        `${_cursor} undefined.`;
     console.error(
       _msg);
     _process_exit(
@@ -239,7 +292,7 @@ async function
     _cursor,
     _chunk,
     _chunk_file_path,
-    _method_base_args,
+    _index,
     _method_args,
     _msg,
     _progress,
@@ -271,10 +324,11 @@ async function
     _contract_address,
     "chunks",
   ];
-  _method_base_args = [
-    _publication_namespace,
-    _file_hash
-  ];
+  const
+    _method_base_args = [
+      _publication_namespace,
+      _file_hash
+    ];
   if ( _chunks_files_paths == [] ) {
     _msg =
       "File chunks list empty.";
@@ -302,7 +356,7 @@ async function
     1;
   _cursor =
     0;
-  for ( var _index = _index_start;
+  for ( _index = _index_start;
         _index <= _index_end;
         _index++ ) {
     _msg_info_chunk_check(
@@ -320,15 +374,16 @@ async function
       _file_read(
         _chunk_file_path);
     _method_args =
-      _method_base_args.concat(
-        [_index.toString()]
-      );
+      _method_base_args.concat([
+        _index.toString()
+      ]);
     _check_call_opts =
-      _check_call_base_opts.concat(
-        [_method_args]);
+      _check_call_base_opts.concat([
+        _method_args
+      ]);
     try {
-      [_check,
-       _method_object] =
+      [ _check,
+        _method_object ] =
         await _chunk_check(
           _chunk,
           _check_call_opts);

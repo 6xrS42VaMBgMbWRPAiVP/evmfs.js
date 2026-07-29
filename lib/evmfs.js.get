@@ -250,7 +250,7 @@ function
       _index +
       " and cursor " +
       _cursor +
-      " undefined."
+      " undefined.";
     _msg_error(
       _msg,
       1);
