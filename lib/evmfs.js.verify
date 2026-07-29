@@ -139,7 +139,7 @@ function
   checkpoint_file_path =
     "";
   /* global
-       chunks_files_path_prefix:
+       chunks_files_paths_prefix:
          writable */
   chunks_files_paths_prefix =
     "";

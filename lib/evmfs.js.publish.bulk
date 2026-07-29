@@ -391,8 +391,7 @@ async function
     _method_object,
     _msg,
     _progress,
-    _publish_call_base_opts,
-    _publish_call_opts,
+    _publish_bulk_call_opts,
     _published,
     _tx,
     _value,
@@ -437,22 +436,23 @@ async function
     _contract_address,
     "chunks",
   ];
-  _publish_bulk_call_base_opts = [
-    _retries_max,
-    _call_timeout,
-    _wallet_seed_path,
-    _wallet_password,
-    _api_key_path,
-    "fast", // nextblock
-    0,
-    "wei",
-    _target_network,
-    _contract_address,
-    _contract_abi_path,
-    _contract_bytecode_path,
-    _contract_compiler_output_path,
-    "publishBulk",
-  ];
+  const
+    _publish_bulk_call_base_opts = [
+      _retries_max,
+      _call_timeout,
+      _wallet_seed_path,
+      _wallet_password,
+      _api_key_path,
+      "fast", // nextblock
+      0,
+      "wei",
+      _target_network,
+      _contract_address,
+      _contract_abi_path,
+      _contract_bytecode_path,
+      _contract_compiler_output_path,
+      "publishBulk",
+    ];
   _method_base_args = [
     _publication_namespace,
     _file_hash
