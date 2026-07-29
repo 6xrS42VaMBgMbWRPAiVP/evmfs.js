@@ -493,8 +493,7 @@ async function
     _method_args,
     _msg,
     _progress,
-    _value,
-    _wallet_seed_path;
+    _value;
   const
     _files_lengths =
       [];
@@ -502,8 +501,9 @@ async function
     _method_object =
       '';
   }
-  _wallet_seed_path =
-    '';
+  const
+    _wallet_seed_path =
+      '';
   _method_object =
     '';
   _length_call_base_opts = [
