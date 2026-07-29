@@ -314,6 +314,7 @@ async function
     _chunks_total,
     _chunks_files_paths_prefix,
     _chunks_unverified = [],
+    _index,
     _indexes_unverified = [],
     _method_base_args,
     _method_object,
@@ -404,7 +405,7 @@ async function
     0;
   _buffer_cursor =
     1;
-  for ( var _index = _index_start;
+  for ( _index = _index_start;
         _index <= _index_end;
         _index++ ) {
     _msg_info_chunk_publish(
@@ -501,10 +502,15 @@ async function
         0);
       _console.error(
         _published);
-      throw {
-        "error": {
-          "message":
-            "Unexpected chunk publication status value." } };
+      const
+        _msg =
+          "Unexpected chunk publication status value.";
+      const
+        _error =
+          "error": {
+            "message":
+              _msg } };
+      throw _error;
     }
     _progress =
       _progress + 1;
@@ -515,7 +521,7 @@ async function
   }
   _chunks_buffers_length =
     _chunks_buffers.length;
-  for ( var _buffer_index = 0;
+  for ( _buffer_index = 0;
         _buffer_index <= _chunks_buffers_length;
         _buffer_index++ ) {
     _index =
@@ -547,7 +553,7 @@ async function
   }
   _cursor =
     0;
-  for ( var _index = _index_start;
+  for ( _index = _index_start;
         _index <= _index_end;
         _index++ ) {
     _chunk_file_path =

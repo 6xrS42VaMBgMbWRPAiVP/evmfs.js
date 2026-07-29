@@ -638,12 +638,11 @@ async function
 function
   _config_show() {
   let
-    _chars_max,
     _chunks_files_paths,
-    _line,
-    _text;
-  _chars_max =
-    300;
+    _line;
+  const
+    _chars_max =
+      300;
   _chunks_files_paths =
     chunks_files_paths.join(
     " ");
@@ -653,27 +652,28 @@ function
         0,
 	_chars_max);
   }
-  _text = [
-    `    Publication namespace: ${publication_namespace}`,
-    `                File hash: ${file_hash}`,
-    `          Maximum retries: ${retries_max}`,
-    `             Call timeout: ${call_timeout}`,
-    `   Credentials settings:`,
-    `              Wallet seed: ${wallet_seed_path}`,
-    `       Network settings:`,
-    `           Target network: ${target_network}`,
-    `                  API Key: ${api_key_path}`,
-    `      Contract settings:`,
-    `         Contract address: ${contract_address}`,
-    `             Contract ABI: ${contract_abi_path}`,
-    `        Contract bytecode: ${contract_bytecode_path}`,
-    ` Contract compiler output: ${contract_compiler_output_path}`,
-    `       Session settings:`,
-    `              Index start: ${index_start}`,
-    `                Index end: ${index_end}`,
-    `          Checkpoint file: ${checkpoint_file_path}`,
-    `              File chunks: ${_chunks_files_paths}`
-  ];
+  const
+    _text = [
+      `    Publication namespace: ${publication_namespace}`,
+      `                File hash: ${file_hash}`,
+      `          Maximum retries: ${retries_max}`,
+      `             Call timeout: ${call_timeout}`,
+      `   Credentials settings:`,
+      `              Wallet seed: ${wallet_seed_path}`,
+      `       Network settings:`,
+      `           Target network: ${target_network}`,
+      `                  API Key: ${api_key_path}`,
+      `      Contract settings:`,
+      `         Contract address: ${contract_address}`,
+      `             Contract ABI: ${contract_abi_path}`,
+      `        Contract bytecode: ${contract_bytecode_path}`,
+      ` Contract compiler output: ${contract_compiler_output_path}`,
+      `       Session settings:`,
+      `              Index start: ${index_start}`,
+      `                Index end: ${index_end}`,
+      `          Checkpoint file: ${checkpoint_file_path}`,
+      `              File chunks: ${_chunks_files_paths}`
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
@@ -684,62 +684,62 @@ function
   _usage(
     _exit_code) {
   let
-    _line,
-    _text;
-  _text = [
-    "Usage:",
-    "  publish",
-    "    <quiet>",
-    "    <retries-max>",
-    "    <call-timeout>",
-    "    <wallet-seed-path>",
-    "    <api-key-path>",
-    "    <target-network>",
-    "    <contract-address>",
-    "    <contract-abi-path>",
-    "    <contract-bytecode-path>",
-    "    <contract-compiler-output-path>",
-    "    <publication-namespace>",
-    "    <file-hash>",
-    "    <index-start>",
-    "    <index-end>",
-    "    <checkpoint-file-path>",
-    "    [chunk-file-path]",
-    "",
-    "Args:",
-    "  <quiet>                          Can be 'y' or 'n'",
-    "                                   Default: y",
-    "  <retries-max>                    Maximum number of retries before",
-    "                                   failing (not implemented).",
-    "  <call-timeout>                   How many milliseconds to wait",
-    "                                   for a return before declaring",
-    "                                   the call failed.",
-    "  <wallet-seed-path>               Path of the file containing",
-    "                                   the seed phrase.",
-    "  <api-key-path>                   Path of the API key for the",
-    "                                   contract ABI provider service.",
-    "  <target-network>                 Network on which the contract",
-    "                                   resides.",
-    "  <contract-address>               Address of the contract.",
-    "  <contract-abi-path>              Contract ABI path.",
-    "  <contract-bytecode-path>         Path for the contract bytecode.",
-    "  <contract-compiler-output-path>  Path for the contract compiler",
-    "                                   output path (the hardhat artifact).",
-    "  <publication-namespace>          Namespace in which the file will be",
-    "                                   published.",
-    "  <file-hash>                      Hash of the file to publish.",
-    "  <index-start>                    Chunk index from where to start.",
-    "  <index-end>                      Final chunk index to download.",
-    "  <checkpoint-file-path>           Checkpoint file on which latest",
-    "                                   downloaded chunk index is saved",
-    "                                   in case node was to crash.",
-    "  <chunks-files-type>              Can be 'file' or 'list. If file",
-    "                                   it will consider the next arguments",
-    "                                   files, if 'list' it the next argument",
-    "                                   will be considered a JSON list",
-    "                                   containing the files paths.",
-    "  [chunks-files-paths]             File chunks to publish.",
-  ];
+    _line;
+  const
+    _text = [
+      "Usage:",
+      "  publish",
+      "    <quiet>",
+      "    <retries-max>",
+      "    <call-timeout>",
+      "    <wallet-seed-path>",
+      "    <api-key-path>",
+      "    <target-network>",
+      "    <contract-address>",
+      "    <contract-abi-path>",
+      "    <contract-bytecode-path>",
+      "    <contract-compiler-output-path>",
+      "    <publication-namespace>",
+      "    <file-hash>",
+      "    <index-start>",
+      "    <index-end>",
+      "    <checkpoint-file-path>",
+      "    [chunk-file-path]",
+      "",
+      "Args:",
+      "  <quiet>                          Can be 'y' or 'n'",
+      "                                   Default: y",
+      "  <retries-max>                    Maximum number of retries before",
+      "                                   failing (not implemented).",
+      "  <call-timeout>                   How many milliseconds to wait",
+      "                                   for a return before declaring",
+      "                                   the call failed.",
+      "  <wallet-seed-path>               Path of the file containing",
+      "                                   the seed phrase.",
+      "  <api-key-path>                   Path of the API key for the",
+      "                                   contract ABI provider service.",
+      "  <target-network>                 Network on which the contract",
+      "                                   resides.",
+      "  <contract-address>               Address of the contract.",
+      "  <contract-abi-path>              Contract ABI path.",
+      "  <contract-bytecode-path>         Path for the contract bytecode.",
+      "  <contract-compiler-output-path>  Path for the contract compiler",
+      "                                   output path (the hardhat artifact).",
+      "  <publication-namespace>          Namespace in which the file will be",
+      "                                   published.",
+      "  <file-hash>                      Hash of the file to publish.",
+      "  <index-start>                    Chunk index from where to start.",
+      "  <index-end>                      Final chunk index to download.",
+      "  <checkpoint-file-path>           Checkpoint file on which latest",
+      "                                   downloaded chunk index is saved",
+      "                                   in case node was to crash.",
+      "  <chunks-files-type>              Can be 'file' or 'list. If file",
+      "                                   it will consider the next arguments",
+      "                                   files, if 'list' it the next argument",
+      "                                   will be considered a JSON list",
+      "                                   containing the files paths.",
+      "  [chunks-files-paths]             File chunks to publish.",
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);

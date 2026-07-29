@@ -79,7 +79,8 @@ function
   app_name =
     "evmfs.js.verify";
   /* global
-       app_opts */
+       app_opts:
+         writable */
   app_opts =
     [];
   /* global
@@ -138,7 +139,7 @@ function
   checkpoint_file_path =
     "";
   /* global
-       chunks_file_path_prefix:
+       chunks_files_path_prefix:
          writable */
   chunks_files_paths_prefix =
     "";
@@ -409,50 +410,50 @@ function
   _usage(
     _exit) {
   let
-    _line,
-    _text;
-  _text = [
-    "Verify published chunks of an EVMFS file.",
-    "",
-    "Usage:",
-    "  evmfs.js.verify",
-    "    <quiet>",
-    "    <retries-max>",
-    "    <api-key-path>",
-    "    <target-network>",
-    "    <contract-address>",
-    "    <contract-abi-path>",
-    "    <contract-bytecode-path>",
-    "    <contract-compiler-output-path>",
-    "    <publication-namespace>",
-    "    <file-hash>",
-    "    <checkpoint-file-path>",
-    "    <chunks-files-paths-prefix>",
-    "    [chunks-indexes]",
-    "",
-    "Args:",
-    "  <quiet>                          Can be 'y' or 'n'",
-    "                                   Default: y",
-    "  <retries-max>                    Maximum number of retries before",
-    "                                   failing (not implemented).",
-    "  <api-key-path>                   Path of the API key for the",
-    "                                   contract ABI provider service.",
-    "  <target-network>                 Network on which the contract",
-    "                                   resides.",
-    "  <contract-address>               Address of the contract.",
-    "  <contract-abi-path>              Contract ABI path.",
-    "  <contract-bytecode-path>         Path for the contract bytecode.",
-    "  <contract-compiler-output-path>  Path for the contract compiler",
-    "                                   output path (the hardhat artifact).",
-    "  <publication-namespace>          Namespace in which the file will be",
-    "                                   published.",
-    "  <file-hash>                      Hash of the file to publish.",
-    "  <checkpoint-file-path>           Checkpoint file on which latest",
-    "                                   downloaded chunk index is saved",
-    "                                   in case node was to crash.",
-    "  <chunks-files-paths-prefix>      Chunks files paths prefix.",
-    "  [chunks-indexes]                 Indexes of the chunks to verify.",
-  ];
+    _line;
+  const
+    _text = [
+      "Verify published chunks of an EVMFS file.",
+      "",
+      "Usage:",
+      "  evmfs.js.verify",
+      "    <quiet>",
+      "    <retries-max>",
+      "    <api-key-path>",
+      "    <target-network>",
+      "    <contract-address>",
+      "    <contract-abi-path>",
+      "    <contract-bytecode-path>",
+      "    <contract-compiler-output-path>",
+      "    <publication-namespace>",
+      "    <file-hash>",
+      "    <checkpoint-file-path>",
+      "    <chunks-files-paths-prefix>",
+      "    [chunks-indexes]",
+      "",
+      "Args:",
+      "  <quiet>                          Can be 'y' or 'n'",
+      "                                   Default: y",
+      "  <retries-max>                    Maximum number of retries before",
+      "                                   failing (not implemented).",
+      "  <api-key-path>                   Path of the API key for the",
+      "                                   contract ABI provider service.",
+      "  <target-network>                 Network on which the contract",
+      "                                   resides.",
+      "  <contract-address>               Address of the contract.",
+      "  <contract-abi-path>              Contract ABI path.",
+      "  <contract-bytecode-path>         Path for the contract bytecode.",
+      "  <contract-compiler-output-path>  Path for the contract compiler",
+      "                                   output path (the hardhat artifact).",
+      "  <publication-namespace>          Namespace in which the file will be",
+      "                                   published.",
+      "  <file-hash>                      Hash of the file to publish.",
+      "  <checkpoint-file-path>           Checkpoint file on which latest",
+      "                                   downloaded chunk index is saved",
+      "                                   in case node was to crash.",
+      "  <chunks-files-paths-prefix>      Chunks files paths prefix.",
+      "  [chunks-indexes]                 Indexes of the chunks to verify.",
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
