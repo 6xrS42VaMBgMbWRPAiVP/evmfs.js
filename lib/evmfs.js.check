@@ -71,6 +71,11 @@ function
   app_name =
     "evmfs.js.check";
   /* global
+       app_opts:
+         writable */
+  app_opts =
+    [];
+  /* global
        retries_max:
          writable */
   retries_max =

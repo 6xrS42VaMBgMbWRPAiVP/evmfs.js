@@ -390,8 +390,7 @@ async function
     _progress,
     _publish_bulk_call_opts,
     _published,
-    _tx,
-    _value;
+    _tx;
   if ( _buffer_length == "" ||
        typeof(
          _buffer_length) === 'undefined' ) {
