@@ -74,9 +74,14 @@ const
 function
   _global_variables() {
   /* global
-       app_name */
+       app_name:
+         writable */
   app_name =
     "evmfs.js.verify";
+  /* global
+       app_opts */
+  app_opts =
+    [];
   /* global
        retries_max:
          writable */
@@ -135,8 +140,8 @@ function
   /* global
        chunks_file_path_prefix:
          writable */
-  chunks_file_paths_prefix =
-    ""
+  chunks_files_paths_prefix =
+    "";
   /* global
        chunks_indexes:
          writable */
@@ -187,7 +192,7 @@ function
       `of '${_total}').`;
   _msg_error(
     _msg,
-    1)
+    1);
 }
 
 function
@@ -222,13 +227,10 @@ async function
   ) {
   let
     _check_opts,
-    _chunk,
     _chunk_file_path,
     _chunks_checked,
     _chunks_checked_total,
     _chunks_corrupted,
-    _chunks_total,
-    _correct,
     _index,
     _msg,
     _progress;
@@ -238,10 +240,12 @@ async function
   }
   _chunks_checked =
     [];
-  _chunks_corrupted =
-    [];
-  _chunks_total =
-    _chunks_indexes.length;
+  const
+    _chunks_corrupted =
+      [];
+  const
+    _chunks_total =
+      _chunks_indexes.length;
   for ( var _cursor = 0;
         _cursor < _chunks_total;
         _cursor++ ) {
@@ -284,8 +288,8 @@ async function
       [ _chunk_file_path ]
     ];
     try {
-      [_chunks_checked,
-       _method_object] =
+      [ _chunks_checked,
+        _method_object ] =
         await _check.apply(
 	  null,
           _check_opts);
@@ -350,7 +354,7 @@ async function
         _msg =
           `Chunk with index ${_index.toString()} ` +
 	  `has not been published.`;
-        throw _msg
+        throw _msg;
       }
     }
     else if ( _chunks_checked_total == 0 ) {
@@ -363,7 +367,9 @@ async function
       // Soon
       _chunks_corrupted.push(
         _index);
-      throw "Some chunks have not been published."
+      _msg =
+        "Some chunks have not been published.";
+      throw _msg;
     }
   }
   return [
@@ -534,14 +540,13 @@ async function
   _verify_cmdline(
     _app_opts) {
   let
-    _chunks_corrupted,
-    _index,
-    _method_object;
-  [ _chunks_corrupted,
-    _method_object ] = 
-    await _verify.apply(
-      null,
-      _app_opts);
+    _index;
+  const
+    [ _chunks_corrupted,
+      _method_object ] = 
+      await _verify.apply(
+        null,
+        _app_opts);
   for ( _index of _chunks_corrupted ) {
     _echo(
       _index.toString());
