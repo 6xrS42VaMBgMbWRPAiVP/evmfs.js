@@ -59,8 +59,16 @@ const
     _evm_contracts_tools_module._contract_call_static;
 function
   _global_variables() {
+  /* global
+       app_name:
+         writable */
   app_name =
     "evmfs.js.lengthlock";
+  /* global
+       app_opts:
+         writable */
+  app_opts =
+    [];
   /* global
        retries_max:
          writable */
@@ -192,7 +200,6 @@ async function
     _lock_call_opts) {
   let
     _method_object,
-    _passed,
     _value;
   try {
     [ _value,
@@ -222,7 +229,6 @@ async function
     _length_call_opts) {
   let
     _method_object,
-    _passed,
     _value;
   try {
     [ _value,
@@ -481,7 +487,9 @@ async function
     _length_call_opts,
     _length_locked_opts,
     _lock_method_object,
+    _lock,
     _method_args,
+    _msg,
     _progress,
     _value,
     _wallet_seed_path;
@@ -771,12 +779,11 @@ function
 
 function 
   _cmdline_parse() {
-  let
-    _paths
   quiet = 
     "y";
-  _paths =
-    [];
+  const
+    _paths =
+      [];
   process.argv.forEach(
     function (
       _value,
@@ -833,7 +840,7 @@ function
       if ( _value == "-h" ||
            _value == "--help" ) {
         _usage(
-	  0);
+          0);
       }
   });
   _cmdline_paths_parse(

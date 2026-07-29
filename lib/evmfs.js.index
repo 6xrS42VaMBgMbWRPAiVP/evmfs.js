@@ -37,6 +37,9 @@ const
     require(
       "crash-js");
 const
+  _cmdline_parse =
+    _libcrash._cmdline_parse;
+const
   _file_write =
     _libcrash._file_write;
 const
@@ -622,7 +625,7 @@ function
 }
 
 if ( _cmdline_check(
-       "evmfs.js.index") == true ) {
+       "evmfs.js.index") ) {
   _global_variables();
   _cmdline_parse();
   _overrides_set();

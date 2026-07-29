@@ -257,8 +257,9 @@ async function
       _error) {
     _error_display(
       _error);
-    _msg =
-      "Error publishing the chunk.";
+    const
+      _msg =
+        "Error publishing the chunk.";
     _msg_error(
       _msg,
       0);
@@ -273,10 +274,10 @@ function
     _index_end,
     _total_files) {
   let
-    _msg,
-    _total_indexes;
-  _total_indexes =
-    _index_end - _index_start + 1;
+    _msg;
+  const
+    _total_indexes =
+      _index_end - _index_start + 1;
   if ( _total_files > _total_indexes ) {
     _msg =
       `More files to upload ` +
@@ -382,11 +383,9 @@ async function
     _chunks_buffer,
     _chunks_buffers,
     _chunks_buffers_length,
-    _chunks_total,
     _chunks_files_paths_prefix,
     _cursor,
     _index,
-    _method_base_args,
     _method_object,
     _msg,
     _progress,
@@ -458,12 +457,14 @@ async function
       _contract_compiler_output_path,
       "publishBulk",
     ];
-  _method_base_args = [
-    _publication_namespace,
-    _file_hash
-  ];
-  _chunks_total =
-    _chunks_files_paths.length;
+  const
+    _method_base_args = [
+      _publication_namespace,
+      _file_hash
+    ];
+  const
+    _chunks_total =
+      _chunks_files_paths.length;
   if ( _chunks_total == 0 ) {
     _msg =
       "File chunks list empty.";
@@ -614,7 +615,7 @@ async function
     try {
       _tx = await
         _chunks_publish_bulk(
-          _chunks_publish_bulk_call_opts);
+          _publish_bulk_call_opts);
     } catch (
         _error) {
       _error_display(
@@ -691,44 +692,44 @@ async function
 function
   _config_show() {
   let
-    _chars_max,
-    _chunks_files_paths,
-    _line,
-    _text;
-  _chars_max =
-    300;
-  _chunks_files_paths =
-    chunks_files_paths.join(
-    " ");
+    _line;
+  const
+    _chars_max =
+      300;
+  const
+    _chunks_files_paths =
+      chunks_files_paths.join(
+      " ");
   if ( _chars_max < _chunks_files_paths.length ) {
     _chunks_files_paths =
       _chunks_files_paths.substring(
         0,
 	_chars_max);
   }
-  _text = [
-    `            Publication namespace: ${publication_namespace}`,
-    `                        File hash: ${file_hash}`,
-    `                  Maximum retries: ${retries_max}`,
-    `                     Call timeout: ${call_timeout}`,
-    `           Credentials settings:`,
-    `                      Wallet seed: ${wallet_seed_path}`,
-    `               Network settings:`,
-    `                   Target network: ${target_network}`,
-    `                          API Key: ${api_key_path}`,
-    `              Contract settings:`,
-    `              File system address: ${fs_address}`,
-    `        Bulk Ops contract address: ${contract_address}`,
-    `            Bulk Ops Contract ABI: ${contract_abi_path}`,
-    `       Bulk Ops Contract bytecode: ${contract_bytecode_path}`,
-    `Bulk Ops Contract compiler output: ${contract_compiler_output_path}`,
-    `               Session settings:`,
-    `                      Index start: ${index_start}`,
-    `                        Index end: ${index_end}`,
-    `                    Buffer length: ${buffer_length}`,
-    `                  Checkpoint file: ${checkpoint_file_path}`,
-    `                      File chunks: ${_chunks_files_paths}`
-  ];
+  const
+    _text = [
+      `            Publication namespace: ${publication_namespace}`,
+      `                        File hash: ${file_hash}`,
+      `                  Maximum retries: ${retries_max}`,
+      `                     Call timeout: ${call_timeout}`,
+      `           Credentials settings:`,
+      `                      Wallet seed: ${wallet_seed_path}`,
+      `               Network settings:`,
+      `                   Target network: ${target_network}`,
+      `                          API Key: ${api_key_path}`,
+      `              Contract settings:`,
+      `              File system address: ${fs_address}`,
+      `        Bulk Ops contract address: ${contract_address}`,
+      `            Bulk Ops Contract ABI: ${contract_abi_path}`,
+      `       Bulk Ops Contract bytecode: ${contract_bytecode_path}`,
+      `Bulk Ops Contract compiler output: ${contract_compiler_output_path}`,
+      `               Session settings:`,
+      `                      Index start: ${index_start}`,
+      `                        Index end: ${index_end}`,
+      `                    Buffer length: ${buffer_length}`,
+      `                  Checkpoint file: ${checkpoint_file_path}`,
+      `                      File chunks: ${_chunks_files_paths}`
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
