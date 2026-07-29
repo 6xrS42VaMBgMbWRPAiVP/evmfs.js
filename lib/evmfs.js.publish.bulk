@@ -221,12 +221,11 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Chunk '${_index}' published ` +
-    `already ('${_progress}' of ` +
-    `'${_total}').`;
+  const
+    _msg =
+      `Chunk '${_index}' published ` +
+      `already ('${_progress}' of ` +
+      `'${_total}').`;
   _msg_error(
     _msg,
     1);
@@ -238,11 +237,10 @@ function
     _index,
     _progress,
     _total) {
-  let
-    _msg;
-  _msg =
-    `Published chunk '${_index}' ` +
-    `('${_progress}'of '${_total}').`;
+  const
+    _msg =
+      `Published chunk '${_index}' ` +
+      `('${_progress}'of '${_total}').`;
   _msg_info(
     _msg);
 }

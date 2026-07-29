@@ -323,10 +323,11 @@ async function
     _contract_compiler_output_path,
     "publishCrossChainChunk"
   ];
-  _method_base_args = [
-    _publication_namespace,
-    _file_hash
-  ];
+  const
+    _method_base_args = [
+      _publication_namespace,
+      _file_hash
+    ];
   const
     _chunks_total =
       _index_end - index_start + 1;

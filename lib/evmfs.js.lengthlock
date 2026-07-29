@@ -340,7 +340,6 @@ async function
   let
     _cursor,
     _file_lock_path,
-    _files_hashes_total,
     _hash,
     _lock_call_base_opts,
     _lock_call_opts,
@@ -377,8 +376,9 @@ async function
       _publication_namespace
       // _file_hash
     ];
-  _files_hashes_total =
-    _files_hashes.length;
+  const
+    _files_hashes_total =
+      _files_hashes.length;
   const
     _files_locks_paths_total =
       _files_locks_paths.length;
@@ -878,6 +878,8 @@ if ( _cmdline_check(
     file_hash,
     checkpoint_file_path,
     chunks_files_paths,
+    chunks_locks_paths,
+    chunks_lengths_paths
   ];
   _length_lock.apply(
     null,
