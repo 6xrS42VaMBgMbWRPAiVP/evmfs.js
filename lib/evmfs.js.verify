@@ -26,6 +26,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* eslint-disable
+     no-unused-vars */
+
 /* Crash Javascript */
 
 /* global
@@ -372,9 +375,14 @@ async function
       throw _msg;
     }
   }
+  _msg =
+    `Checked '${_chunks_checked.length}' ` +
+    `chunks.`;
+  _msg_info(
+    _msg);
   return [
     _chunks_corrupted,
-    _method_object];
+    _method_object ];
 }
 
 function

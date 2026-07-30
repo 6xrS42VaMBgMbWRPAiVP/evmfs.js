@@ -380,9 +380,7 @@ async function
     _chunk,
     _chunk_check_args,
     _chunk_file_path,
-    _chunk_publish_args,
     _chunks_buffer,
-    _chunks_buffers,
     _chunks_files_paths_prefix,
     _cursor,
     _index,
@@ -390,8 +388,12 @@ async function
     _msg,
     _progress,
     _publish_bulk_call_opts,
+    _publish_bulk_args,
     _published,
     _tx;
+  const
+    _chunks_buffers =
+      [];
   if ( _buffer_length == "" ||
        typeof(
          _buffer_length) === 'undefined' ) {
@@ -511,14 +513,13 @@ async function
         _chunk_buffer);
     }
     _chunk_check_args =
-      _method_base_args.concat(
-        [_index.toString()]);
-    _chunk_check_args =
-      _method_base_args.concat(
-        [_index.toString()]);
+      _method_base_args.concat([
+        _index.toString()
+      ]);
     _check_call_opts =
-      _check_call_base_opts.concat(
-        [_chunk_check_args]);
+      _check_call_base_opts.concat([
+        _chunk_check_args
+      ]);
     try {
       [ _published,
         _method_object ] =
@@ -621,7 +622,9 @@ async function
       _error_display(
         _error);
       _msg =
-        "Error running publishing chunks function.";
+        "Error running publishing chunks " +
+        "function on transaction with nonce " +
+        `'${_tx.nonce}'.`;
       _msg_error(
         _msg,
         0);
@@ -636,9 +639,10 @@ async function
     _chunk_file_path =
       _chunks_files_paths[
         _cursor];
-    _chunks_unverified.push(
-      [_index,
-       _chunk_file_path]);
+    _chunks_unverified.push([
+      _index,
+      _chunk_file_path
+    ]);
     _cursor =
       _cursor + 1;
   }
@@ -657,9 +661,11 @@ async function
           0]);
     }
   }
-  if ( _indexes_unverified.length != 0 ) {
+  if ( 0 < _indexes_unverified.length ) {
     _msg =
-      "Some index are left to verify.";
+      "There is an amount of " +
+      `${_indexes_unverified.length}' ` +
+      `indexes left to verify.`;
     _msg_info(
       _msg);
     // _verify(
@@ -692,14 +698,14 @@ async function
 function
   _config_show() {
   let
+    _chunks_files_paths,
     _line;
   const
     _chars_max =
       300;
-  const
-    _chunks_files_paths =
-      chunks_files_paths.join(
-      " ");
+  _chunks_files_paths =
+    chunks_files_paths.join(
+    " ");
   if ( _chars_max < _chunks_files_paths.length ) {
     _chunks_files_paths =
       _chunks_files_paths.substring(
@@ -740,66 +746,66 @@ function
   _usage(
     _exit_code) {
   let
-    _line,
-    _text;
-  _text = [
-    "Usage:",
-    "  publish-bulk",
-    "    <quiet>",
-    "    <retries-max>",
-    "    <call-timeout>",
-    "    <wallet-seed-path>",
-    "    <api-key-path>",
-    "    <target-network>",
-    "    <contract-address>",
-    "    <contract-abi-path>",
-    "    <contract-bytecode-path>",
-    "    <contract-compiler-output-path>",
-    "    <fs-address>",
-    "    <publication-namespace>",
-    "    <file-hash>",
-    "    <index-start>",
-    "    <index-end>",
-    "    <buffer-length>",
-    "    <checkpoint-file-path>",
-    "    [chunk-file-path]",
-    "",
-    "Args:",
-    "  <quiet>                          Can be 'y' or 'n'",
-    "                                   Default: y",
-    "  <retries-max>                    Maximum number of retries before",
-    "                                   failing (not implemented).",
-    "  <call-timeout>                   How many milliseconds to wait",
-    "                                   for a return before declaring",
-    "                                   the call failed.",
-    "  <wallet-seed-path>               Path of the file containing",
-    "                                   the seed phrase.",
-    "  <api-key-path>                   Path of the API key for the",
-    "                                   contract ABI provider service.",
-    "  <target-network>                 Network on which the contract",
-    "                                   resides.",
-    "  <fs-address>                     File system contract address.",
-    "  <contract-address>               Address of the contract.",
-    "  <contract-abi-path>              Contract ABI path.",
-    "  <contract-bytecode-path>         Path for the contract bytecode.",
-    "  <contract-compiler-output-path>  Path for the contract compiler",
-    "                                   output path (the hardhat artifact).",
-    "  <publication-namespace>          Namespace in which the file will be",
-    "                                   published.",
-    "  <file-hash>                      Hash of the file to publish.",
-    "  <index-start>                    Chunk index from where to start.",
-    "  <index-end>                      Final chunk index to download.",
-    "  <buffer-length>                  Chunks upload buffer length.",
-    "  <checkpoint-file-path>           Checkpoint file on which latest",
-    "                                   downloaded chunk index is saved",
-    "                                   in case node was to crash.",
-    "  <chunks-files-type>              Can be 'file' or 'list. If file",
-    "                                   it will consider the next arguments",
-    "                                   files, if 'list' it the next argument",
-    "                                   will be considered a JSON list",
-    "                                   containing the files paths.",
-    "  [chunks-files-paths]             File chunks to publish.",
-  ];
+    _line;
+  const
+    _text = [
+      "Usage:",
+      `  ${app_name}`,
+      "    <quiet>",
+      "    <retries-max>",
+      "    <call-timeout>",
+      "    <wallet-seed-path>",
+      "    <api-key-path>",
+      "    <target-network>",
+      "    <contract-address>",
+      "    <contract-abi-path>",
+      "    <contract-bytecode-path>",
+      "    <contract-compiler-output-path>",
+      "    <fs-address>",
+      "    <publication-namespace>",
+      "    <file-hash>",
+      "    <index-start>",
+      "    <index-end>",
+      "    <buffer-length>",
+      "    <checkpoint-file-path>",
+      "    [chunk-file-path]",
+      "",
+      "Args:",
+      "  <quiet>                          Can be 'y' or 'n'",
+      "                                   Default: y",
+      "  <retries-max>                    Maximum number of retries before",
+      "                                   failing (not implemented).",
+      "  <call-timeout>                   How many milliseconds to wait",
+      "                                   for a return before declaring",
+      "                                   the call failed.",
+      "  <wallet-seed-path>               Path of the file containing",
+      "                                   the seed phrase.",
+      "  <api-key-path>                   Path of the API key for the",
+      "                                   contract ABI provider service.",
+      "  <target-network>                 Network on which the contract",
+      "                                   resides.",
+      "  <fs-address>                     File system contract address.",
+      "  <contract-address>               Address of the contract.",
+      "  <contract-abi-path>              Contract ABI path.",
+      "  <contract-bytecode-path>         Path for the contract bytecode.",
+      "  <contract-compiler-output-path>  Path for the contract compiler",
+      "                                   output path (the hardhat artifact).",
+      "  <publication-namespace>          Namespace in which the file will be",
+      "                                   published.",
+      "  <file-hash>                      Hash of the file to publish.",
+      "  <index-start>                    Chunk index from where to start.",
+      "  <index-end>                      Final chunk index to download.",
+      "  <buffer-length>                  Chunks upload buffer length.",
+      "  <checkpoint-file-path>           Checkpoint file on which latest",
+      "                                   downloaded chunk index is saved",
+      "                                   in case node was to crash.",
+      "  <chunks-files-type>              Can be 'file' or 'list. If file",
+      "                                   it will consider the next arguments",
+      "                                   files, if 'list' it the next argument",
+      "                                   will be considered a JSON list",
+      "                                   containing the files paths.",
+      "  [chunks-files-paths]             File chunks to publish.",
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
@@ -915,12 +921,19 @@ function
 async function
   _publish_bulk_cmdline(
     _app_opts) {
+  let
+    _msg;
   try {
     const
       _chunks_unverified =
         await _publish_bulk.apply(
           null,
           _app_opts);
+    _msg =
+      `Left '${_chunks_unverified.length}' ` +
+      `chunks to verify.`;
+    _msg_info(
+      _msg);
   } catch (
       _error) {
     console.error(
