@@ -464,7 +464,7 @@ uninstall-node-scripts:
 	  "$(LIB_DIR)/nodejs" \
 	  "$(DESTDIR)/$(PREFIX)/lib/$(_PROJECT)" \
 	  "$(NODE_DIR)" \
-	  "$(DESTDIR)$(PREFIX)/lib/node_modules/$(_PROJECT)"
+	  "$(DESTDIR)$(PREFIX)/lib/node_modules/$(_PROJECT)" \
 	); \
 	rm \
 	  -vrf \
