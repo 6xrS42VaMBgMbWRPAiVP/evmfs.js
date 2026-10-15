@@ -147,8 +147,9 @@ function
     "index",
     "network",
     "");
-  /* global file_hash:
-       writable */
+  /* global
+       file_hash:
+         writable */
   _set(
     "file",
     "hash",

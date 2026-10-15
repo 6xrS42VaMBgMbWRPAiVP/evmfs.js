@@ -40,6 +40,84 @@
        call_timeout:
          writable */
 
+/* EVMFS common globals */
+
+  /* global
+       runtime_environment:
+         writable */
+
+  /* global
+       app_opts:
+         writable */
+
+  /* global
+       retries_max:
+         writable */
+
+  /* global
+       call_method:
+         writable */
+
+  /* global
+       tasks_parallel:
+         writable */
+
+  /* global
+       api_key_path:
+         writable */
+
+  /* global
+       lock_only:
+         writable */
+
+  /* global
+       deployments_dir:
+         writable */
+
+  /* global
+       cache_dir:
+         writable */
+
+  /* global
+       fs_address:
+         writable */
+
+  /* global
+       fs_version:
+         writable */
+
+  /* global
+       ccfs_address:
+         writable */
+
+  /* global
+       rpc_selection:
+         writable */
+
+  /* global
+       publication_namespace:
+         writable */
+
+  /* global
+       index_network:
+         writable */
+
+  /* global
+       file_hash:
+         writable */
+
+/* EVMFS Get global variables */
+
+  /* global
+       output_file:
+         writable */
+
+/* EVMFS Publish global variables */
+
+  /* global
+       chunk_length:
+         writable */
+
 /* eslint-disable
      no-unused-vars */
 
@@ -77,21 +155,33 @@ const
 const
   _cmdline_check =
     _libcrash._cmdline_check;
+/* global
+     _echo */
 const
   _echo =
     _libcrash._echo;
+/* global
+     _echo2 */
 const
   _echo2 =
     _libcrash._echo2;
+/* global
+     _exit */
 const
   _exit =
     _libcrash._exit;
+/* global
+     _get */
 const
   _get =
     _libcrash._get;
+/* global
+     _global_get */
 const
   _global_get =
     _libcrash._global_get;
+/* global
+     _msg_error */
 const
   _msg_error =
     _libcrash._msg_error;
@@ -100,12 +190,18 @@ const
 const
   _msg_info =
     _libcrash._msg_info;
+/* global
+     _override_set */
 const
   _override_set =
     _libcrash._override_set;
+/* global
+     _require */
 const
   _require =
     _libcrash._require;
+/* global
+     _set */
 const
   _set =
     _libcrash._set;
