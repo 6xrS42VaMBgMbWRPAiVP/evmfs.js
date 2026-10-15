@@ -436,6 +436,11 @@ function
 
 function
   _overrides_set() {
+  const
+    _global =
+      _global_get();
+  _global[
+    "verbose"]
   _override_set(
     "call",
     "date",
@@ -847,6 +852,20 @@ async function
   runtime_environment =
     "node";
   if ( _argv[
+         "v"] ||
+       _argv[
+         "verbose"]) {
+    _global[
+      "verbose"] =
+      true;
+  }
+  if ( _global[
+         "verbose"] ) {
+    _global[
+      "quiet"] =
+      "n";
+  }
+  if ( _argv[
          "h"] ||
        _argv[
          "help"] ) {
@@ -1014,19 +1033,6 @@ async function
   }
   _libevm_cmdline_parse(
     _argv);
-  if ( _argv[
-         "v"] ||
-       _argv[
-         "verbose"]) {
-    _global[
-      "verbose"] =
-      true;
-  }
-  if ( verbose ) {
-    _global[
-      "quiet"] =
-      "n";
-  }
 }
 
 function
