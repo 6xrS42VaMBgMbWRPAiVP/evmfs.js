@@ -64,6 +64,13 @@ function
     "max",
     "");
   /* global
+       call_method:
+         writable */
+  _set(
+    "call",
+    "method",
+    "");
+  /* global
        tasks_parallel:
          writable */
   _set(
@@ -113,7 +120,7 @@ function
     "version",
     "");
   /* global
-       ccfs_version:
+       ccfs_address:
          writable */
   _set(
     "ccfs",
@@ -139,6 +146,34 @@ function
   _set(
     "index",
     "network",
+    "");
+  /* global file_hash:
+       writable */
+  _set(
+    "file",
+    "hash",
+    "");
+}
+
+function
+  _global_variables_evmfs_get() {
+  /* global
+       output_file:
+         writable */
+  _set(
+    "output",
+    "file",
+    "");
+}
+
+function 
+  _global_variables_evmfs_publish() {
+  /* global
+       chunk_length:
+         writable */
+  _set(
+    "chunk",
+    "length",
     "");
 }
 
@@ -291,6 +326,8 @@ function
 export {
   _chunk_file_path_check,
   _global_variables_common,
+  _global_variables_evmfs_get,
+  _global_variables_evmfs_publish,
   _input_data_check,
   _msg_info_chunk_get,
   _msg_info_chunk_got,
@@ -303,6 +340,10 @@ export {
 //     _chunk_file_path_check,
 //   _global_variables_common:
 //     _global_variables_common,
+//   _global_variables_evmfs_get:
+//     _global_variables_evmfs_get,
+//   _global_variables_evmfs_publish:
+//     _global_variables_evmfs_publish,
 //   _input_data_check:
 //     _input_data_check,
 //   _msg_info_chunk_get:

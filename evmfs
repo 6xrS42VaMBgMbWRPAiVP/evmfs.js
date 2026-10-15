@@ -147,80 +147,104 @@ const
 const
   _evmfs =
     _libevmfs_module._evmfs;
+const
+  _ccget_module =
+    _libevmfs_module._ccget_module;
 /* global
-     _chunks_ccget */
-/* exported
      _chunks_ccget */
 const
-  _ccget =
-    _libevmfs_module._ccget;
+  _chunks_ccget =
+    _ccget_module._chunks_ccget;
+const
+  _check_module =
+    _libevmfs_module._check_module;
 /* global
-     _check */
-/* exported
-     _check */
+     _chunks_check */
 const
   _chunks_check =
-    _libevmfs_module._chunks_check;
+    _chunks_module._chunks_check;
+const
+  _common_module =
+    _libevmfs_module._common_module;
 /* global
-     _get */
-/* exported
-     _get */
+     _global_variables_common */
+const
+  _global_variables_common =
+    _common_module._global_variables_common;
+/* global
+     _global_variables_evmfs_get */
+const
+  _global_variables_evmfs_get =
+    _common_module._global_variables_evmfs_get;
+/* global
+     _global_variables_evmfs_publish */
+const
+  _global_variables_evmfs_publish =
+    _common_module._global_variables_evmfs_publish;
+/* global
+     _get_module */
+const
+  _get_module =
+    _libevmfs_module._get_module;
+/* global
+     _chunks_get */
 const
   _chunks_get =
-    _libevmfs_module._chunks_get;
+    _get_module._chunks_get;
+const
+  _index_module =
+    _libevmfs_module._index_module;
 /* global
-     _index */
-/* exported
-     _index */
+     _chunks_index */
 const
   _chunks_index =
-    _libevmfs_module._chunks_index;
-/* global
-     _lock */
-/* exported
-     _lock*/
+    _index_module._chunks_index;
 const
-  _lock =
-    _libevmfs_module._lock;
+  _lock_module =
+    _libevmfs_module._lock_module;
 /* global
-     _lengthlock*/
-/* exported
- *   _lengthlock*/
+     _chunks_lock */
+const
+  _chunks_lock =
+    _lock_module._chunks_lock;
+const
+  _lengthlock_module =
+    _libevmfs_module._lengthlock_module;
+/* global
+     _lengthlock */
 const
   _lengthlock =
-    _libevmfs_module._lengthlock;
-/* global
-     _publish*/
-/* exported
-     _publish*/
+    _lengthlock_module._lengthlock;
 const
-  _publish =
-    _libevmfs_module._publish;
+  _publish_module =
+    _libevmfs_module._publish_module;
 /* global
-     _publish_bulk */
-/* exported
+     _chunks_publish*/
+const
+  _chunks_publish =
+    _publish_module._chunks_publish;
+const
+  _publish_bulk_module =
+    _libevmfs_module._publish_bulk_module;
+/* global
      _publish_bulk */
 const
   _publish_bulk =
-    _libevmfs_module._publish_bulk;
-/* global
-     _verify */
-/* exported
-     _verify */
+    _publish_bulk_module._publish_bulk;
 const
-  _verify =
-    _libevmfs_module._verify;
+  _verify_module =
+    _libevmfs_module._verify_module;
+/* global
+     _chunks_verify */
+const
+  _chunks_verify =
+    _verify_module._chunks_verify;
 
 function
   _global_variables() {
-  _global_varibales_common();
-  /* global
-       runtime_environment:
-         writable */
-  _set(
-    "runtime",
-    "environment",
-    "");
+  _global_variables_common();
+  _global_variables_evmfs_get();
+  _global_variables_evmfs_publish();
   /* global
        app_name:
          writable */
@@ -228,13 +252,6 @@ function
     "app",
     "name",
     "evmfs.js");
-  /* global
-       app_opts:
-         writable */
-  _set(
-    "app",
-    "opts",
-    []);
   /* global
        target_command:
          writable */
@@ -256,142 +273,6 @@ function
     "target",
     "value",
     "");
-  /* global
-       retries_max:
-         writable */
-  _set(
-    "retries",
-    "max",
-    "");
-  /* global
-       call_method:
-         writable */
-  _set(
-    "call",
-    "method",
-    "");
-  /* global
-       chunk_length:
-         writable */
-  _set(
-    "chunk",
-    "length",
-    "");
-  /* global
-       output_file:
-         writable */
-  _set(
-    "output",
-    "file",
-    "");
-  /* global
-       tasks_parallel:
-         writable */
-  _set(
-    "tasks",
-    "parallel",
-    "");
-  /* global
-       api_key_path:
-         writable */
-  _set(
-    "api_key",
-    "path",
-    "");
-  /* global
-       lock_only:
-         writable */
-  _set(
-    "target",
-    "network",
-    "");
-  /* global
-       target_network:
-         writable */
-  _set(
-    "target",
-    "network",
-    "");
-  /* global
-       deployments_dir:
-         writable */
-  _set(
-    "deployments",
-    "dir",
-    "");
-  /* global
-       cache_dir:
-         writable */
-  _set(
-    "cache",
-    "dir",
-    "");
-  /* global
-       fs_address:
-         writable */
-  _set(
-    "fs",
-    "address",
-    "");
-  /* global
-       fs_version:
-         writable */
-  _set(
-    "fs",
-    "version",
-    "");
-  _set(
-    "ccfs",
-    "address",
-    "");
-  /* global
-       rpc_selection:
-         writable */
-  _set(
-    "rpc",
-    "selection",
-    "");
-  /* global
-       publication_namespace:
-         writable */
-  _set(
-    "publication",
-    "namespace",
-    "");
-  /* global file_hash:
-       writable */
-  _set(
-    "file",
-    "hash",
-    "");
-  /* global
-       index_network:
-         writable */
-  _set(
-    "index",
-    "network",
-    "");
-  /* global
-       index_end:
-         writable */
-  _set(
-    "index",
-    "end",
-    "");
-  /* global
-       checkpoint_file_path:
-         writable */
-  _set(
-    "checkpoint_file",
-    "path",
-    "");
-  /* global
-       chunks_files_paths:
-         writable */
-  _set(
-    "chunks_files",
-    "paths",
-    []);
   const
     _global =
       _global_get();
@@ -930,16 +811,6 @@ async function
       "dir",
       _argv[
         "cache-dir"]);
-  }
-  if ( "C" in _argv ) {
-    currency_address =
-      _argv[
-        "C"];
-  }
-  if ( "currency" in _argv ) {
-    currency_address =
-      _argv[
-        "currency"];
   }
   _libevm_cmdline_parse(
     _argv);

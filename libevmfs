@@ -78,9 +78,7 @@ async function
   let
     _msg;
   _msg =
-    `stub '${_stub}'.`;
-  _msg =
-    _msg + _msg;
+    `Stub '${_stub}'.`;
   _msg_info(
     _msg);
 }
