@@ -1855,7 +1855,7 @@ if ( await _cmdline_check(
   }
 }
 
-module.exports = {
+export {
   _chain_id_read,
   _chunk_chain_id_get,
   _chunk_fs_get,
