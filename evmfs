@@ -273,6 +273,11 @@ const
   _call_auth_auto_detect =
     _libevmfs_module._call_auth_auto_detect;
 /* global
+     _call_timeout_auto_detect */
+const
+  _call_timeout_auto_detect =
+    _libevmfs_module._call_timeout_auto_detect;
+/* global
      _evmfs */
 const
   _evmfs =
@@ -799,6 +804,7 @@ async function
       0);
     _echo2(
       _error);
+    throw _error;
   }
   _config_show();
   const
