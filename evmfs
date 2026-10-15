@@ -619,7 +619,7 @@ function
       `                       Lock only:   ${lock_only}`,
       `                   Skip encoding:   ${encoding_skip}`,
       "              Download options:",
-      `                     Output type:   ${output_type}`,
+      `                     Output file:   ${output_file}`,
       "              Contract options:",
       `             File system address:   ${fs_address}`,
       ` Cross-chain file system address:   ${ccfs_address}`,

@@ -73,12 +73,20 @@ const
 
 async function
   _evmfs(
-    _stub
-  ) {
+    _target_command,
+    _target_key,
+    _target_value) {
   let
     _msg;
   _msg =
-    `Stub '${_stub}'.`;
+    `Running command ` +
+    `'${_target_command}' with key ` +
+    `'${_target_key}' and value` +
+    `'${_target_value}'.`;
+  _msg_info(
+    _msg);
+  _msg =
+    "mm mm."
   _msg_info(
     _msg);
 }
