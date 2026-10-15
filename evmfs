@@ -798,69 +798,69 @@ async function
   if ( "m" in _argv ) {
     _set(
       "call",
-      "method"
+      "method",
       _argv[
         "m"]);
   }
   if ( "call-method" in _argv ) {
     _set(
       "call",
-      "method"
+      "method",
       _argv[
         "call-method"]);
   }
   if ( "r" in _argv ) {
     _set(
       "retries",
-      "max"
+      "max",
       _argv[
         "r"]);
   }
   if ( "retries-max" in _argv ) {
     _set(
       "retries",
-      "max"
+      "max",
       _argv[
         "retries-max"]);
   }
   if ( "T" in _argv ) {
     _set(
       "call",
-      "timeout"
+      "timeout",
       _argv[
         "T"]);
   }
   if ( "call-timeout" in _argv ) {
     _set(
       "call",
-      "timeout"
+      "timeout",
       _argv[
         "call-timeout"]);
   }
   if ( "l" in _argv ) {
     _set(
       "chunk",
-      "length"
+      "length",
       _argv[
         "l"]);
   }
   if ( "chunk-length" in _argv ) {
     _set(
       "chunk",
-      "length"
+      "length",
       _argv[
         "chunk-length"]);
   }
   if ( "L" in _argv ) {
     _set(
       "lock",
-      "only"
+      "only",
       "y");
   }
   if ( "lock-only" in _argv ) {
     _set(
       "lock",
-      "only"
+      "only",
       "y");
   }
   if ( "P" in _argv ) {
