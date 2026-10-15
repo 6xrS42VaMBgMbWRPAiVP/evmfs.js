@@ -470,6 +470,11 @@ function
     "wallet",
     "name",
     "default");
+  _call_timeout_auto_detect();
+  _override_set(
+    "retries",
+    "max",
+    3);
   _call_auth_auto_detect();
   const
     _call_auth =

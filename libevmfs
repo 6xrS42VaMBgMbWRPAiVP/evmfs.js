@@ -77,6 +77,37 @@ const
       "./lib/verify");
 
 function
+  _call_timeout_auto_detect() {
+  let
+    _call_timeout;
+  const
+    _target_command =
+      _get(
+        "target",
+        "command");
+  if ( _target_command == "get" ) {
+    _call_timeout =
+      3000;
+  }
+  else if ( _target_command == "publish" ) {
+    _call_timeout =
+      60000;
+  }
+  else {
+    _msg =
+      `Unknown command '${_target_command}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  _override_set(
+    "call",
+    "timeout",
+    _call_timeout)
+}
+
+function
   _call_auth_auto_detect() {
   let
     _call_auth;
@@ -135,6 +166,7 @@ async function
 
 export {
   _call_auth_auto_detect,
+  _call_timeout_auto_detect,
   _common_module,
   _ccget_module,
   _check_module,
@@ -153,6 +185,8 @@ export {
 // module.exports = {
 //   _call_auth_auto_detect:
 //     _call_auth_auto_detect,
+//   _call_timeout_auto_detect:
+//     _call_timeout_auto_detect,
 //   _common_module:
 //     _common_module,
 //   _ccget_module:
