@@ -444,6 +444,10 @@ function
     "rpc",
     "selection",
     "kirsh");
+  _override_set(
+    "encoding",
+    "skip",
+    "n");
 }
 
 function

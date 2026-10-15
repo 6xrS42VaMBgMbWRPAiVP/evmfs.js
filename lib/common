@@ -184,11 +184,11 @@ function
     "length",
     "");
   /* global
-       skip_encoding:
+       encoding_skip:
          writable */
   _set(
-    "skip",
     "encoding",
+    "skip",
     "");
   /* global
        lock_only:
