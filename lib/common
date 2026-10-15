@@ -92,7 +92,7 @@ function
     "path",
     "");
   /* global
-       lock_only:
+       target_network:
          writable */
   _set(
     "target",
@@ -189,6 +189,13 @@ function
   _set(
     "skip",
     "encoding",
+    "");
+  /* global
+       lock_only:
+         writable */
+  _set(
+    "lock",
+    "only",
     "");
 }
 
