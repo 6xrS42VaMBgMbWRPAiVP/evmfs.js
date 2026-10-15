@@ -444,7 +444,7 @@ function
     "";
 }
 
-await function
+async function
   _overrides_set() {
   const
     _global =
@@ -508,9 +508,9 @@ await function
         _target_networks
       ];
     _wallet_overrides_set =
-    await _wallet_overrides_set.apply(
-      null,
-      _wallet_overrides_set_args);
+      await _wallet_overrides_set.apply(
+        null,
+        _wallet_overrides_set_args);
   }
   else if ( _call_auth == "n" ) {
     true;
