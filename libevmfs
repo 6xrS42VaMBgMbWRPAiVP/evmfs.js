@@ -44,6 +44,11 @@ const
 const
   _override_set =
     _libcrash._override_set;
+/* global
+     _require */
+const
+  _require =
+    _libcrash._require;
 
 const
   _common_module =
@@ -85,6 +90,13 @@ const
   _verify_module =
     await import(
       "./lib/verify");
+const
+  _libevm_module =
+    await _require(
+      "libevm");
+const
+  _deployments_dir_check =
+    _libevm_module._deployments_dir_check;
 
 function
   _call_timeout_auto_detect() {
@@ -146,6 +158,54 @@ function
     "call",
     "auth",
     _call_auth)
+}
+
+async function
+  _deployments_dir_auto_detect(){
+  let
+    _deployments_dir,
+    _msg,
+    _user_level;
+  const
+    _app_name =
+      "evmfs";
+  _user_level =
+    _get(
+      "user",
+      "level");
+  _deployments_dir =
+    _get(
+      "deployments",
+      "dir");
+  try {
+    const
+      _deployments_dir_check_args = [
+        _deployments_dir,
+        _app_name,
+        _user_level
+      ];
+    _deployments_dir =
+      await _deployments_dir_check.apply(
+        null,
+        _deployments_dir_check_args);
+  }
+  catch(
+    _error) {
+    const
+      _msg =
+        "Error running '_deployments_dir_check' " +
+        `with arguments '${_deployments_dir_check_args}':`;
+    _msg_error(
+      _msg,
+      0);
+    _echo2(
+      _error);
+    throw _error;
+  }
+  _override_set(
+    "deployments",
+    "dir",
+    _deployments_dir);
 }
 
 function
@@ -211,6 +271,7 @@ export {
   _common_module,
   _ccget_module,
   _check_module,
+  _deployments_dir_auto_detect,
   _evmfs,
   _index_module,
   _lengthlock_module,
@@ -235,6 +296,8 @@ export {
 //     _ccget_module,
 //   _check_module:
 //     _check_module,
+//   _deployments_dir_auto_detect:
+//     _deployments_dir_auto_detect,
 //   _evmfs:
 //     _evmfs,
 //   _index_module:

@@ -278,6 +278,11 @@ const
   _call_timeout_auto_detect =
     _libevmfs_module._call_timeout_auto_detect;
 /* global
+     _deployments_dir_auto_detect */
+const
+  _deployments_dir_auto_detect =
+    _libevmfs_module._deployments_dir_auto_detect;
+/* global
      _parallel_tasks_auto_detect */
 const
   _parallel_tasks_auto_detect =
@@ -478,6 +483,10 @@ async function
     "n");
   _parallel_tasks_auto_detect();
   _override_set(
+    "user",
+    "level",
+    "n");
+  _override_set(
     "wallet",
     "name",
     "default");
@@ -487,6 +496,19 @@ async function
     "max",
     3);
   _call_auth_auto_detect();
+  const
+    _app_name =
+      _get(
+        "app",
+        "name");
+  const
+    _user_level =
+      _get(
+        "user",
+        "level");
+  _deployments_dir_check(
+    _app_name,
+    _user_level);
   const
     _call_auth =
       _get(
