@@ -138,7 +138,7 @@
     { "build":
         "npm run lint && npm run build-lib && npm build-bin",
       "build-lib":
-        "npx webpack --mode 'production' --config 'libevmfs.lwebpack.config.cjs' --stats-error-details && mv 'libevmfs.js' 'dist/libevmfs'",
+        "npx webpack --mode 'production' --config 'libevmfs.webpack.config.cjs' --stats-error-details && mv 'libevmfs.js' 'dist/libevmfs'",
       "build-bin":
         "npx webpack --mode 'production' --config 'webpack.config.cjs' --stats-error-details && mv 'evmfs.js' 'dist/evmfs'",
       "lint":

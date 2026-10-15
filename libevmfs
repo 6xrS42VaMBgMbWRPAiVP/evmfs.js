@@ -86,7 +86,7 @@ async function
   _msg_info(
     _msg);
   _msg =
-    "mm mm."
+    "mm mm.";
   _msg_info(
     _msg);
 }
