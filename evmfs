@@ -386,6 +386,13 @@ function
   _global_variables_evmfs_get();
   _global_variables_evmfs_publish();
   /* global
+       call_date:
+         writable */
+  _set(
+    "call",
+    "date",
+    "");
+  /* global
        app_name:
          writable */
   _set(
@@ -416,8 +423,14 @@ function
   const
     _global =
       _global_get();
-  global[
+  _global[
     "quiet"] =
+    "";
+  /* global
+       verbose:
+         writable */
+  _global[
+    "verbose"] =
     "";
 }
 
