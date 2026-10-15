@@ -148,6 +148,37 @@ function
     _call_auth)
 }
 
+function
+  _parallel_tasks_auto_detect() {
+  let
+    _parallel_tasks;
+  const
+    _target_command =
+      _get(
+        "target",
+        "command");
+  if ( _target_command == "get" ) {
+    _parallel_tasks =
+      1;
+  }
+  else if ( _target_command == "publish" ) {
+    _parallel_tasks =
+      1;
+  }
+  else {
+    _msg =
+      `Unknown command '${_target_command}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  _override_set(
+    "parallel",
+    "tasks",
+    _parallel_tasks)
+}
+
 async function
   _evmfs(
     _target_command,

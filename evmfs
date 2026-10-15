@@ -278,6 +278,11 @@ const
   _call_timeout_auto_detect =
     _libevmfs_module._call_timeout_auto_detect;
 /* global
+     _parallel_tasks_auto_detect */
+const
+  _parallel_tasks_auto_detect =
+    _libevmfs_module._parallel_tasks_auto_detect;
+/* global
      _evmfs */
 const
   _evmfs =
@@ -471,6 +476,7 @@ async function
     "encoding",
     "skip",
     "n");
+  _parallel_tasks_auto_detect();
   _override_set(
     "wallet",
     "name",
