@@ -233,100 +233,6 @@ function
 }
 
 function
-  _url_parse_common() {
-  _set(
-    "runtime",
-    "environment",
-    "browser");
-  _set(
-    "wallet",
-    "name",
-    _argv_url_get(
-      "wallet_name")[
-        0]);
-  _set(
-    "rpc",
-    "selection",
-    _argv_url_get(
-      "wallet_name")[
-        0]);
-  _set(
-    "retries",
-    "max",
-    _argv_url_get(
-      "retries_max")[
-        0]);
-  _set(
-    "call",
-    "method",
-    _argv_url_get(
-      "call_method")[
-        0]);
-  _set(
-    "fs",
-    "address",
-    _argv_url_get(
-      "fs_address")[
-        0]);
-  _set(
-    "ccfs",
-    "address",
-    _argv_url_get(
-      "ccfs_address")[
-        0]);
-  _set(
-    "tasks",
-    "parallel",
-    _argv_url_get(
-      "tasks_parallel")[
-        0]);
-  _set(
-    "fs",
-    "version",
-    _argv_url_get(
-      "fs_version")[
-        0]);
-  _set(
-    "config",
-    "dir",
-    _argv_url_get(
-      "config_dir")[
-        0]);
-  _set(
-    "cache",
-    "dir",
-    _argv_url_get(
-      "cache_dir")[
-        0]);
-}
-
-function
-  _url_parse_evmfs_get() {
-  _set(
-    "output",
-    "file",
-    _argv_url_get(
-      "output_file")[
-        0]);
-}
-
-function
-  _url_parse_evmfs_publish() {
-  _set(
-    "chunk",
-    "length",
-    _argv_url_get(
-      "chunk_length")[
-        0]);
-  _set(
-    "encoding",
-    "skip",
-    _argv_url_get(
-      "encoding_skip")[
-        0]);
-}
-
-function
   _msg_info_chunk_get(
     _index,
     _progress,
@@ -425,6 +331,102 @@ function
   _msg_info(
     _msg);
 }
+
+function
+  _url_parse_common() {
+  _set(
+    "runtime",
+    "environment",
+    "browser");
+  _set(
+    "wallet",
+    "name",
+    _argv_url_get(
+      "wallet_name")[
+        0]);
+  _set(
+    "rpc",
+    "selection",
+    _argv_url_get(
+      "wallet_name")[
+        0]);
+  _set(
+    "retries",
+    "max",
+    _argv_url_get(
+      "retries_max")[
+        0]);
+  _set(
+    "call",
+    "method",
+    _argv_url_get(
+      "call_method")[
+        0]);
+  _set(
+    "fs",
+    "address",
+    _argv_url_get(
+      "fs_address")[
+        0]);
+  _set(
+    "ccfs",
+    "address",
+    _argv_url_get(
+      "ccfs_address")[
+        0]);
+  _set(
+    "tasks",
+    "parallel",
+    _argv_url_get(
+      "tasks_parallel")[
+        0]);
+  _set(
+    "fs",
+    "version",
+    _argv_url_get(
+      "fs_version")[
+        0]);
+  _set(
+    "config",
+    "dir",
+    _argv_url_get(
+      "config_dir")[
+        0]);
+  _set(
+    "cache",
+    "dir",
+    _argv_url_get(
+      "cache_dir")[
+        0]);
+}
+
+function
+  _url_parse_evmfs_get() {
+  _set(
+    "output",
+    "file",
+    _argv_url_get(
+      "output_file")[
+        0]);
+}
+
+function
+  _url_parse_evmfs_publish() {
+  _set(
+    "chunk",
+    "length",
+    _argv_url_get(
+      "chunk_length")[
+        0]);
+  _set(
+    "encoding",
+    "skip",
+    _argv_url_get(
+      "encoding_skip")[
+        0]);
+}
+
+
 
 export {
   _chunk_file_path_check,
