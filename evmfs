@@ -1072,7 +1072,7 @@ if ( await _cmdline_check(
        "evmfs") ) {
   _echo(
     "Running 'evmfs' from the command line.");
-  _cmdline_parse();
+  await _cmdline_parse();
 }
 else {
   _echo(
