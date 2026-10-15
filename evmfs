@@ -506,9 +506,19 @@ async function
       _get(
         "user",
         "level");
-  _deployments_dir_check(
-    _app_name,
-    _user_level);
+  try {
+    await _deployments_dir_auto_detect();
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error auto-detecting " +
+      "deployments directory.";
+    _msg_error(
+      _msg,
+      0);
+    throw _error;
+  }
   const
     _call_auth =
       _get(
