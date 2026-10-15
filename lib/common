@@ -217,6 +217,7 @@ function
         0);
       throw _msg;
     }
+  }
   else {
     _msg =
       `Unknown type '${_path_type}' for ` +
