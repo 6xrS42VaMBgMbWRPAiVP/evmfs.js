@@ -461,6 +461,22 @@ function
     "encoding",
     "skip",
     "n");
+  _override_set(
+    "wallet",
+    "name",
+    "default");
+  const
+    _wallet_name =
+      _get(
+        "wallet",
+        "name");
+  _wallet_overrides_set(
+    "evm-wallet",
+    _wallet_name,
+    _call_auth,
+    _qr_support,
+    _target_networks) {
+  )
 }
 
 function

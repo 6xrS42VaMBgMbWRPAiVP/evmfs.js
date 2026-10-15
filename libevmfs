@@ -76,6 +76,36 @@ const
     await import(
       "./lib/verify");
 
+function
+  _call_auth_auto_detect() {
+  let
+    _call_auth;
+  const
+    _target_command =
+      _get(
+        "target",
+        "command");
+  if ( _target_command == "get" ) {
+    _call_auth =
+      "n";
+  else if ( _target_command == "publish" ) {
+    _call_auth =
+      "y";
+  }
+  else {
+    _msg =
+      `Unknown command '${_target_command}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  _override_set(
+    "call",
+    "auth",
+    _call_auth)
+}
+
 async function
   _evmfs(
     _target_command,
@@ -103,6 +133,7 @@ async function
 // ES6 module export
 
 export {
+  _call_auth_auto_detect,
   _common_module,
   _ccget_module,
   _check_module,
@@ -119,6 +150,8 @@ export {
 // Common JS exports
 
 // module.exports = {
+//   _call_auth_auto_detect:
+//     _call_auth_auto_detect,
 //   _common_module:
 //     _common_module,
 //   _ccget_module:
