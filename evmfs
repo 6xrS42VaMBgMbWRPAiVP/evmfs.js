@@ -465,18 +465,51 @@ function
     "wallet",
     "name",
     "default");
+  _call_auth_auto_detect();
   const
-    _wallet_name =
+    _call_auth =
       _get(
-        "wallet",
-        "name");
-  _wallet_overrides_set(
-    "evm-wallet",
-    _wallet_name,
-    _call_auth,
-    _qr_support,
-    _target_networks) {
-  )
+        "call",
+        "auth");
+  if ( _call_auth == "y" ) {
+    const
+      _wallet_name =
+        _get(
+          "wallet",
+          "name");
+    const
+      _target_networks =
+        _get(
+          "target",
+          "networks");
+    const
+      _wallet_overrides_set_args = [
+        "evm-wallet",
+        _wallet_name,
+        _call_auth,
+        "n",               // QR support
+        _target_networks
+      ];
+    _wallet_overrides_set(
+      "evm-wallet",
+      _wallet_name,
+      _call_auth,
+      "n",
+      _target_networks)
+    )
+  }
+  else if ( _call_auth == "n" ) {
+    true;
+  }
+  else {
+    _msg =
+      `Unknown value '${_call_auth}' ` +
+      "for 'call_auth' variable.";
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
 }
 
 function
