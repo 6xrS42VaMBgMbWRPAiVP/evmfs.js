@@ -39,6 +39,11 @@ const
 const
   _msg_info =
     _libcrash._msg_info;
+/* global
+     _override_set */
+const
+  _override_set =
+    _libcrash._override_set;
 
 const
   _common_module =
