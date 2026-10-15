@@ -456,6 +456,8 @@ function
 
 async function
   _overrides_set() {
+  let
+    _msg;
   const
     _global =
       _global_get();

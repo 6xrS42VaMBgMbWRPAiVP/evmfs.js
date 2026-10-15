@@ -30,10 +30,20 @@ const
     await import(
       "libcrash-js");
 /* global
+     _echo2 */
+const
+  _echo2 =
+    _libcrash._echo2;
+/* global
      _get */
 const
   _get =
     _libcrash._get;
+/* global
+     _msg_error */
+const
+  _msg_error =
+    _libcrash._msg_error;
 /* global
      _msg_info */
 const
@@ -177,13 +187,13 @@ async function
     _get(
       "deployments",
       "dir");
+  const
+    _deployments_dir_check_args = [
+      _deployments_dir,
+      _app_name,
+      _user_level
+    ];
   try {
-    const
-      _deployments_dir_check_args = [
-        _deployments_dir,
-        _app_name,
-        _user_level
-      ];
     _deployments_dir =
       await _deployments_dir_check.apply(
         null,
