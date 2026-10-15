@@ -34,6 +34,8 @@ const
   _ignores = [
      "build/**",
      "dist/**",
+     `**/*.${_project}.js`,
+     `**/*.lib${_project}.js`,
      "node_modules/**",
      "eslint.config.js",
      "man/**"
