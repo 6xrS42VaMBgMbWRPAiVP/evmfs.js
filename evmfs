@@ -40,6 +40,12 @@
        call_timeout:
          writable */
 
+/* LibEVM application globals */
+
+  /* global
+       user_level:
+         writable */
+
 /* EVMFS common globals */
 
   /* global
@@ -140,6 +146,11 @@ const
 const
   _argv =
     _libcrash._argv;
+/* global
+     _argv_get */
+const
+  _argv_get =
+    _libcrash._argv_get;
 /* global
      _argv_url_get */
 const
@@ -258,7 +269,7 @@ const
      _chunks_check */
 const
   _chunks_check =
-    _chunks_module._chunks_check;
+    _check_module._chunks_check;
 const
   _common_module =
     _libevmfs_module._common_module;
@@ -277,6 +288,21 @@ const
 const
   _global_variables_evmfs_publish =
     _common_module._global_variables_evmfs_publish;
+/* global
+     _url_parse_common */
+const
+  _url_parse_common =
+    _common_module._url_parse_common;
+/* global
+     _url_parse_evmfs_get */
+const
+  _url_parse_evmfs_get =
+    _common_module._url_parse_evmfs_get;
+/* global
+     _url_parse_evmfs_publish */
+const
+  _url_parse_evmfs_publish =
+    _common_module._url_parse_evmfs_publish;
 /* global
      _get_module */
 const
@@ -770,7 +796,7 @@ async function
        _argv) != "undefined" &&
        1 < _argv[
              "_"].length ) {
-    command_key =
+    target_key =
       _argv[
         "_"][
           1];
@@ -779,7 +805,7 @@ async function
        _argv) != "undefined" &&
        2 < _argv[
              "_"].length ) {
-    command_value =
+    target_value =
       _argv[
         "_"][
           2];
@@ -930,62 +956,9 @@ function
   const
     _argv =
       _argv_url_get();
-  runtime_environment =
-    "browser";
-  wallet_name =
-    _argv_url_get(
-      "wallet_name")[
-        0];
-  rpc_selection =
-    _argv_url_get(
-      "rpc_selection")[
-        0];
-  explorer_selection =
-    _argv_url_get(
-      "explorer_selection")[
-        0];
-  retries_max =
-    _argv_url_get(
-      "retries_max")[
-        0];
-  measure_unit =
-    _argv_url_get(
-      "measure_unit")[
-        0];
-  balance_lifespan =
-    _argv_url_get(
-      "balance_lifespan")[
-        0];
-  networks_all =
-    _argv_url_get(
-      "networks_all")[
-        0];
-  tasks_parallel =
-    _argv_url_get(
-      "tasks_parallel")[
-        0];
-  _set(
-    "qr",
-    "support",
-    _argv_url_get(
-      "qr_support")[
-        0]);
-  output_type =
-    _argv_url_get(
-      "output_type")[
-        0];
-  currency_address =
-    _argv_url_get(
-      "currency_address")[
-        0];
-  config_dir =
-    _argv_url_get(
-      "config_dir")[
-        0];
-  cache_dir =
-    _argv_url_get(
-      "cache_dir")[
-        0];
+  _url_parse_common();
+  _url_parse_evmfs_get();
+  _url_parse_evmfs_publish();
   _libevm_url_parse();
   const
     _global =

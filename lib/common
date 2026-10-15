@@ -225,6 +225,89 @@ function
 }
 
 function
+  _url_parse_common() {
+  _set(
+    "runtime",
+    "environment",
+    "browser");
+  _set(
+    "wallet",
+    "name",
+    _argv_url_get(
+      "wallet_name")[
+        0]);
+  _set(
+    "rpc",
+    "selection",
+    _argv_url_get(
+      "wallet_name")[
+        0]);
+  _set(
+    "retries",
+    "max",
+    _argv_url_get(
+      "retries_max")[
+        0]);
+  _set(
+    "call",
+    "method",
+    _argv_url_get(
+      "call_method")[
+        0]);
+  _set(
+    "fs",
+    "address",
+    _argv_url_get(
+      "fs_address")[
+        0]);
+  _set(
+    "ccfs",
+    "address",
+    _argv_url_get(
+      "ccfs_address")[
+        0]);
+  _set(
+    "tasks",
+    "parallel",
+    _argv_url_get(
+      "tasks_parallel")[
+        0]);
+  _set(
+    "fs",
+    "version",
+    _argv_url_get(
+      "fs_version")[
+        0]);
+  _set(
+    "config",
+    "dir",
+    _argv_url_get(
+      "config_dir")[
+        0]);
+  _set(
+    "cache",
+    "dir",
+    _argv_url_get(
+      "cache_dir")[
+        0]);
+}
+
+function
+  _url_parse_evmfs_get() {
+  _set(
+    "output",
+    "file",
+    _argv_url_get(
+      "output_file")[
+        0]);
+}
+
+function
+  _url_parse_evmfs_publish() {
+  true;
+}
+
+function
   _msg_info_chunk_get(
     _index,
     _progress,
@@ -333,7 +416,10 @@ export {
   _msg_info_chunk_get,
   _msg_info_chunk_got,
   _msg_info_chunk_published,
-  _msg_info_chunk_published_already
+  _msg_info_chunk_published_already,
+  _url_parse_common,
+  _url_parse_evmfs_get,
+  _url_parse_evmfs_publish
 };
 
 // module.exports = {
@@ -352,7 +438,13 @@ export {
 //   _msg_info_chunk_got:
 //     _msg_info_chunk_got,
 //   _msg_info_chunk_published:
-//     _msg_info_chunk_published
+//     _msg_info_chunk_published,
 //   _msg_info_chunk_published_already:
-//     _msg_info_chunk_published_already
+//     _msg_info_chunk_published_already,
+//   _url_parse_common:
+//     _url_parse_common
+//   _url_parse_evmfs_get:
+//     _url_parse_evmfs_get,
+//   _url_parse_evmfs_publish:
+//     _url_parse_evmfs_publish
 // };
