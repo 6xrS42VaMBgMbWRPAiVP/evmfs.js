@@ -213,6 +213,7 @@ const
 
 function
   _global_variables() {
+  _global_varibales_common();
   /* global
        runtime_environment:
          writable */
@@ -350,41 +351,6 @@ function
     "rpc",
     "selection",
     "");
-  /* global
-       contract_address:
-         writable */
-  _set(
-    "contract",
-    "address",
-    "");
-  /* global
-       contract_abi_path:
-         writable */
-  _set(
-    "contract_abi",
-    "path",
-    "");
-  /* global
-       contract_bytecode_path:
-         writable */
-  _set(
-    "contract_bytecode",
-    "path",
-    "");
-  /* global
-       contract_compiler_output_path:
-         writable */
-  _set(
-    "contract_compiler_output",
-    "path",
-    "");
-  /* global
-       method_objects:
-         writable */
-  _set(
-    "method",
-    "objects",
-    {});
   /* global
        publication_namespace:
          writable */

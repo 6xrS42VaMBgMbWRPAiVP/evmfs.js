@@ -41,6 +41,108 @@
 //       "libcrash-js");
 
 function
+  _global_variables_common() {
+  /* global
+       runtime_environment:
+         writable */
+  _set(
+    "runtime",
+    "environment",
+    "");
+  /* global
+       app_opts:
+         writable */
+  _set(
+    "app",
+    "opts",
+    []);
+  /* global
+       retries_max:
+         writable */
+  _set(
+    "retries",
+    "max",
+    "");
+  /* global
+       tasks_parallel:
+         writable */
+  _set(
+    "tasks",
+    "parallel",
+    "");
+  /* global
+       api_key_path:
+         writable */
+  _set(
+    "api_key",
+    "path",
+    "");
+  /* global
+       lock_only:
+         writable */
+  _set(
+    "target",
+    "network",
+    "");
+  /* global
+       deployments_dir:
+         writable */
+  _set(
+    "deployments",
+    "dir",
+    "");
+  /* global
+       cache_dir:
+         writable */
+  _set(
+    "cache",
+    "dir",
+    "");
+  /* global
+       fs_address:
+         writable */
+  _set(
+    "fs",
+    "address",
+    "");
+  /* global
+       fs_version:
+         writable */
+  _set(
+    "fs",
+    "version",
+    "");
+  /* global
+       ccfs_version:
+         writable */
+  _set(
+    "ccfs",
+    "address",
+    "");
+  /* global
+       rpc_selection:
+         writable */
+  _set(
+    "rpc",
+    "selection",
+    "");
+  /* global
+       publication_namespace:
+         writable */
+  _set(
+    "publication",
+    "namespace",
+    "");
+  /* global
+       index_network:
+         writable */
+  _set(
+    "index",
+    "network",
+    "");
+}
+
+function
   _chunk_file_path_check(
     _path,
     _index,
@@ -188,6 +290,7 @@ function
 
 export {
   _chunk_file_path_check,
+  _global_variables_common,
   _input_data_check,
   _msg_info_chunk_get,
   _msg_info_chunk_got,
@@ -198,6 +301,8 @@ export {
 // module.exports = {
 //   _chunk_file_path_check:
 //     _chunk_file_path_check,
+//   _global_variables_common:
+//     _global_variables_common,
 //   _input_data_check:
 //     _input_data_check,
 //   _msg_info_chunk_get:

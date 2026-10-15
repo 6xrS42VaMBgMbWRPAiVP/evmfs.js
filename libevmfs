@@ -31,40 +31,44 @@
      _msg_info */
 
 const
+  _common_module =
+    await import(
+      "./lib/common");
+const
   _check_module =
-    require(
+    await import(
       "./lib/evmfs.js.check");
 const
   _ccget_module =
-    require(
+    await import(
       "./lib/evmfs.js.ccget");
 const
   _get_module =
-    require(
+    await import(
       "./lib/evmfs.js.get");
 const
   _index_module =
-    require(
+    await import(
       "./lib/evmfs.js.index");
 const
   _lengthlock_module =
-    require(
+    await import(
       "./lib/evmfs.js.lengthlock");
 const
   _lock_module =
-    require(
+    await import(
       "./lib/evmfs.js.lock");
 const
   _publish_module =
-    require(
+    await import(
       "./lib/evmfs.js.publish");
 const
   _publish_bulk_module =
-    require(
+    await import(
       "./lib/evmfs.js.publish.bulk");
 const
   _verify_module =
-    require(
+    await import(
       "./lib/evmfs.js.verify");
 
 async function
@@ -81,25 +85,45 @@ async function
     _msg);
 }
 
-module.exports = {
-  _ccget:
-    _ccget_module,
-  _check:
-    _check_module,
-  _evmfs:
-    _evmfs,
-  _index:
-    _index_module,
-  _lengthlock:
-    _lengthlock_module,
-  _lock:
-    _lock_module,
-  _get:
-    _get_module,
-  _publish:
-    _publish_module,
-  _publish_bulk:
-    _publish_bulk_module,
-  _verify:
-    _verify_module,
+// ES6 module export
+
+export {
+  _common_module,
+  _ccget_module,
+  _check_module,
+  _evmfs,
+  _index_module,
+  _lengthlock_module,
+  _lock_module,
+  _get_module,
+  _publish_module,
+  _publish_bulk_module,
+  _verify_module,
 };
+
+// Common JS exports
+
+// module.exports = {
+//   _common_module:
+//     _common_module,
+//   _ccget_module:
+//     _ccget_module,
+//   _check_module:
+//     _check_module,
+//   _evmfs:
+//     _evmfs,
+//   _index_module:
+//     _index_module,
+//   _lengthlock_module:
+//     _lengthlock_module,
+//   _lock_module:
+//     _lock_module,
+//   _get_module:
+//     _get_module,
+//   _publish_module:
+//     _publish_module,
+//   _publish_bulk_module:
+//     _publish_bulk_module,
+//   _verify_module:
+//     _verify_module,
+// };
