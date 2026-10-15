@@ -507,10 +507,11 @@ async function
         "n",               // QR support
         _target_networks
       ];
-    _wallet_overrides_set =
-      await _wallet_overrides_set.apply(
-        null,
-        _wallet_overrides_set_args);
+    const
+      _wallet_overrides_set_up =
+        await _wallet_overrides_set.apply(
+          null,
+          _wallet_overrides_set_args);
   }
   else if ( _call_auth == "n" ) {
     true;
