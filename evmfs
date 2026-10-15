@@ -450,12 +450,24 @@ function
   _usage(
     _exit_code) {
   let
-    _line;
+    _line,
+    _target_networks;
   const
     _program =
       _basename(
         _argv[
           0]);
+  if ( target_networks.length < 1 ) {
+    _target_networks =
+      "All those supported by " +
+      "EVM Chains Info.";
+  }
+  else {
+    _target_networks =
+      _get(
+        "target",
+        "networks");
+  }
   const
     _text = [
       "",
@@ -495,7 +507,7 @@ function
       "      Maximum number of retries before failing",
       `      Default: ${retries_max}`,
       "",
-      "    -T <call-timeout>, --call-timeout <timeout>
+      "    -T <call-timeout>, --call-timeout <timeout>",
       "",
       "      Maximum number of milliseconds before",
       "      declaring the call failed.",
@@ -582,7 +594,7 @@ function
       "      Wallet name.",
       `      Default: ${wallet_name}`,
       "",
-      "    -w <wallet-path>, --wallet-path <path>","
+      "    -w <wallet-path>, --wallet-path <path>",
       "",
       "      Wallet path.",
       `      Default: ${wallet_path}`,
