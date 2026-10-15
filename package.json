@@ -56,7 +56,7 @@
       "evmfs.js.publish":
         "lib/publish",
       "evmfs.js.publish.bulk":
-        "lib/publish.bulk",
+        "lib/publish_bulk",
       "evmfs.js.verify":
         "lib/verify" },
   "keywords": [

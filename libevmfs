@@ -65,7 +65,7 @@ const
 const
   _publish_bulk_module =
     await import(
-      "./lib/publish.bulk");
+      "./lib/publish_bulk");
 const
   _verify_module =
     await import(
