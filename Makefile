@@ -184,6 +184,7 @@ build-npm:
 	  -r \
 	  $(_NPM_FILES) \
 	  "lib$(_PROJECT_NPM)" \
+	  "lib$(_PROJECT_NPM).webpack.config.cjs" \
 	  "$(_PROJECT_NPM)" \
 	  "build"; \
 	cd \
