@@ -33,12 +33,17 @@
 /* LibEVM writable globals */
 
   /* global
-       wallet_name:
+       call_timeout:
          writable */
 
   /* global
-       call_timeout:
+       target_networks:
          writable */
+
+  /* global
+       wallet_name:
+         writable */
+
 
 /* LibEVM application globals */
 
