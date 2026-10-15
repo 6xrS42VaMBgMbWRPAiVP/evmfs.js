@@ -446,9 +446,17 @@ function
     "date",
     _get_date_human());
   _override_set(
+    "lock",
+    "only",
+    "n");
+  _override_set(
     "rpc",
     "selection",
     "kirsh");
+  _override_set(
+    "call",
+    "method",
+    "boh");
   _override_set(
     "encoding",
     "skip",
@@ -679,8 +687,8 @@ function
       `                  Target command:   ${target_command}`,
       `                      Target key:   ${target_key}`,
       `                    Target value:   ${target_value}`,
-      `                   Index network:   ${target_network}`,
-      `                     Call method:   ${target_network}`,
+      `                   Index network:   ${index_network}`,
+      `                     Call method:   ${call_method}`,
       `                    Chunk length:   ${chunk_length}`,
       `           Publication options:`,
       `                       Lock only:   ${lock_only}`,
@@ -700,7 +708,7 @@ function
       "                LibEVM options:",
       `                      User level:   ${user_level}`,
       `           Deployments directory:   ${deployments_dir}`,
-      `                  Target network:   ${target_network}`,
+      `                 Target networks:   ${target_networks}`,
       `               Network options:`,
       `                 Maximum retries:   ${retries_max}`,
       `                    Call timeout:   ${call_timeout}`,
