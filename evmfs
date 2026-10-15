@@ -631,11 +631,11 @@ function
       "",
       "    -c, --color",
       "",
-      "      Enable color output",
+      "      Enable color output.",
       "",
       "    -v, --verbose",
       "",
-      "      Enable verbose output",
+      "      Enable verbose output.",
       "",
     ];
   for ( _line of _text ) {
