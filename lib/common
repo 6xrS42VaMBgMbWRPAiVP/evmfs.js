@@ -39,10 +39,13 @@
      quiet:
        writable */
 
-// const
-//   _libcrash =
-//     await import(
-//       "libcrash-js");
+const
+  _libcrash =
+    await import(
+      "libcrash-js");
+const
+  _set =
+    _libcrash._set;
 
 function
   _global_variables_common() {
