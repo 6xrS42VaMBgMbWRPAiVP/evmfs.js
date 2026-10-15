@@ -42,23 +42,23 @@
       "evmfs.js":
         "evmfs",
       "evmfs.js.ccget":
-        "lib/evmfs.js.ccget",
+        "lib/ccget",
       "evmfs.js.check":
-        "lib/evmfs.js.check",
+        "lib/check",
       "evmfs.js.get":
-        "lib/evmfs.js.get",
+        "lib/get",
       "evmfs.js.index":
-        "lib/evmfs.js.index",
+        "lib/index",
       "evmfs.js.lengthlock":
-        "lib/evmfs.js.lengthlock",
+        "lib/lengthlock",
       "evmfs.js.lock":
-        "lib/evmfs.js.lock",
+        "lib/lock",
       "evmfs.js.publish":
-        "lib/evmfs.js.publish",
+        "lib/publish",
       "evmfs.js.publish.bulk":
-        "lib/evmfs.js.publish.bulk",
+        "lib/publish.bulk",
       "evmfs.js.verify":
-        "lib/evmfs.js.verify" },
+        "lib/verify" },
   "keywords": [
     "dogeos",
     "opfs",

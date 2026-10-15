@@ -37,39 +37,39 @@ const
 const
   _check_module =
     await import(
-      "./lib/evmfs.js.check");
+      "./lib/check");
 const
   _ccget_module =
     await import(
-      "./lib/evmfs.js.ccget");
+      "./lib/ccget");
 const
   _get_module =
     await import(
-      "./lib/evmfs.js.get");
+      "./lib/get");
 const
   _index_module =
     await import(
-      "./lib/evmfs.js.index");
+      "./lib/index");
 const
   _lengthlock_module =
     await import(
-      "./lib/evmfs.js.lengthlock");
+      "./lib/lengthlock");
 const
   _lock_module =
     await import(
-      "./lib/evmfs.js.lock");
+      "./lib/lock");
 const
   _publish_module =
     await import(
-      "./lib/evmfs.js.publish");
+      "./lib/publish");
 const
   _publish_bulk_module =
     await import(
-      "./lib/evmfs.js.publish.bulk");
+      "./lib/publish.bulk");
 const
   _verify_module =
     await import(
-      "./lib/evmfs.js.verify");
+      "./lib/verify");
 
 async function
   _evmfs(
