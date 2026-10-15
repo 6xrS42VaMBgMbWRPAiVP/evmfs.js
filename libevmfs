@@ -94,6 +94,10 @@ async function
     "mm mm.";
   _msg_info(
     _msg);
+  const
+    _results =
+      ["ciao"];
+  return _results;
 }
 
 // ES6 module export
