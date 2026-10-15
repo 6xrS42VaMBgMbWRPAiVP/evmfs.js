@@ -37,6 +37,10 @@
          writable */
 
   /* global
+       target_network:
+         writable */
+
+  /* global
        target_networks:
          writable */
 
