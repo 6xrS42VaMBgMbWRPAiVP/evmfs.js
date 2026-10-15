@@ -67,7 +67,10 @@ _NPM_FILES:=\
   COPYING \
   README.md \
   dist \
+  $(_PROJECT_NPM) \
   lib \
+  lib$(_PROJECT_NPM) \
+  lib$(_PROJECT_NPM).webpack.config.cjs \
   eslint.config.mjs \
   fs-worker.webpack.config.cjs \
   package.json \
@@ -183,9 +186,6 @@ build-npm:
 	cp \
 	  -r \
 	  $(_NPM_FILES) \
-	  "lib$(_PROJECT_NPM)" \
-	  "lib$(_PROJECT_NPM).webpack.config.cjs" \
-	  "$(_PROJECT_NPM)" \
 	  "build"; \
 	cd \
 	  "build"; \
