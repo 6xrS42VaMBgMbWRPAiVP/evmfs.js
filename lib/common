@@ -312,6 +312,12 @@ function
 function
   _url_parse_evmfs_publish() {
   _set(
+    "chunk",
+    "length",
+    _argv_url_get(
+      "chunk_length")[
+        0]);
+  _set(
     "encoding",
     "skip",
     _argv_url_get(

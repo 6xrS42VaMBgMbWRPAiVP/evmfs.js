@@ -133,6 +133,10 @@
        chunk_length:
          writable */
 
+  /* global
+       encoding_skip:
+         writable */
+
 /* eslint-disable
      no-unused-vars */
 
