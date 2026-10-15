@@ -746,8 +746,8 @@ function
   const
     _text = [
       `${_program} configuration:`,
-      `                  Call date:   ${call_date}`,
-      `            Runtime environment:   ${runtime_environment}`,
+      `                       Call date:   ${call_date}`,
+      `             Runtime environment:   ${runtime_environment}`,
       `                  Target command:   ${target_command}`,
       `                      Target key:   ${target_key}`,
       `                    Target value:   ${target_value}`,
