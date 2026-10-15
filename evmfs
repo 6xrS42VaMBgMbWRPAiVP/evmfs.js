@@ -192,6 +192,11 @@ const
   _get =
     _libcrash._get;
 /* global
+     _get_date_human */
+const
+  _get_date_human =
+    _libcrash._get_date_human;
+/* global
      _global_get */
 const
   _global_get =
@@ -410,6 +415,10 @@ function
 
 function
   _overrides_set() {
+  _override_set(
+    "call",
+    "date",
+    _get_date_human);
   _override_set(
     "rpc",
     "selection",

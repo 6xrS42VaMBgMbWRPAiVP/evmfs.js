@@ -176,6 +176,13 @@ function
     "chunk",
     "length",
     "");
+  /* global
+       skip_encoding:
+         writable */
+  _set(
+    "skip",
+    "encoding",
+    "");
 }
 
 function
@@ -304,7 +311,12 @@ function
 
 function
   _url_parse_evmfs_publish() {
-  true;
+  _set(
+    "encoding",
+    "skip",
+    _argv_url_get(
+      "encoding_skip")[
+        0]);
 }
 
 function
