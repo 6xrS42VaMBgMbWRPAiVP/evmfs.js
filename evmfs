@@ -214,6 +214,13 @@ const
 function
   _global_variables() {
   /* global
+       runtime_environment:
+         writable */
+  _set(
+    "runtime",
+    "environment",
+    "");
+  /* global
        app_name:
          writable */
   _set(
@@ -227,6 +234,27 @@ function
     "app",
     "opts",
     []);
+  /* global
+       target_command:
+         writable */
+  _set(
+    "target",
+    "command",
+    "");
+  /* global
+       target_key:
+         writable */
+  _set(
+    "target",
+    "key",
+    "");
+  /* global
+       target_value:
+         writable */
+  _set(
+    "target",
+    "value",
+    "");
   /* global
        retries_max:
          writable */
@@ -270,6 +298,13 @@ function
     "path",
     "");
   /* global
+       lock_only:
+         writable */
+  _set(
+    "target",
+    "network",
+    "");
+  /* global
        target_network:
          writable */
   _set(
@@ -281,6 +316,13 @@ function
          writable */
   _set(
     "deployments",
+    "dir",
+    "");
+  /* global
+       cache_dir:
+         writable */
+  _set(
+    "cache",
     "dir",
     "");
   /* global
@@ -296,6 +338,10 @@ function
   _set(
     "fs",
     "version",
+    "");
+  _set(
+    "ccfs",
+    "address",
     "");
   /* global
        rpc_selection:
@@ -415,7 +461,7 @@ function
       `  ${_program}`,
       "    [options]",
       "    <command>",
-      "    ( [command-args] )",
+      "  ( [command-args] )",
       "",
       "  commands:",
       "    get",
@@ -424,7 +470,7 @@ function
       "      <file-path>",
       "",
       "  networks:",
-      `    '${_target_networks}'`,
+      `    '${target_networks}'`,
       "",
       "  options:",
       "",
