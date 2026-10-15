@@ -444,7 +444,7 @@ function
     "";
 }
 
-function
+await function
   _overrides_set() {
   const
     _global =
