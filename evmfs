@@ -764,25 +764,6 @@ async function
     _usage(
       0);
   }
-  if ( _argv[
-         "Q"] ||
-       _argv[
-         "with-colons"] ) {
-    with_colons =
-      "y";
-  }
-
-  if ( _argv[
-         "Q"] ||
-       _argv[
-         "with-colons"] ) {
-    with_colons =
-      "y";
-  }
-  else {
-    with_colons =
-      "n";
-  }
   if ( typeof(
        _argv) != "undefined" &&
        0 < _argv[
