@@ -30,6 +30,11 @@ const
     await import(
       "libcrash-js");
 /* global
+     _get */
+const
+  _get =
+    _libcrash._get;
+/* global
      _msg_info */
 const
   _msg_info =
