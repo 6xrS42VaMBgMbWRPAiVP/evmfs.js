@@ -486,7 +486,7 @@ function
       _get(
         "call",
         "auth");
-  echo2(
+  _echo2(
     _call_auth);
   if ( _call_auth == "y" ) {
     const
