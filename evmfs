@@ -239,10 +239,15 @@ const
     await _require(
       "libevm");
 /* global
-     _contract_ */
+     _contract_setup_auto_detect */
 const
-  _libevm_cmdline_parse =
-    _libevm_module._libevm_cmdline_parse;
+  _contract_setup_auto_detect =
+    _libevm_module._contract_setup_auto_detect;
+/* global
+     _libevm_app_overrides_set */
+const
+  _libevm_app_overrides_set =
+    _libevm_module._libevm_app_overrides_set;
 /* global
      _libevm_cmdline_parse */
 const
@@ -282,11 +287,6 @@ const
 const
   _call_timeout_auto_detect =
     _libevmfs_module._call_timeout_auto_detect;
-/* global
-     _deployments_dir_auto_detect */
-const
-  _deployments_dir_auto_detect =
-    _libevmfs_module._deployments_dir_auto_detect;
 /* global
      _parallel_tasks_auto_detect */
 const
@@ -508,19 +508,14 @@ async function
       _get(
         "app",
         "name");
-  const
-    _user_level =
-      _get(
-        "user",
-        "level");
   try {
-    await _deployments_dir_auto_detect();
+    await _libevm_app_overrides_set();
   }
   catch(
     _error) {
     _msg =
       "Error auto-detecting " +
-      "deployments directory.";
+      "LibEVM application variables.";
     _msg_error(
       _msg,
       0);

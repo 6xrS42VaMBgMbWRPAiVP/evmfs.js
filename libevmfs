@@ -170,59 +170,6 @@ function
     _call_auth)
 }
 
-async function
-  _deployments_dir_auto_detect(){
-  let
-    _deployments_dir,
-    _msg,
-    _user_level;
-  const
-    _app_name =
-      "evmfs";
-  _user_level =
-    _get(
-      "user",
-      "level");
-  _deployments_dir =
-    _get(
-      "deployments",
-      "dir");
-  const
-    _deployments_dir_check_args = [
-      _deployments_dir,
-      _app_name,
-      _user_level
-    ];
-  try {
-    _deployments_dir =
-      await _deployments_dir_check.apply(
-        null,
-        _deployments_dir_check_args);
-    _msg =
-      "Auto-detected deployments directory " +
-      `'${_deployments_dir}'.`;
-    _msg_info(
-      _msg);
-  }
-  catch(
-    _error) {
-    const
-      _msg =
-        "Error running '_deployments_dir_check' " +
-        `with arguments '${_deployments_dir_check_args}':`;
-    _msg_error(
-      _msg,
-      0);
-    _echo2(
-      _error);
-    throw _error;
-  }
-  _override_set(
-    "deployments",
-    "dir",
-    _deployments_dir);
-}
-
 function
   _parallel_tasks_auto_detect() {
   let
@@ -286,7 +233,6 @@ export {
   _common_module,
   _ccget_module,
   _check_module,
-  _deployments_dir_auto_detect,
   _evmfs,
   _index_module,
   _lengthlock_module,
