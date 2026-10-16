@@ -538,12 +538,22 @@ async function
         "configuration",
         "format");
   const
-    _contracts_package =
-      "evmfs-contracts";
-  const
     _target_network =
       _target_networks[
         0];
+  const
+    _user_level =
+      _get(
+        "user",
+        "level");
+  const
+    _deployments_dir =
+      _get(
+        "deployments",
+        "dir");
+  const
+    _contracts_package =
+      "evmfs-contracts";
   const
     _contract_setup_auto_detect_args = [
       "evmfs",                  // application name
@@ -557,7 +567,7 @@ async function
       _configuration_format
     ];
   try {
-    _contract_setup_auto_detect.apply(
+    await _contract_setup_auto_detect.apply(
       null,
       _contract_setup_auto_detect_args);
   }
