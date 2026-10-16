@@ -509,7 +509,8 @@ async function
         "app",
         "name");
   try {
-    await _libevm_app_overrides_set();
+    await _libevm_app_overrides_set(
+      "evmfs");
   }
   catch(
     _error) {
@@ -519,6 +520,57 @@ async function
     _msg_error(
       _msg,
       0);
+    throw _error;
+  }
+  const
+    _contract_version =
+      _get(
+        "contract",
+        "version");
+  const
+    _target_networks =
+      _get(
+        "target",
+        "networks");
+  const
+    _configuration_format =
+      _get(
+        "configuration",
+        "format");
+  const
+    _contracts_package =
+      "evmfs-contracts";
+  const
+    _target_network =
+      _target_networks[
+        0];
+  const
+    _contract_setup_auto_detect_args = [
+      "evmfs",                  // application name
+      "FileSystem",             // contract name
+      "fs",                     // contract short name
+      _contract_version,
+      _target_network,
+      _user_level,
+      _deployments_dir,
+      _contracts_package,
+      _configuration_format
+    ];
+  try {
+    _contract_setup_auto_detect.apply(
+      null,
+      _contract_setup_auto_detect_args);
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error running '_contract_setup_auto_detect' " +
+      "with arguments:";
+    _msg_error(
+      _msg,
+      0);
+    _echo2(
+      _error);
     throw _error;
   }
   const
@@ -534,11 +586,6 @@ async function
         _get(
           "wallet",
           "name");
-    const
-      _target_networks =
-        _get(
-          "target",
-          "networks");
     const
       _wallet_overrides_set_args = [
         "evm-wallet",
