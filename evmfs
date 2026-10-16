@@ -239,6 +239,11 @@ const
     await _require(
       "libevm");
 /* global
+     _contract_ */
+const
+  _libevm_cmdline_parse =
+    _libevm_module._libevm_cmdline_parse;
+/* global
      _libevm_cmdline_parse */
 const
   _libevm_cmdline_parse =
