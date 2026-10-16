@@ -198,6 +198,11 @@ async function
       await _deployments_dir_check.apply(
         null,
         _deployments_dir_check_args);
+    _msg =
+      "Auto-detected deployments directory " +
+      `'${_deployments_dir}'.`;
+    _msg_info(
+      _msg);
   }
   catch(
     _error) {
