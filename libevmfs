@@ -202,6 +202,100 @@ function
 }
 
 async function
+  _contracts_auto_detect() {
+  const
+    _contract_version =
+      _get(
+        "contract",
+        "version");
+  const
+    _target_networks =
+      _get(
+        "target",
+        "networks");
+  const
+    _configuration_format =
+      _get(
+        "configuration",
+        "format");
+  const
+    _target_network =
+      _target_networks[
+        0];
+  const
+    _user_level =
+      _get(
+        "user",
+        "level");
+  const
+    _deployments_dir =
+      _get(
+        "deployments",
+        "dir");
+  const
+    _contracts_package =
+      "evmfs-contracts";
+  const
+    _contract_setup_auto_detect_args = [
+      "evmfs",                  // application name
+      "FileSystem",             // contract name
+      "fs",                     // contract short name
+      _contract_version,
+      _target_network,
+      _user_level,
+      _deployments_dir,
+      _contracts_package,
+      _configuration_format
+    ];
+  try {
+    await _contract_setup_auto_detect.apply(
+      null,
+      _contract_setup_auto_detect_args);
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error running '_contract_setup_auto_detect' " +
+      "with arguments:";
+    _msg_error(
+      _msg,
+      0);
+    _echo2(
+      _error);
+    throw _error;
+  }
+  const
+    _contract_setup_auto_detect_args = [
+      "evmfs",                  // application name
+      "CrossChainFileSystem",   // contract name
+      "fs",                     // contract short name
+      _contract_version,
+      _target_network,
+      _user_level,
+      _deployments_dir,
+      _contracts_package,
+      _configuration_format
+    ];
+  try {
+    await _contract_setup_auto_detect.apply(
+      null,
+      _contract_setup_auto_detect_args);
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error running '_contract_setup_auto_detect' " +
+      "with arguments:";
+    _msg_error(
+      _msg,
+      0);
+    _echo2(
+      _error);
+    throw _error;
+  }
+}
+
+async function
   _evmfs(
     _target_command,
     _target_key,
@@ -230,9 +324,10 @@ async function
 export {
   _call_auth_auto_detect,
   _call_timeout_auto_detect,
-  _common_module,
   _ccget_module,
   _check_module,
+  _common_module,
+  _contracts_auto_detect,
   _evmfs,
   _index_module,
   _lengthlock_module,
@@ -257,6 +352,8 @@ export {
 //     _ccget_module,
 //   _check_module:
 //     _check_module,
+//   _contracts_auto_detect:
+//     _contracts_auto_detect,
 //   _deployments_dir_auto_detect:
 //     _deployments_dir_auto_detect,
 //   _evmfs:

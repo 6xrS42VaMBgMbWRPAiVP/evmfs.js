@@ -288,6 +288,11 @@ const
   _call_timeout_auto_detect =
     _libevmfs_module._call_timeout_auto_detect;
 /* global
+     _contracts_auto_detect */
+const
+  _contracts_auto_detect =
+    _libevmfs_module._contracts_auto_detect;
+/* global
      _parallel_tasks_auto_detect */
 const
   _parallel_tasks_auto_detect =
@@ -536,65 +541,16 @@ async function
       0);
     throw _error;
   }
-  const
-    _contract_version =
-      _get(
-        "contract",
-        "version");
-  const
-    _target_networks =
-      _get(
-        "target",
-        "networks");
-  const
-    _configuration_format =
-      _get(
-        "configuration",
-        "format");
-  const
-    _target_network =
-      _target_networks[
-        0];
-  const
-    _user_level =
-      _get(
-        "user",
-        "level");
-  const
-    _deployments_dir =
-      _get(
-        "deployments",
-        "dir");
-  const
-    _contracts_package =
-      "evmfs-contracts";
-  const
-    _contract_setup_auto_detect_args = [
-      "evmfs",                  // application name
-      "FileSystem",             // contract name
-      "fs",                     // contract short name
-      _contract_version,
-      _target_network,
-      _user_level,
-      _deployments_dir,
-      _contracts_package,
-      _configuration_format
-    ];
   try {
-    await _contract_setup_auto_detect.apply(
-      null,
-      _contract_setup_auto_detect_args);
+    _contracts_auto_detect();
   }
   catch(
     _error) {
     _msg =
-      "Error running '_contract_setup_auto_detect' " +
-      "with arguments:";
+      "Error running '_contracts_auto_detect'.";
     _msg_error(
       _msg,
       0);
-    _echo2(
-      _error);
     throw _error;
   }
   const
