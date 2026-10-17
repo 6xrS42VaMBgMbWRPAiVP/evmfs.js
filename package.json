@@ -2,7 +2,7 @@
   "name":
     "evmfs",
   "version":
-    "0.0.13",
+    "0.0.14",
   "description":
     "Multi-level distributed, network-independent, cross-network, uncensorable, undeletable, permissionless file system running on Ethereum Virtual Machine-compatible networks.",
   "funding":
@@ -116,7 +116,7 @@
     "evm-wallet":
       "npm:evm-wallet.js@^0.0.103",
     "libevm":
-      "0.0.47",
+      "0.0.48",
     "evmfs-contracts":
       "0.0.9",
     "yargs":
@@ -128,7 +128,7 @@
     "evm-wallet":
       "npm:evm-wallet.js@^0.0.103",
     "libevm":
-      "0.0.47"
+      "0.0.48"
   },
   "type":
     "module",

@@ -203,6 +203,8 @@ function
 
 async function
   _contracts_auto_detect() {
+  let
+    _contract_setup_auto_detect_args;
   const
     _contract_version =
       _get(
@@ -235,18 +237,17 @@ async function
   const
     _contracts_package =
       "evmfs-contracts";
-  const
-    _contract_setup_auto_detect_args = [
-      "evmfs",                  // application name
-      "FileSystem",             // contract name
-      "fs",                     // contract short name
-      _contract_version,
-      _target_network,
-      _user_level,
-      _deployments_dir,
-      _contracts_package,
-      _configuration_format
-    ];
+  _contract_setup_auto_detect_args = [
+    "evmfs",                  // application name
+    "FileSystem",             // contract name
+    "fs",                     // contract short name
+    _contract_version,
+    _target_network,
+    _user_level,
+    _deployments_dir,
+    _contracts_package,
+    _configuration_format
+  ];
   try {
     await _contract_setup_auto_detect.apply(
       null,
@@ -264,18 +265,17 @@ async function
       _error);
     throw _error;
   }
-  const
-    _contract_setup_auto_detect_args = [
-      "evmfs",                  // application name
-      "CrossChainFileSystem",   // contract name
-      "fs",                     // contract short name
-      _contract_version,
-      _target_network,
-      _user_level,
-      _deployments_dir,
-      _contracts_package,
-      _configuration_format
-    ];
+  _contract_setup_auto_detect_args = [
+    "evmfs",                  // application name
+    "CrossChainFileSystem",   // contract name
+    "fs",                     // contract short name
+    _contract_version,
+    _target_network,
+    _user_level,
+    _deployments_dir,
+    _contracts_package,
+    _configuration_format
+  ];
   try {
     await _contract_setup_auto_detect.apply(
       null,
