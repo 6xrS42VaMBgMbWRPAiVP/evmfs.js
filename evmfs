@@ -477,6 +477,20 @@ async function
     "only",
     "n");
   _override_set(
+    "config",
+    "dir",
+    _path_join([
+      _homedir_get(),
+      ".config",
+      "evmfs"]));
+  _override_set(
+    "cache",
+    "dir",
+    _path_join([
+      _homedir_get(),
+      ".cache",
+      "evmfs"]));
+  _override_set(
     "rpc",
     "selection",
     "kirsh");
@@ -588,8 +602,6 @@ async function
       _get(
         "call",
         "auth");
-  _echo2(
-    _call_auth);
   if ( _call_auth == "y" ) {
     const
       _wallet_name =
