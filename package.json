@@ -116,9 +116,9 @@
     "evm-wallet":
       "npm:evm-wallet.js@^0.0.103",
     "libevm":
-      "0.0.46",
+      "0.0.47",
     "evmfs-contracts":
-      "0.0.6",
+      "0.0.7",
     "yargs":
       "18.0.0"
   },
@@ -128,7 +128,7 @@
     "evm-wallet":
       "npm:evm-wallet.js@^0.0.103",
     "libevm":
-      "0.0.46"
+      "0.0.47"
   },
   "type":
     "module",
