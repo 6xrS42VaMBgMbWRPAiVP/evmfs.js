@@ -283,7 +283,7 @@ async function
   _contract_setup_auto_detect_args = [
     "evmfs",                  // application name
     "CrossChainFileSystem",   // contract name
-    "fs",                     // contract short name
+    "ccfs",                   // contract short name
     _contract_version,
     _target_network,
     _user_level,
