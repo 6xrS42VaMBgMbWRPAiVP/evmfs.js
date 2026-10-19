@@ -445,6 +445,52 @@ async function
         _tasks_parallel,
         _target_uris
       ];
+    const
+      _evmfs_publish_args = [
+        _fs_address,
+        _ll_address,
+        _ccfs_address,
+        _fs_version,
+        _deployments_dir,
+        _user_level,
+        _wallet_name,
+        _wallet_path,
+        _wallet_password,
+        _wallet_seed,
+        _target_networks,
+        _index_network,
+        _api_key_path,
+        _upload_method,
+        _retries_max,
+        _call_timeout,
+        _price_gas,
+        _encoding_skip,
+        _encoding_type,
+        _lock_only,
+        _chunk_length,
+        _buffer_length,
+        _tasks_parallel,
+        _cache_dir,
+        _target_files
+      ];
+    try {
+      _downloaded =
+        _evmfs_get.apply(
+          null,
+          _evmfs_get_args);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error running '_evmfs_get' " +
+        "with arguments:";
+      _msg_error(
+        _msg,
+        0);
+      _echo2(
+        _evmfs_get_args);
+      throw _error;
+    }
   }
   else if ( _target_command == "publish" ) {
     const
@@ -475,6 +521,24 @@ async function
         _cache_dir,
         _target_files
       ];
+    try {
+      _published =
+        _evmfs_publish.apply(
+          null,
+          _evmfs_publish_args);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error running '_evmfs_publish' " +
+        "with arguments:";
+      _msg_error(
+        _msg,
+        0);
+      _echo2(
+        _evmfs_publish_args);
+      throw _error;
+    }
   }
   _msg =
     "mm mm.";
