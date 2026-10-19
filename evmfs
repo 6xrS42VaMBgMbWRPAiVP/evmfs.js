@@ -572,6 +572,11 @@ async function
       _get(
         "target",
         "networks");
+  _override_set(
+    "index",
+    "network",
+    _target_networks[
+      0]);
   if ( _call_auth == "y" ) {
     const
       _wallet_name =

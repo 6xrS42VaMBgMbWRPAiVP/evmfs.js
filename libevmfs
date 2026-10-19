@@ -187,18 +187,18 @@ function
   _tasks_parallel_auto_detect() {
   let
     _msg,
-    _parallel_tasks;
+    _tasks_parallel;
   const
     _target_command =
       _get(
         "target",
         "command");
   if ( _target_command == "get" ) {
-    _parallel_tasks =
+    _tasks_parallel =
       1;
   }
   else if ( _target_command == "publish" ) {
-    _parallel_tasks =
+    _tasks_parallel =
       1;
   }
   else {
