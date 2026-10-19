@@ -210,6 +210,11 @@ const
   _global_get =
     _libcrash._global_get;
 /* global
+     _homedir_get */
+const
+  _homedir_get =
+    _libcrash._homedir_get;
+/* global
      _msg_error */
 const
   _msg_error =
@@ -224,6 +229,11 @@ const
 const
   _override_set =
     _libcrash._override_set;
+/* global
+     _path_join */
+const
+  _path_join =
+    _libcrash._path_join;
 /* global
      _require */
 const
@@ -558,6 +568,11 @@ async function
       _get(
         "call",
         "auth");
+  const
+    _target_networks =
+      _get(
+        "target",
+        "networks");
   if ( _call_auth == "y" ) {
     const
       _wallet_name =

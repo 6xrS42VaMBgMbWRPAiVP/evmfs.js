@@ -55,6 +55,11 @@ const
   _override_set =
     _libcrash._override_set;
 /* global
+     _path_join */
+const
+  _path_join =
+    _libcrash._path_join;
+/* global
      _require */
 const
   _require =
@@ -105,13 +110,17 @@ const
     await _require(
       "libevm");
 const
+  _contract_setup_auto_detect =
+    _libevm_module._contract_setup_auto_detect;
+const
   _deployments_dir_check =
     _libevm_module._deployments_dir_check;
 
 function
   _call_timeout_auto_detect() {
   let
-    _call_timeout;
+    _call_timeout,
+    _msg;
   const
     _target_command =
       _get(
@@ -136,13 +145,14 @@ function
   _override_set(
     "call",
     "timeout",
-    _call_timeout)
+    _call_timeout);
 }
 
 function
   _call_auth_auto_detect() {
   let
-    _call_auth;
+    _call_auth,
+    _msg;
   const
     _target_command =
       _get(
@@ -167,12 +177,13 @@ function
   _override_set(
     "call",
     "auth",
-    _call_auth)
+    _call_auth);
 }
 
 function
   _parallel_tasks_auto_detect() {
   let
+    _msg,
     _parallel_tasks;
   const
     _target_command =
@@ -204,7 +215,8 @@ function
 async function
   _contracts_auto_detect() {
   let
-    _contract_setup_auto_detect_args;
+    _contract_setup_auto_detect_args,
+    _msg;
   const
     _contract_version =
       _get(
