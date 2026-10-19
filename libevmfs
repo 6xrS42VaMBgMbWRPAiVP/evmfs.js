@@ -184,7 +184,7 @@ function
 }
 
 function
-  _parallel_tasks_auto_detect() {
+  _tasks_parallel_auto_detect() {
   let
     _msg,
     _parallel_tasks;
@@ -348,9 +348,9 @@ export {
   _lengthlock_module,
   _lock_module,
   _get_module,
-  _parallel_tasks_auto_detect,
   _publish_module,
   _publish_bulk_module,
+  _tasks_parallel_auto_detect,
   _verify_module,
 };
 
@@ -381,12 +381,12 @@ export {
 //     _lock_module,
 //   _get_module:
 //     _get_module,
-//   _parallel_tasks_auto_detect:
-//     _parallel_tasks_auto_detect,
 //   _publish_module:
 //     _publish_module,
 //   _publish_bulk_module:
 //     _publish_bulk_module,
+//   _tasks_parallel_auto_detect:
+//     _tasks_parallel_auto_detect,
 //   _verify_module:
 //     _verify_module,
 // };
