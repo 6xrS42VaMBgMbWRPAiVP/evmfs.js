@@ -610,7 +610,11 @@ async function
     _retries_max,
     _tasks_parallel,
     _target_uris) {
-  true;
+  let
+    _uri;
+  for ( _uri of _target_uris ) {
+    true;
+  }
 }
 
 async function
