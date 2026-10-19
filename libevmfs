@@ -338,6 +338,155 @@ async function
   }
 }
 
+function
+  _address_section_get(
+    _uri,
+    _position) {
+  const
+    _uri_type =
+      typeof(
+        _uri);
+  if ( _uri_type != "string" ) {
+    const
+      _msg =
+        `Unknown type '${_uri_type}' ` +
+        `for uri '${_uri}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  const
+    _uri_array_reverse =
+      _uri.split("/").split();
+  return _uri_array_reverse[
+           _position];
+}
+
+function
+  _hash_get(
+    _uri) {
+  let
+    _hash;
+  try {
+    _hash =
+      _address_section_get(
+        _uri,
+        0);
+  }
+  catch(
+    _error) {
+    const
+      _msg =
+        "Error extracting hash " +
+        `from URI '${_uri}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  return _hash;
+}
+
+function
+  _namespace_get(
+    _uri) {
+  let
+    _namespace;
+  try {
+    _namespace =
+      _address_section_get(
+        _uri,
+        1);
+  }
+  catch(
+    _error) {
+    const
+      _msg =
+        "Error extracting namespace " +
+        `from URI '${_uri}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  return _namespace;
+}
+
+function
+  _contract_get(
+    _uri) {
+  let
+    _contract;
+  try {
+    _contract =
+      _address_section_get(
+        _uri,
+        2);
+  }
+  catch(
+    _error) {
+    const
+      _msg =
+        "Error extracting contract address " +
+        `from URI '${_uri}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  return _contract;
+}
+
+function
+  _network_id_get(
+    _uri) {
+  let
+    _network_id;
+  try {
+    _network_id =
+      _address_section_get(
+        _uri,
+        3);
+  }
+  catch(
+    _error) {
+    const
+      _msg =
+        "Error extracting network id " +
+        `from URI '${_uri}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  return _network_id;
+}
+
+async function
+  _hash_check(
+    _hash,
+    _type) {
+  const
+    _hash_type =
+      typeof(
+        _hash);
+  if ( _hash_type != "string" ) {
+    const
+      _msg =
+        `Unknown type '${_uri_type}' ` +
+        `for uri '${_uri}'.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  if ( _hash.length < 1 ) {
+    _msg =
+      "Empty Hash"
+  }
+}
+
 async function
   _evmfs_get(
     _fs_address,
@@ -585,6 +734,9 @@ export {
   _common_module,
   _contracts_auto_detect,
   _evmfs,
+  _evmfs_get,
+  _evmfs_publish,
+  _evmfs_status,
   _index_module,
   _lengthlock_module,
   _lock_module,
