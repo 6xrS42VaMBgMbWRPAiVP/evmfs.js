@@ -1218,24 +1218,26 @@ function
   }
 }
 
-_echo(
-  "EVMFS Init.");
 _global_variables();
 _libevm_global_variables();
 _libevm_app_global_variables();
-_echo(
-  "Finished setting EVMFS globals.");
 if ( await _cmdline_check(
        "evmfs.js") ||
      await _cmdline_check(
        "evmfs") ) {
+  const
+    _msg =
+      "Running 'evmfs' from the command line.");
   _echo(
-    "Running 'evmfs' from the command line.");
+    _msg);
   await _cmdline_parse();
 }
 else {
+  const
+    _msg =
+      "Running 'evmfs' from a web browser.");
   _echo(
-    "Running 'evmfs' from a web browser.");
+    _msg);
   _url_parse();
 }
 _main();

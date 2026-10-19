@@ -308,6 +308,34 @@ async function
       _error);
     throw _error;
   }
+  _contract_setup_auto_detect_args = [
+    "evmfs",                  // application name
+    "LengthLock",             // contract name
+    "ll",                     // contract short name
+    _contract_version,
+    _target_network,
+    _user_level,
+    _deployments_dir,
+    _contracts_package,
+    _configuration_format
+  ];
+  try {
+    await _contract_setup_auto_detect.apply(
+      null,
+      _contract_setup_auto_detect_args);
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error running '_contract_setup_auto_detect' " +
+      "with arguments:";
+    _msg_error(
+      _msg,
+      0);
+    _echo2(
+      _error);
+    throw _error;
+  }
 }
 
 async function
@@ -315,6 +343,7 @@ async function
     _target_command,
     _fs_address,
     _ccfs_address,
+    _ll_address,
     _fs_version,
     _deployments_dir,
     _wallet_name,
@@ -345,6 +374,14 @@ async function
     `'${_target_value}'.`;
   _msg_info(
     _msg);
+  if ( _target_command == "get" ) {
+    const
+      _evmfs_get_args = [
+        _fs_address,
+        _ll_address,
+        _ccfs_address,
+        _fs_version,
+  }
   _msg =
     "mm mm.";
   _msg_info(
