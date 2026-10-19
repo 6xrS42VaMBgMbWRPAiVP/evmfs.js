@@ -339,6 +339,57 @@ async function
 }
 
 async function
+  _evmfs_get(
+    _fs_address,
+    _ll_address,
+    _ccfs_address,
+    _fs_version,
+    _deployments_dir,
+    _user_level,
+    _wallet_name,
+    _wallet_path,
+    _wallet_password,
+    _wallet_seed,
+    _target_networks,
+    _api_key_path,
+    _call_method,
+    _retries_max,
+    _tasks_parallel,
+    _target_uris) {
+  true;
+}
+
+async function
+  _evmfs_publish(
+    _fs_address,
+    _ll_address,
+    _ccfs_address,
+    _fs_version,
+    _deployments_dir,
+    _user_level,
+    _wallet_name,
+    _wallet_path,
+    _wallet_password,
+    _wallet_seed,
+    _target_networks,
+    _index_network,
+    _api_key_path,
+    _upload_method,
+    _retries_max,
+    _call_timeout,
+    _price_gas,
+    _encoding_skip,
+    _encoding_type,
+    _lock_only,
+    _chunk_length,
+    _buffer_length,
+    _tasks_parallel,
+    _cache_dir,
+    _target_files) {
+  true;
+}
+
+async function
   _evmfs(
     _target_command,
     _fs_address,
@@ -381,6 +432,49 @@ async function
         _ll_address,
         _ccfs_address,
         _fs_version,
+        _deployments_dir,
+        _user_level,
+        _wallet_name,
+        _wallet_path,
+        _wallet_password,
+        _wallet_seed,
+        _target_networks,
+        _api_key_path,
+        _call_method,
+        _retries_max,
+        _tasks_parallel,
+        _target_uris
+      ];
+  }
+  else if ( _target_command == "publish" ) {
+    const
+      _evmfs_publish_args = [
+        _fs_address,
+        _ll_address,
+        _ccfs_address,
+        _fs_version,
+        _deployments_dir,
+        _user_level,
+        _wallet_name,
+        _wallet_path,
+        _wallet_password,
+        _wallet_seed,
+        _target_networks,
+        _index_network,
+        _api_key_path,
+        _upload_method,
+        _retries_max,
+        _call_timeout,
+        _price_gas,
+        _encoding_skip,
+        _encoding_type,
+        _lock_only,
+        _chunk_length,
+        _buffer_length,
+        _tasks_parallel,
+        _cache_dir,
+        _target_files
+      ];
   }
   _msg =
     "mm mm.";
