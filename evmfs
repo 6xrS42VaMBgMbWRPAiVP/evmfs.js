@@ -505,6 +505,10 @@ async function
     "selection",
     "kirsh");
   _override_set(
+    "chunk",
+    "length",
+    "22000");
+  _override_set(
     "call",
     "method",
     "boh");
