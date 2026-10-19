@@ -463,27 +463,132 @@ function
   return _network_id;
 }
 
-async function
-  _hash_check(
-    _hash,
-    _type) {
+function
+  _hash_type_check(
+    _hash_type) {
+  let
+    _hash_type_get,
+    _msg;
+  _hash_type_get =
+    false;
   const
-    _hash_type =
+    _default =
+      "sha256sum"
+  const
+    _hash_type_type =
       typeof(
-        _hash);
-  if ( _hash_type != "string" ) {
-    const
+        _hash_type);
+  if ( _hash_type_type === "undefined" ) {
+    _msg =
+      "Hash type undefined, setting " +
+      `default type '${_default}'.`;
+    _msg_info(
+      _msg);
+    _hash_type_get =
+      true;
+  }
+  else if ( _hash_type_type === "string" ) {
+    if ( _hash_type.length < 1 ) {
       _msg =
-        `Unknown type '${_uri_type}' ` +
-        `for uri '${_uri}'.`;
+        "Hash type is an empty, setting " +
+        `default type '${_default}'.`;
+      _msg_info(
+        _msg);
+      _hash_type_get =
+        true;
+    }
+    else {
+      if ( _hash_type === "sha256sum" ) {
+        true;
+      }
+      else if ( _hash_type === "sha512sum" ) {
+        true;
+      }
+      else {
+        _msg =
+          `Unknown hash type '${_hash_type}'.`;
+        _msg_error(
+          _msg,
+          0);
+        throw _msg;
+      }
+    }
+  }
+  else {
+    _msg =
+      `Unknown type '${_hash_type_type}' ` +
+      `for variable 'hash type'.`;
     _msg_error(
       _msg,
       0);
     throw _msg;
   }
+  if ( _hash_type_get ) {
+    _hash_type =
+      _default;
+  }
+  return _hash_type;
+}
+
+async function
+  _hash_check(
+    _hash,
+    _hash_type) {
+  let
+    _re;
+  try {
+    _hash_type =
+      _hash_type_check(
+        _hash_type);
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error checking hash type.";
+    _msg_error(
+      _msg,
+      0);
+    throw _error;
+  }
   if ( _hash.length < 1 ) {
     _msg =
-      "Empty Hash"
+      "Empty URI hash."
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  if ( _hash_type === "sha256sum" ) {
+    _re =
+      new RegExp(
+        "[a-fA-F0-9]{64}$");
+  }
+  else if ( _hash_type === "sha512sum" ) {
+    _re =
+      new RegExp(
+        "[a-fA-F0-9]{128}$");
+  else {
+    _msg =
+      "Check for hash type " +
+      `'${_hash_type}' not implemented.`;
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
+  }
+  const
+    _valid =
+      _hash.match(
+        _re);
+  if ( ! _valid ) {
+    _msg =
+      `Hash '${_hash}' ` +
+      `of type '${_hash_type}' ` +
+      "not valid.";
+    _msg_error(
+      _msg,
+      0);
+    throw _msg;
   }
 }
 
