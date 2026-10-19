@@ -313,6 +313,27 @@ async function
 async function
   _evmfs(
     _target_command,
+    _fs_address,
+    _ccfs_address,
+    _fs_version,
+    _deployments_dir,
+    _wallet_name,
+    _wallet_path,
+    _wallet_password,
+    _wallet_seed,
+    _target_network,
+    _api_key,
+    _call_method,
+    _index_network,
+    _retries_max,
+    _call_timeout,
+    _lock_only,
+    _chunk_length,
+    _encoding_skip,
+    _tasks_parallel,
+    _cache_dir,
+    _user_level,
+    _output_file,
     _target_key,
     _target_value) {
   let
