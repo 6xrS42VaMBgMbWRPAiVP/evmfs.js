@@ -609,10 +609,94 @@ async function
     _call_method,
     _retries_max,
     _tasks_parallel,
-    _target_uris) {
+    _target_uris,
+    _output_files) {
   let
-    _uri;
+    _cursor,
+    _uri,
+    _uri_network_id,
+    _uri_contract,
+    _uri_namespace,
+    _uri_hash;
+  _cursor =
+    0;
   for ( _uri of _target_uris ) {
+    _output_file =
+      _output-files[
+        _cursor];
+    try {
+      _uri_network_id =
+        _network_id_get(
+          _uri);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error extracting URI network ID.";
+      _msg_error(
+        _msg,
+        0);
+      throw _error;
+    }
+    try {
+      _uri_contract =
+        _contract_get(
+          _uri);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error extracting URI contract address.";
+      _msg_error(
+        _msg,
+        0);
+      throw _error;
+    }
+    try {
+      _uri_contract =
+        _contract_setup(
+          _uri_contract);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error running '_contract_setup' for " +
+        `uri '${_uri}'.`;
+      _msg_error(
+        _msg,
+        0);
+      throw _error;
+    }
+    try {
+      _uri_namespace =
+        _namespace_get(
+          _uri);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error extracting URI namespace.";
+      _msg_error(
+        _msg,
+        0);
+      throw _error;
+    }
+    try {
+      _uri_hash =
+        _hash_get(
+          _uri);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error extracting URI hash.";
+      _msg_error(
+        _msg,
+        0);
+      throw _error;
+    }
+    _cursor =
+      _cursor + 1;
     true;
   }
 }
