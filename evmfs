@@ -478,11 +478,6 @@ async function
   _overrides_set() {
   let
     _msg;
-  const
-    _global =
-      _global_get();
-  _global[
-    "verbose"]
   _override_set(
     "call",
     "date",

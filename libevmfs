@@ -25,6 +25,9 @@
  *     If not, see <https://www.gnu.org/licenses/>.
  */
 
+/* eslint-disable
+     no-unused-vars */
+
 const
   _libcrash =
     await import(
@@ -209,7 +212,7 @@ function
   _override_set(
     "parallel",
     "tasks",
-    _parallel_tasks)
+    _parallel_tasks);
 }
 
 async function
