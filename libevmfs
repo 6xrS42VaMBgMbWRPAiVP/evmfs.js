@@ -210,9 +210,9 @@ function
     throw _msg;
   }
   _override_set(
-    "parallel",
     "tasks",
-    _parallel_tasks);
+    "parallel",
+    _tasks_parallel);
 }
 
 async function

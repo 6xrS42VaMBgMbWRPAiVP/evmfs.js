@@ -303,10 +303,10 @@ const
   _contracts_auto_detect =
     _libevmfs_module._contracts_auto_detect;
 /* global
-     _parallel_tasks_auto_detect */
+     _tasks_parallel_auto_detect */
 const
-  _parallel_tasks_auto_detect =
-    _libevmfs_module._parallel_tasks_auto_detect;
+  _tasks_parallel_auto_detect =
+    _libevmfs_module._tasks_parallel_auto_detect;
 /* global
      _evmfs */
 const
@@ -516,7 +516,7 @@ async function
     "encoding",
     "skip",
     "n");
-  _parallel_tasks_auto_detect();
+  _tasks_parallel_auto_detect();
   _override_set(
     "user",
     "level",
