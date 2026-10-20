@@ -118,6 +118,13 @@ const
 const
   _deployments_dir_check =
     _libevm_module._deployments_dir_check;
+const
+  _evm_contracts_tools_module =
+    await _require(
+      "evm-contract-tools");
+const
+  _evm_deployment_contract_address =
+    _evm_contracts_tools._evm_contract_deployment_address;
 
 function
   _call_timeout_auto_detect() {
@@ -595,7 +602,10 @@ async function
 
 function
   _contract_setup(
-    _contract_address) {
+    _contract_address,
+    _target_networks,
+    _fs_version,
+    _user_level) {
   let
     _contract_address_get;
   _contract_address_get =
@@ -623,7 +633,20 @@ function
       _msg);
   }
   if ( _contract_address_get ) {
-    _
+    const
+      _evm_contract_deployment_address_args = [
+        _target_networks
+        _target_networks,
+        "n",                 // all networks
+        "evmfs",
+        "FileSystem",
+        _fs_version,
+        _user_level,
+        _configuration_format,
+        _deployments_dir
+      ];
+    try {
+    }
   }
 }
 
@@ -667,7 +690,7 @@ async function
     0;
   for ( _uri of _target_uris ) {
     _output_file =
-      _output-files[
+      _output_files[
         _cursor];
     try {
       _uri_network_id =
@@ -740,6 +763,7 @@ async function
         0);
       throw _error;
     }
+    
     _cursor =
       _cursor + 1;
     true;
