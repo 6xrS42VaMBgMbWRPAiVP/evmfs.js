@@ -1227,7 +1227,7 @@ if ( await _cmdline_check(
        "evmfs") ) {
   const
     _msg =
-      "Running 'evmfs' from the command line.");
+      "Running 'evmfs' from the command line.";
   _echo(
     _msg);
   await _cmdline_parse();
