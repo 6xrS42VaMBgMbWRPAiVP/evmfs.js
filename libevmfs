@@ -605,7 +605,9 @@ function
     _contract_address,
     _target_networks,
     _fs_version,
-    _user_level) {
+    _user_level,
+    _configuration_format,
+    _deployments_dir) {
   let
     _contract_address_get;
   _contract_address_get =
@@ -646,6 +648,21 @@ function
         _deployments_dir
       ];
     try {
+      _contract_address =
+        await _evm_contract_deployment_address.apply(
+          null,
+          _evm_contract_deployment_address_args);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error locally retrieving " +
+        "contract address.";
+      _msg_error(
+        _msg);
+      _echo2(
+        _error);
+      throw _error;
     }
   }
 }
