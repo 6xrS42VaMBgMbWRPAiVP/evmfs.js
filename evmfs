@@ -904,7 +904,7 @@ async function
       wallet_path,
       wallet_password,
       wallet_seed,
-      target_network,
+      target_networks,
       api_key,
       call_method,
       index_network,
