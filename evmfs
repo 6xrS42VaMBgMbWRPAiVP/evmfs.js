@@ -1235,7 +1235,7 @@ if ( await _cmdline_check(
 else {
   const
     _msg =
-      "Running 'evmfs' from a web browser.");
+      "Running 'evmfs' from a web browser.";
   _echo(
     _msg);
   _url_parse();
