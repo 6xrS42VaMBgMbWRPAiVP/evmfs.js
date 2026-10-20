@@ -1240,4 +1240,15 @@ else {
     _msg);
   _url_parse();
 }
-_main();
+try {
+  _main();
+}
+catch(
+  _error) {
+  const
+    _msg =
+      "Error running '_main'.";
+  _echo2(
+    _error);
+  throw _error;
+}

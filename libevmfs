@@ -33,6 +33,11 @@ const
     await import(
       "libcrash-js");
 /* global
+     _echo */
+const
+  _echo =
+    _libcrash._echo;
+/* global
      _echo2 */
 const
   _echo2 =
@@ -124,7 +129,7 @@ const
       "evm-contracts-tools");
 const
   _evm_deployment_contract_address =
-    _evm_contracts_tools._evm_contract_deployment_address;
+    _evm_contracts_tools_module._evm_contract_deployment_address;
 
 function
   _call_timeout_auto_detect() {
@@ -911,7 +916,7 @@ async function
   _msg =
     `Running command ` +
     `'${_target_command}' with key ` +
-    `'${_target_key}' and value` +
+    `'${_target_key}' and value ` +
     `'${_target_value}'.`;
   _msg_info(
     _msg);
