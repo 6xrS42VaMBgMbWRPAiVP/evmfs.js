@@ -567,6 +567,7 @@ async function
     _re =
       new RegExp(
         "[a-fA-F0-9]{128}$");
+  }
   else {
     _msg =
       "Check for hash type " +
