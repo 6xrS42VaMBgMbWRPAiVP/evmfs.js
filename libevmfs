@@ -628,6 +628,11 @@ function
 }
 
 async function
+  _evmfs_status() {
+  true;
+}
+
+async function
   _evmfs_get(
     _fs_address,
     _ll_address,
