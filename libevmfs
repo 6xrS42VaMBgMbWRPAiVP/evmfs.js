@@ -427,9 +427,9 @@ function
   catch(
     _error) {
     const
-      _msg =
-        "Error extracting contract address " +
-        `from URI '${_uri}'.`;
+    _msg =
+      "Error extracting contract address " +
+      `from URI '${_uri}'.`;
     _msg_error(
       _msg,
       0);
@@ -589,6 +589,40 @@ async function
       _msg,
       0);
     throw _msg;
+  }
+}
+
+function
+  _contract_setup(
+    _contract_address) {
+  let
+    _contract_address_get;
+  _contract_address_get =
+    false;
+  const
+    _contract_address_type =
+      typeof(
+        _contract_address);
+  if ( _contract_address_type == "string" ) {
+    if ( _contract_address.length < 1 ) {
+      _msg =
+        "No EVMFS contract address specified, " +
+        "inferring it automatically.";
+      _msg_info(
+        _msg);
+      _contract_address_get =
+        true;
+    }
+  }
+  else {
+    _msg =
+      `Unknown type '${_contract_address_type}' for ` +
+      "variable contract address.";
+    _msg_warning(
+      _msg);
+  }
+  if ( _contract_address_get ) {
+    _
   }
 }
 
@@ -925,15 +959,22 @@ export {
   _ccget_module,
   _check_module,
   _common_module,
+  _contract_get,
+  _contract_setup,
   _contracts_auto_detect,
   _evmfs,
   _evmfs_get,
   _evmfs_publish,
   _evmfs_status,
+  _hash_check,
+  _hash_get,
   _index_module,
   _lengthlock_module,
   _lock_module,
   _get_module,
+  _namespace_get,
+  _namespace_setup,
+  _network_id_get,
   _publish_module,
   _publish_bulk_module,
   _tasks_parallel_auto_detect,
