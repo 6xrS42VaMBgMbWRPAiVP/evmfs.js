@@ -725,6 +725,12 @@ async function
         _error);
       throw _error;
     }
+    _msg =
+      "Contract type is " +
+      `'${_contract_type}'.`;
+    _msg_info(
+      _msg);
+
   }
   return [
     _contract_address,
@@ -850,6 +856,9 @@ async function
       _cursor + 1;
     true;
   }
+  return [
+    "ciao"
+  ];
 }
 
 async function
