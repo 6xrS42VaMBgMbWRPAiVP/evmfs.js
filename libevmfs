@@ -805,7 +805,8 @@ async function
     _target_key,
     _target_value) {
   let
-    _msg;
+    _msg,
+    _return;
   _msg =
     `Running command ` +
     `'${_target_command}' with key ` +
@@ -834,11 +835,10 @@ async function
         _target_uris
       ];
     try {
-      const
-        _downloaded =
-          await _evmfs_get.apply(
-            null,
-            _evmfs_get_args);
+      _return =
+        await _evmfs_get.apply(
+          null,
+          _evmfs_get_args);
     }
     catch(
       _error) {
@@ -883,7 +883,7 @@ async function
         _target_files
       ];
     try {
-      _published =
+      _return =
         await _evmfs_publish.apply(
           null,
           _evmfs_publish_args);
@@ -906,7 +906,7 @@ async function
       _evmfs_status_args = [
       ];
     try {
-      _status =
+      _return =
         await _evmfs_status.apply(
           null,
           _evmfs_publish_args);
@@ -933,7 +933,7 @@ async function
       0);
     throw _msg;
   }
-  return _results;
+  return _return;
 }
 
 // ES6 module export
