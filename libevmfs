@@ -121,7 +121,7 @@ const
 const
   _evm_contracts_tools_module =
     await _require(
-      "evm-contract-tools");
+      "evm-contracts-tools");
 const
   _evm_deployment_contract_address =
     _evm_contracts_tools._evm_contract_deployment_address;
@@ -600,7 +600,43 @@ async function
   }
 }
 
-function
+async function
+  _contract_type_get(
+    _contract_address) {
+  const
+    _evm_contract_deployment_address_args = [
+      [],                  // target networks
+      [],                  // networks ids
+      "y",                 // all networks
+      "evmfs",
+      "FileSystem",
+      _fs_version,
+      _user_level,
+      _configuration_format,
+      _deployments_dir
+    ];
+  try {
+    _contract_addresses =
+      await _evm_contract_deployment_address.apply(
+        null,
+        _evm_contract_deployment_address_args);
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error locally retrieving " +
+      "contract address.";
+    _msg_error(
+      _msg);
+    _echo2(
+      _error);
+    throw _error;
+  }
+  _echo(
+    _contract_addresses);
+}
+
+async function
   _contract_setup(
     _contract_address,
     _target_networks,
@@ -609,7 +645,9 @@ function
     _configuration_format,
     _deployments_dir) {
   let
-    _contract_address_get;
+    _contract_address_get,
+    _contract_type,
+    _msg;
   _contract_address_get =
     false;
   const
@@ -637,7 +675,7 @@ function
   if ( _contract_address_get ) {
     const
       _evm_contract_deployment_address_args = [
-        _target_networks
+        _target_networks,
         _target_networks,
         "n",                 // all networks
         "evmfs",
@@ -665,6 +703,28 @@ function
       throw _error;
     }
   }
+  else {
+    try {
+      _contract_type =
+        await _contract_type_get(
+          _contract_address);
+    }
+    catch(
+      _error) {
+      _msg =
+        "Error determining contract type."
+      _msg_error(
+        _msg,
+        0);
+      _echo2(
+        _error);
+      throw _error;
+    }
+  }
+  return [
+    _contract_address,
+    _contract_type
+  ];
 }
 
 async function
@@ -739,7 +799,7 @@ async function
     }
     try {
       _uri_contract =
-        _contract_setup(
+        await _contract_setup(
           _uri_contract);
     }
     catch(
