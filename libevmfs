@@ -632,6 +632,11 @@ async function
   true;
 }
 
+function
+  _namespace_get() {
+  true;
+}
+
 async function
   _evmfs_get(
     _fs_address,
