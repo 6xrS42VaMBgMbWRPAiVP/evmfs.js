@@ -360,6 +360,7 @@ function
     _uri,
     _position) {
   let
+    _msg,
     _uri_array_reverse;
   const
     _uri_type =
@@ -377,7 +378,7 @@ function
   }
   try {
     _uri_array_reverse =
-      _uri.split("/").split();
+      _uri.split("/");
   }
   catch(
     _error) {
