@@ -359,6 +359,8 @@ function
   _address_section_get(
     _uri,
     _position) {
+  let
+    _uri_array_reverse;
   const
     _uri_type =
       typeof(
@@ -373,9 +375,22 @@ function
       0);
     throw _msg;
   }
-  const
+  try {
     _uri_array_reverse =
       _uri.split("/").split();
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error splitting URI " +
+      `'${_uri}'.`;
+    _msg_error(
+      _msg,
+      0);
+    _echo2(
+      _error);
+    throw _error;
+  }
   return _uri_array_reverse[
            _position];
 }
@@ -400,7 +415,9 @@ function
     _msg_error(
       _msg,
       0);
-    throw _msg;
+    _echo2(
+      _msg);
+    throw _error;
   }
   return _hash;
 }
