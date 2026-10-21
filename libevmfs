@@ -1168,12 +1168,18 @@ function
 function
   _output_files_auto_detect() {
   let
-    _msg;
+    _msg,
+    _uri;
   const
     _output_files =
       _get(
         "output",
         "files");
+  const
+    _input_uris =
+      _get(
+        "input",
+        "uris");
   const
     _target_command =
       _get(
