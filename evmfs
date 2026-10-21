@@ -97,12 +97,17 @@
        fs_address:
          writable */
 
+
   /* global
        fs_version:
          writable */
 
   /* global
        ccfs_address:
+         writable */
+
+  /* global
+       ll_address:
          writable */
 
   /* global
@@ -845,6 +850,7 @@ function
   /* global
        wallet_seed */
   let
+    _item,
     _line;
   const
     _program =
@@ -866,7 +872,7 @@ function
     `                   Skip encoding:   ${encoding_skip}`,
     `                     Input files:`,
   ];
-  for ( _item of _input_files ) {
+  for ( _item of input_files ) {
     _text.push(
       `                                    ${_item}`);
   }
@@ -874,19 +880,13 @@ function
     "              Download options:");
   _text.push(
     `                      Input URIs:`);
-  for ( _item of _input_uris ) {
-    _text.push(
-      `                                    ${_item}`);
-  }
-  _text.push(
-      `                      Input URIs:`);
-  for ( _item of _input_uris ) {
+  for ( _item of input_uris ) {
     _text.push(
       `                                    ${_item}`);
   }
   _text.push(
     `                    Output files:`);
-  for ( _item of _output_files ) {
+  for ( _item of output_files ) {
     _text.push(
       `                                    ${_item}`);
   }

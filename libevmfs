@@ -340,6 +340,11 @@ async function
     await _contract_setup_auto_detect.apply(
       null,
       _contract_setup_auto_detect_args);
+    _msg =
+      "Got LengthLock address " +
+      `'${ll_address}'.`
+    _msg_info(
+      _msg);
   }
   catch(
     _error) {
