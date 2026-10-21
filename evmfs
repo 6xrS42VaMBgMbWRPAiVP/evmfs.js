@@ -891,7 +891,7 @@ function
       `                                    ${_item}`);
   }
   _text =
-    _text.concat(
+    _text.concat([
       "              Contract options:",
       `             File system address:   ${fs_address}`,
       ` Cross-chain file system address:   ${ccfs_address}`,
