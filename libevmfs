@@ -1061,13 +1061,13 @@ async function
 function
   _input_uris_auto_detect() {
   let
+    _input_uris,
     _msg,
     _uri;
-  const
-    _input_uris =
-      _get(
-        "input",
-        "uris");
+  _input_uris =
+    _get(
+      "input",
+      "uris");
   const
     _target_command =
       _get(
