@@ -166,12 +166,19 @@ function
 function
   _global_variables_evmfs_get() {
   /* global
-       output_file:
+       input_uris:
+         writable */
+  _set(
+    "input",
+    "uris",
+    []);
+  /* global
+       output_files:
          writable */
   _set(
     "output",
-    "file",
-    "");
+    "files",
+    []);
 }
 
 function 
@@ -197,6 +204,13 @@ function
     "lock",
     "only",
     "");
+  /* global
+       input_files:
+         writable */
+  _set(
+    "input",
+    "files",
+    []);
 }
 
 function
