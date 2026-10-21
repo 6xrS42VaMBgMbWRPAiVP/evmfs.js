@@ -922,6 +922,7 @@ async function
       target_command,
       fs_address,
       ccfs_address,
+      ll_address,
       fs_version,
       deployments_dir,
       wallet_name,
@@ -941,8 +942,8 @@ async function
       cache_dir,
       user_level,
       input_files,
-      input_uris,
       output_files,
+      target_uris,
       target_key,
       target_value
     ];

@@ -945,6 +945,7 @@ async function
     _tasks_parallel,
     _cache_dir,
     _user_level,
+    _input_files,
     _output_files,
     _target_uris,
     _target_key,
