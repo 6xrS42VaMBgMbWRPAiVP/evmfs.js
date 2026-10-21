@@ -1134,9 +1134,6 @@ function
 
 function
   _input_files_auto_detect() {
-  let
-    _msg,
-    _uri;
   const
     _input_files =
       _get(
@@ -1187,6 +1184,7 @@ function
   _output_files_auto_detect() {
   let
     _msg,
+    _output_file,
     _uri;
   const
     _output_files =
