@@ -1100,13 +1100,16 @@ async function
        _argv) != "undefined" &&
        3 < _argv[
              "_"].length ) {
+    const
+      _command_args =
+        _argv[
+          "_"].slice(
+          3,
+          _argv.length));
     _set(
       "command",
       "args",
-      _argv[
-        "_"].slice(
-        3,
-        _argv.length);
+      _command_args);
   }
   if ( "m" in _argv ) {
     _set(
