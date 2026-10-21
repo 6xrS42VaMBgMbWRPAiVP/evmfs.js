@@ -303,6 +303,11 @@ const
   _contracts_auto_detect =
     _libevmfs_module._contracts_auto_detect;
 /* global
+     _input_files_auto_detect */
+const
+  _input_files_auto_detect =
+    _libevmfs_module._input_files_auto_detect;
+/* global
      _input_uris_auto_detect */
 const
   _input_uris_auto_detect =
@@ -545,8 +550,8 @@ async function
     "max",
     3);
   _call_auth_auto_detect();
-  _input_uris_auto_detect();
   _input_files_auto_detect();
+  _input_uris_auto_detect();
   _output_files_auto_detect();
   const
     _app_name =
