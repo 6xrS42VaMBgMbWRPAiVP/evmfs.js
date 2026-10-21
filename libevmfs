@@ -1110,6 +1110,57 @@ function
 }
 
 function
+  _input_files_auto_detect() {
+  let
+    _msg,
+    _uri;
+  const
+    _input_files =
+      _get(
+        "input",
+        "files");
+  const
+    _target_command =
+      _get(
+        "target",
+        "command");
+  const
+    _target_key =
+      _get(
+        "target",
+        "key");
+  const
+    _target_value =
+      _get(
+        "target",
+        "value");
+  const
+    _command_args =
+      _get(
+        "command",
+        "args");
+  if ( _target_command === "publish" ) {
+    _input_files.push(
+      _target_key);
+    if ( _target_key != "" ) {
+      _input_files.push(
+        _target_key);
+    }
+    if ( _target_value != "" ) {
+      _input_files.push(
+        _target_value);
+    }
+    _input_files =
+      _input_files.concat(
+        _command_args);
+    _set(
+      "input",
+      "files",
+      _input_files);
+  }
+}
+
+function
   _output_files_auto_detect() {
   let
     _msg;
@@ -1169,14 +1220,17 @@ export {
   _evmfs_get,
   _evmfs_publish,
   _evmfs_status,
+  _get_module,
   _hash_check,
   _hash_get,
   _index_module,
+  _input_files_auto_detect,
+  _input_uris_auto_detect,
   _lengthlock_module,
   _lock_module,
-  _get_module,
   _namespace_get,
   _namespace_setup,
+  _output_files_auto_detect,
   _network_id_get,
   _publish_module,
   _publish_bulk_module,
