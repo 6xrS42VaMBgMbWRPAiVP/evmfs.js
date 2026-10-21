@@ -378,7 +378,7 @@ function
   }
   try {
     _uri_array_reverse =
-      _uri.split("/");
+      _uri.split("/").reverse();
   }
   catch(
     _error) {
@@ -792,6 +792,7 @@ async function
     _output_files) {
   let
     _cursor,
+    _msg,
     _uri,
     _uri_network_id,
     _uri_contract,
