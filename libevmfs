@@ -776,7 +776,14 @@ async function
     _uri_hash;
   _cursor =
     0;
+  _echo2(
+    _target_uris);
   for ( _uri of _target_uris ) {
+    _msg =
+      "Downloading URI " +
+      `'${_uri}'.`;
+    _msg_info(
+      _msg);
     _output_file =
       _output_files[
         _cursor];
@@ -1049,6 +1056,69 @@ async function
     throw _msg;
   }
   return _return;
+}
+
+function
+  _input_uris_auto_detect() {
+  const
+    _input_uris =
+      _get(
+        "input",
+        "uris");
+  const
+    _target_command =
+      _get(
+        "target",
+        "command");
+  const
+    _target_key =
+      _get(
+        "target",
+        "key");
+  const
+    _target_value =
+      _get(
+        "target",
+        "value");
+  if ( _target_command === "get" ) {
+    _input_uris.push(
+      _target_key);
+    if ( _target_key != "" ) {
+      _input_uris.push(
+        _target_key);
+    }
+    if ( _target_value != "" ) {
+      _input_uris.push(
+        _target_value);
+    }
+    if ( _output_files.length < 1 ) {
+      for _uri of 
+      _output_files.push(
+        _);
+    }
+  }
+}
+
+function
+  _output_files_auto_detect() {
+  const
+    _output_files =
+      _get(
+        "output",
+        "files");
+  const
+    _target_command =
+      _get(
+        "target",
+        "command");
+  if ( _target_command === "get" ) {
+    if ( _output_files.length < 1 ) {
+      for _uri of 
+      _output_files.push(
+        _);
+    }
+    _output
+  }
 }
 
 // ES6 module export

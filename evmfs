@@ -460,6 +460,10 @@ function
     "target",
     "value",
     "");
+  _set(
+    "command",
+    "args",
+    []);
   const
     _global =
       _global_get();
@@ -531,6 +535,7 @@ async function
     "max",
     3);
   _call_auth_auto_detect();
+  _output_files_auto_detect();
   const
     _app_name =
       _get(
@@ -1039,32 +1044,52 @@ async function
     _usage(
       0);
   }
-  if ( typeof(
-       _argv) != "undefined" &&
+  const
+    _argv_type =
+      typeof(
+        _argv); // why
+  if ( _argv_type !== "undefined" &&
        0 < _argv[
              "_"].length ) {
-    target_command =
+    _set(
+      "target",
+      "command",
       _argv[
         "_"][
-          0];
+          0]);
   }
-  if ( typeof(
-       _argv) != "undefined" &&
+  if ( _argv_type !== "undefined" &&
        1 < _argv[
              "_"].length ) {
-    target_key =
+    _set(
+      "target",
+      "key",
       _argv[
         "_"][
-          1];
+          1]);
   }
   if ( typeof(
        _argv) != "undefined" &&
        2 < _argv[
              "_"].length ) {
-    target_value =
+    _set(
+      "target",
+      "value",
       _argv[
         "_"][
-          2];
+          2]);
+  }
+  if ( typeof(
+       _argv) != "undefined" &&
+       3 < _argv[
+             "_"].length ) {
+    _set(
+      "command",
+      "args",
+      _argv[
+        "_"].slice(
+        3,
+        _argv.length);
   }
   if ( "m" in _argv ) {
     _set(
