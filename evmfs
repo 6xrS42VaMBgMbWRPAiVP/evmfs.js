@@ -831,6 +831,8 @@ function
 
 function
   _config_show() {
+  let
+    _text;
   /* LibEVM-defined global variables */
   /* global
        api_key */
@@ -849,24 +851,47 @@ function
       _basename(
         _argv[
           0]);
-  const
-    _text = [
-      `${_program} configuration:`,
-      `                       Call date:   ${call_date}`,
-      `             Runtime environment:   ${runtime_environment}`,
-      `                  Target command:   ${target_command}`,
-      `                      Target key:   ${target_key}`,
-      `                    Target value:   ${target_value}`,
-      `                   Index network:   ${index_network}`,
-      `                     Call method:   ${call_method}`,
-      `                    Chunk length:   ${chunk_length}`,
-      `           Publication options:`,
-      `                       Lock only:   ${lock_only}`,
-      `                   Skip encoding:   ${encoding_skip}`,
-      `                     Input files:   ${input_files}`,
-      "              Download options:",
-      `                      Input URIs:   ${input_uris}`,
-      `                    Output files:   ${output_files}`,
+  _text = [
+    `${_program} configuration:`,
+    `                       Call date:   ${call_date}`,
+    `             Runtime environment:   ${runtime_environment}`,
+    `                  Target command:   ${target_command}`,
+    `                      Target key:   ${target_key}`,
+    `                    Target value:   ${target_value}`,
+    `                   Index network:   ${index_network}`,
+    `                     Call method:   ${call_method}`,
+    `                    Chunk length:   ${chunk_length}`,
+    `           Publication options:`,
+    `                       Lock only:   ${lock_only}`,
+    `                   Skip encoding:   ${encoding_skip}`,
+    `                     Input files:`,
+  ];
+  for ( _item of _input_files ) {
+    _text.push(
+      `                                    ${_item}`);
+  }
+  _text.push(
+    "              Download options:");
+  _text.push(
+    `                      Input URIs:`);
+  for ( _item of _input_uris ) {
+    _text.push(
+      `                                    ${_item}`);
+  }
+  _text.push(
+      `                      Input URIs:`);
+  for ( _item of _input_uris ) {
+    _text.push(
+      `                                    ${_item}`);
+  }
+  _text.push(
+    `                    Output files:`);
+  for ( _item of _output_files ) {
+    _text.push(
+      `                                    ${_item}`);
+  }
+  _text =
+    _text.concat(
       "              Contract options:",
       `             File system address:   ${fs_address}`,
       ` Cross-chain file system address:   ${ccfs_address}`,
@@ -887,7 +912,7 @@ function
       `                  Parallel tasks:   ${tasks_parallel}`,
       `           Application options:`,
       `                 Cache directory:   ${cache_dir}`,
-    ];
+    ]);
   for ( _line of _text ) {
     _msg_info(
       _line);
