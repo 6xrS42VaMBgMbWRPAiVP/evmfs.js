@@ -1107,7 +1107,7 @@ async function
         _argv[
           "_"].slice(
           3,
-          _argv.length));
+          _argv.length);
     _set(
       "command",
       "args",
