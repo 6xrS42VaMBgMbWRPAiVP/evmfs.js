@@ -1060,6 +1060,9 @@ async function
 
 function
   _input_uris_auto_detect() {
+  let
+    _msg,
+    _uri;
   const
     _input_uris =
       _get(
@@ -1080,6 +1083,11 @@ function
       _get(
         "target",
         "value");
+  const
+    _command_args =
+      _get(
+        "command",
+        "args");
   if ( _target_command === "get" ) {
     _input_uris.push(
       _target_key);
@@ -1091,16 +1099,20 @@ function
       _input_uris.push(
         _target_value);
     }
-    if ( _output_files.length < 1 ) {
-      for _uri of 
-      _output_files.push(
-        _);
-    }
+    _input_uris =
+      _input_uris.concat(
+        _command_args);
+    _set(
+      "input",
+      "uris",
+      _input_uris);
   }
 }
 
 function
   _output_files_auto_detect() {
+  let
+    _msg;
   const
     _output_files =
       _get(
@@ -1113,11 +1125,32 @@ function
         "command");
   if ( _target_command === "get" ) {
     if ( _output_files.length < 1 ) {
-      for _uri of 
-      _output_files.push(
-        _);
+      for ( _uri of _input_uris ) {
+        try {
+          _output_file =
+            _hash_get(
+              _uri);
+        }
+        catch(
+          _error) {
+          _msg =
+            `URI '${_uri}' ` +
+            `is malformed.`;
+          _msg_error(
+            _msg,
+            0);
+          _echo2(
+            _error);
+          throw _error;
+        }
+        _output_files.push(
+          _output_file);
+      }
+      _set(
+        "output",
+        "files",
+        _output_files);
     }
-    _output
   }
 }
 
