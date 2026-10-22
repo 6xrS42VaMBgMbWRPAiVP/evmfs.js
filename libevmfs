@@ -58,6 +58,11 @@ const
   _msg_info =
     _libcrash._msg_info;
 /* global
+     _msg_warning */
+const
+  _msg_warning =
+    _libcrash._msg_warning;
+/* global
      _override_set */
 const
   _override_set =
@@ -342,7 +347,7 @@ async function
       _contract_setup_auto_detect_args);
     _msg =
       "Got LengthLock address " +
-      `'${ll_address}'.`
+      `'${ll_address}'.`;
     _msg_info(
       _msg);
   }
@@ -575,6 +580,7 @@ async function
     _hash,
     _hash_type) {
   let
+    _msg,
     _re;
   try {
     _hash_type =
@@ -635,7 +641,11 @@ async function
 
 async function
   _contract_type_get(
-    _contract_address) {
+    _contract_address,
+    _fs_version,
+    _user_level,
+    _configuration_format,
+    _deployments_dir) {
   const
     _evm_contract_deployment_address_args = [
       [],                  // target networks
@@ -737,18 +747,30 @@ async function
     }
   }
   else {
+    const
+      _contract_type_get_args = [
+        _contract_address,
+        _fs_version,
+        _user_level,
+        _configuration_format,
+        _deployments_dir) {
+      ];
     try {
       _contract_type =
-        await _contract_type_get(
-          _contract_address);
+        await _contract_type_get.apply(
+          null,
+          _contract_type_get_args);
     }
     catch(
       _error) {
       _msg =
-        "Error determining contract type."
+        "Error running '_contract_type_get' " +
+        "with arguments:"
       _msg_error(
         _msg,
         0);
+      _echo2(
+        _contract_type_get_args);
       _echo2(
         _error);
       throw _error;

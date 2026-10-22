@@ -129,7 +129,11 @@
 /* EVMFS Get global variables */
 
   /* global
-       output_file:
+       output_files:
+         writable */
+
+  /* global
+       input_uris:
          writable */
 
 /* EVMFS Publish global variables */
@@ -140,6 +144,10 @@
 
   /* global
        encoding_skip:
+         writable */
+
+  /* global
+       input_files:
          writable */
 
 /* eslint-disable
