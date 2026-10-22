@@ -1316,6 +1316,10 @@ async function
           "output-file"]);
     }
   }
+  _set(
+    "output",
+    "files",
+    _output_files);
   if ( "W" in _argv ) {
     _set(
       "cache",
