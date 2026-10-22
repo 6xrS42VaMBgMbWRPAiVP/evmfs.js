@@ -1291,6 +1291,7 @@ function
           _msg,
           0);
         throw _msg;
+      }
       else if ( _output_files.length < _input_uris.length ) {
         _msg =
           "More output files than input URIs."
