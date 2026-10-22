@@ -37,6 +37,10 @@
          writable */
 
   /* global
+       price_gas:
+         writable */
+
+  /* global
        target_network:
          writable */
 
@@ -972,6 +976,7 @@ async function
       chunk_length,
       encoding_skip,
       tasks_parallel,
+      price_gas,
       cache_dir,
       user_level,
       input_files,
