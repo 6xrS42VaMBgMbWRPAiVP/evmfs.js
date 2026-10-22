@@ -28,6 +28,16 @@
 /* eslint-disable
      no-unused-vars */
 
+/* EVMFS variables */
+
+/* global
+     fs_address:
+       writable */
+
+/* global
+     ll_address:
+       writable */
+
 const
   _libcrash =
     await import(
@@ -518,7 +528,7 @@ function
     false;
   const
     _default =
-      "sha256sum"
+      "sha256sum";
   const
     _hash_type_type =
       typeof(
@@ -598,7 +608,7 @@ async function
   }
   if ( _hash.length < 1 ) {
     _msg =
-      "Empty URI hash."
+      "Empty URI hash.";
     _msg_error(
       _msg,
       0);
@@ -646,6 +656,8 @@ async function
     _user_level,
     _configuration_format,
     _deployments_dir) {
+  let
+    _contract_addresses;
   const
     _evm_contract_deployment_address_args = [
       [],                  // target networks
@@ -753,7 +765,7 @@ async function
         _fs_version,
         _user_level,
         _configuration_format,
-        _deployments_dir) {
+        _deployments_dir
       ];
     try {
       _contract_type =
@@ -814,11 +826,12 @@ async function
     _call_method,
     _retries_max,
     _tasks_parallel,
-    _target_uris,
+    _input_uris,
     _output_files) {
   let
     _cursor,
     _msg,
+    _output_file,
     _uri,
     _uri_network_id,
     _uri_contract,
@@ -827,8 +840,8 @@ async function
   _cursor =
     0;
   _echo2(
-    _target_uris);
-  for ( _uri of _target_uris ) {
+    _input_uris);
+  for ( _uri of _input_uris ) {
     _msg =
       "Downloading URI " +
       `'${_uri}'.`;
@@ -969,13 +982,14 @@ async function
     _lock_only,
     _chunk_length,
     _encoding_skip,
+    _encoding_type,
     _tasks_parallel,
     _price_gas,
     _cache_dir,
     _user_level,
     _input_files,
     _output_files,
-    _target_uris,
+    _input_uris,
     _target_key,
     _target_value) {
   let
@@ -1006,7 +1020,7 @@ async function
         _call_method,
         _retries_max,
         _tasks_parallel,
-        _target_uris
+        _input_uris
       ];
     try {
       _return =

@@ -120,6 +120,13 @@ function
     "address",
     "");
   /* global
+       ll_address:
+         writable */
+  _set(
+    "ll",
+    "address",
+    "");
+  /* global
        fs_version:
          writable */
   _set(
@@ -132,6 +139,13 @@ function
   _set(
     "ccfs",
     "address",
+    "");
+  /* global
+       encoding_type:
+         writable */
+  _set(
+    "encoding",
+    "type",
     "");
   /* global
        rpc_selection:

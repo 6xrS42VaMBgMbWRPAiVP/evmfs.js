@@ -563,6 +563,10 @@ async function
     "default");
   _call_timeout_auto_detect();
   _override_set(
+    "encoding",
+    "type",
+    "sha256sum");
+  _override_set(
     "retries",
     "max",
     3);
@@ -729,7 +733,7 @@ function
       "",
       "      Name of the file in which to save",
       "      the downloaded resource.",
-      `      Default: ${output_file}`,
+      `      Default: ${output_files}`,
       "",
       "  publish options:",
       "",
@@ -790,6 +794,18 @@ function
       "      EVM network names. Use either name",
       "      or Chain ID.",
       `      Default: ${target_networks}`,
+      "",
+      "    -g <price-gas>, --price-gas <amount>",
+      "",
+      "      Gas price. It can be 'auto', 'fast'",
+      "      or an integer.",
+      `      Default: ${price_gas}`,
+      "",
+      "    -U <measure-unit>, --measure-unit <unit>",
+      "",
+      "      Gas measure unit. It can be 'wei'",
+      "      or 'ether'.",
+      `      Default: ${measure_unit}`,
       "",
       "  credentials options:",
       "",
@@ -975,13 +991,14 @@ async function
       lock_only,
       chunk_length,
       encoding_skip,
+      encoding_type,
       tasks_parallel,
       price_gas,
       cache_dir,
       user_level,
       input_files,
       output_files,
-      target_uris,
+      input_uris,
       target_key,
       target_value
     ];
