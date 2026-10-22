@@ -584,7 +584,18 @@ async function
       0);
     throw _error;
   }
-  _output_files_auto_detect();
+  try { 
+    _output_files_auto_detect();
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error detecting output file.";
+    _msg_error(
+      _msg,
+      0);
+    throw _error;
+  }
   const
     _app_name =
       _get(
