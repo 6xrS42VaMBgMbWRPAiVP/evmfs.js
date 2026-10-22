@@ -1062,7 +1062,8 @@ async function
 async function 
   _cmdline_parse() {
   let
-    _help_display;
+    _help_display,
+    _output_files;
   const
     _global =
       _global_get();
@@ -1267,19 +1268,53 @@ async function
       _argv[
         "index-network"]);
   }
-  if ( "o" in _argv ) {
-    _set(
+  _output_files =
+    _get(
       "output",
-      "file",
+      "files");
+  if ( "o" in _argv ) {
+    const
+      _output_files_argv_type =
+        typeof(
+          _argv[
+            "o"];
+    _output_files =
       _argv[
-        "o"]);
+        "o"];
+    if ( _output_files_argv_type === "string" ||
+         _output_files_argv_type === "number" ) {
+      _output_files.push(
+        _argv[
+          "o"]);
+    }
+    else if ( _output_files_argv_type === "object" ) {
+      _output_files =
+        _output_files.concat(
+        _argv[
+          "o"]);
+    }
   }
   if ( "output-file" in _argv ) {
-    _set(
-      "output",
-      "file",
+    const
+      _output_files_argv_type =
+        typeof(
+          _argv[
+            "output-file"];
+    _output_files =
       _argv[
-        "output-file"]);
+        "output-file"];
+    if ( _output_files_argv_type === "string" ||
+         _output_files_argv_type === "number" ) {
+      _output_files.push(
+        _argv[
+          "output-file"]);
+    }
+    else if ( _output_files_argv_type === "object" ) {
+      _output_files =
+        _output_files.concat(
+        _argv[
+          "output-file"]);
+    }
   }
   if ( "W" in _argv ) {
     _set(
