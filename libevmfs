@@ -1155,19 +1155,25 @@ function
         "command",
         "args");
   if ( _target_command === "get" ) {
+    if ( _target_key == "" ) {
+      _msg =
+        "No input URI.";
+      _msg_error(
+        _msg,
+        0);
+      throw _msg;
+    }
     _input_uris.push(
       _target_key);
-    if ( _target_key != "" ) {
-      _input_uris.push(
-        _target_key);
-    }
     if ( _target_value != "" ) {
       _input_uris.push(
         _target_value);
     }
-    _input_uris =
-      _input_uris.concat(
-        _command_args);
+    if ( 0 < _command_args.length ) {
+      _input_uris =
+        _input_uris.concat(
+          _command_args);
+    }
     _set(
       "input",
       "uris",
@@ -1271,6 +1277,28 @@ function
         "output",
         "files",
         _output_files);
+    }
+    else {
+      const
+        _input_uris =
+          _get(
+            "input",
+            "uris");
+      if ( _input_uris.length < _output_files.length ) {
+        _msg =
+          "More output files than input URIs."
+        _msg_error(
+          _msg,
+          0);
+        throw _msg;
+      else if ( _output_files.length < _input_uris.length ) {
+        _msg =
+          "More output files than input URIs."
+        _msg_error(
+          _msg,
+          0);
+        throw _msg;
+      }
     }
   }
 }

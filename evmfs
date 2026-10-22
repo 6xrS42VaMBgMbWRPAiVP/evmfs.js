@@ -572,7 +572,18 @@ async function
     3);
   _call_auth_auto_detect();
   _input_files_auto_detect();
-  _input_uris_auto_detect();
+  try {
+    _input_uris_auto_detect();
+  }
+  catch(
+    _error) {
+    _msg =
+      "Error detecting input file.";
+    _msg_error(
+      _msg,
+      0);
+    throw _error;
+  }
   _output_files_auto_detect();
   const
     _app_name =
@@ -1277,10 +1288,7 @@ async function
       _output_files_argv_type =
         typeof(
           _argv[
-            "o"];
-    _output_files =
-      _argv[
-        "o"];
+            "o"]);
     if ( _output_files_argv_type === "string" ||
          _output_files_argv_type === "number" ) {
       _output_files.push(
@@ -1299,10 +1307,7 @@ async function
       _output_files_argv_type =
         typeof(
           _argv[
-            "output-file"];
-    _output_files =
-      _argv[
-        "output-file"];
+            "output-file"]);
     if ( _output_files_argv_type === "string" ||
          _output_files_argv_type === "number" ) {
       _output_files.push(
